@@ -1,0 +1,80 @@
+
+    <div class="header login-bg">
+        <a href="index.html">
+            <img src="img/logo-white.png" class="logo non-background" alt="logo" />
+        </a>
+    </div>
+    <form class="login-wrapper" name="signUpForm">
+        <div class="box">
+            <div class="content-wrap">
+                <h6>Đăng kí </h6>
+                <input class="form-control" type="text" placeholder="Họ tên" ng-model="name" required ng-minlength="6"name="name">
+                <span class="alert-msg alert-signup" ng-show="signUpForm.name.$error.minlength">
+                    <i class="icon-remove-sign"></i>
+                at least 6 characters
+                </span>
+
+                <span class="alert-msg alert-signup" ng-show="signUpForm.name.$error.required">
+                    <i class="icon-remove-sign"></i>
+                Type your name
+                </span>
+
+                <input class="form-control" type="text" placeholder="Địa chỉ email" ng-model="email" name="email" required>
+                <span class="alert-msg alert-signup" ng-show="signUpForm.email.$error.email">
+                    <i class="icon-remove-sign"></i>
+                Email invalid
+                </span>
+
+                <span class="alert-msg alert-signup" ng-show="signUpForm.email.$error.required">
+                    <i class="icon-remove-sign"></i>
+                Type your email
+                </span>
+
+                <input class="form-control" type="text" placeholder="Tên công ty" ng-model="company" name="company" required>
+                <span class="alert-msg alert-signup" ng-show="signUpForm.company.$error.required">
+                    <i class="icon-remove-sign"></i>
+                Type your company name
+                </span>
+
+                <input class="form-control" type="password" ng-model="password" ng-minlength="6" name="password" placeholder="Nhập mật khẩu" required ng-change="updatePass()"/>
+
+                <span class="alert-msg alert-signup" ng-show="signUpForm.password.$error.required">
+                    <i class="icon-remove-sign"></i>
+                Type your password
+                </span>
+
+                <span class="alert-msg alert-signup" ng-show="signUpForm.password.$error.minlength">
+                    <i class="icon-remove-sign"></i>
+                at least 6 characters
+                </span>
+
+                <input class="form-control" placeholder="Nhập lại mật khẩu" type="password" ng-model="confirmPassword" ng-minlength="6" name="confirmPassword" ng-change="updatePass()"/>
+                <span class="alert-msg alert-signup" ng-show="!IsRightPass">
+                    <i class="icon-remove-sign"></i>
+                Invalid password
+                </span>
+
+				<input class="form-control" type="text" placeholder="Phone number" name="tel" ng-model="tel" ng-change="checkPhoneNumber()"/>
+
+                <span class="alert-msg alert-signup" ng-show="!validatedPhoneNumber">
+                    <i class="icon-remove-sign"></i>
+                Invalid
+                </span>
+
+                <div class="action">
+                    <a class="btn-glow primary signup" ng-disabled="signUpForm.$invalid || !IsRightPass || !validatedPhoneNumber" ng-click="signUp()">Sign Up</a>
+                </div>                
+            </div>
+        </div>
+
+        <div class="already">
+            <p>Have an account?</p>
+            <a href="#/login">Sign In</a>
+        </div>
+    </form>
+    
+<script type="text/javascript">
+    $('#wrapper').css("padding", "0px");
+    $('#width_wrapper').width("100%");
+</script>
+<style scoped>@import url('vendor/theme/styles/compiled/signup.css')</style>    

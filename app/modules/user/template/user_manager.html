@@ -1,0 +1,104 @@
+<div ng-include="'partials/_header.html'"></div>
+<div ng-include="'partials/_sidebar.html'"></div>
+	<!-- main container -->
+    <div class="content">
+        <div id="content_wrapper">
+            <div class="notice shadow">
+                <div class='col-md-12'>
+                    <p class="title">EXPLORE YOUR CUSTOMER</p>
+                    <p class="sub">This feature helps you to find out the satisfaction of your customers portrait
+                        </br>
+                    </br>
+                        <b>Tips: </b> </br>
+                        <ol>
+                            <li>Select properties and choose value for it > Add Condition </li>
+                            <li>Click "Show" to find how many people that match your condition</li>
+                            <li>Select customer record to explore detail information</li>
+                        </ol>
+                    </p>
+                </div>
+                
+                <div class="clearfix"></div>
+            </div>
+            
+            <div class="block">
+                <div class="block_header">
+                    <!-- <div class="left control">
+                        Choose customer behavior 
+                        <select ng-model="event" ng-options="event as event.name_display for event in events" ng-init="event=events[0]"></select>
+                        by time
+                    </div> -->
+
+                    <span class="btn-flat success icon-bookmark-empty right" ng-click="bookmark()">Save</span>
+                </div>
+                <div class="block_content">
+                    <!-- <p class="notify">Danh sách khách hàng thoả điều kiện</p> -->
+                    <div ng-hide="isVisibleFilter" class="loading-container-infor">
+                        <div title="Code: 0xe800" class="the-icons span3"><i class="icon-fontello-spin6 animate-spin loading-infor loading-icon"></i></div>
+                    </div>
+                    <div smg-filter metas="metas" events="events" metadata="metadata" event="event" subfilters="subfilters" oldsubfilters="oldsubfilters" visibility="isVisibleFilter"></div>
+                </div>
+                <div class="block_footer">
+                    <span class="btn-flat primary right" ng-click="getResult()">Show</span>
+                </div>
+            </div>
+            
+            <div class="block">
+                <div class="block_header">
+                    <div class="report-by">
+                        <!-- Gửi thông báo bằng 
+                        <div class="ui-select">
+                            <select>
+                                <option>Tin nhắn SMS</option>
+                            </select>
+                        </div>
+                        cho -->
+                        <input type="text" class="search right" placeholder="Who're you looking for" ng-model="searchText" ng-change="filterUser()"/>
+                    </div>
+                </div>
+                <div ng-hide="hideLoading" class="loading-container-image-product">
+                    <div title="Code: 0xe800" class="the-icons span3"><i class="icon-fontello-spin6 animate-spin loading-product-image loading-icon"></i></div>
+                </div>
+                <div class="block_content no-padding" ng-hide="!hideLoading">
+                    <table class="z-table">
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox" ng-model="checkAll" ng-change="checkAllUser(); saveInfor();"/></th>
+                                <th class = "name">
+                                    Phone number
+                                </th>
+                                <th class="name">Name</th>
+                                <th>Age</th>
+                                <th>Gender</th>
+                                <th>Location</th>
+                                <th>Last time</th>
+                            </tr>
+                        </thead>
+                        <tbody >
+                            <tr ng-repeat="user in dataInCurrentPage">
+                                <td><input type="checkbox" ng-model="$parent.checkList[user.stt]" ng-change="saveInfor()"/></td>
+                                <td style="cursor:pointer" ng-click="showUserProfile(user.id, user.name)">{{user.phone}}</td>
+                                <td class="name"  style="cursor:pointer" ng-click="showUserProfile(user.id, user.name)">{{user.name}}</td>
+                                <td style="cursor:pointer" ng-click="showUserProfile(user.id, user.name)">{{user.dob}}</td>
+                                <td style="cursor:pointer" ng-click="showUserProfile(user.id, user.name)">{{user.gender}}</td>
+                                <td style="cursor:pointer" ng-click="showUserProfile(user.id, user.name)">{{user.city}}</td>
+                                <td style="cursor:pointer" ng-click="showUserProfile(user.id, user.name)">{{user.last_visit}}</td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                    
+                    <div style="margin-top: 15px;margin-bottom: 5px;margin-right: 5px;">
+                        <spagination ng-hide="dataInCurrentPage.length == 0" class="right" total-items="totalItems" page="currentPage" on-select-page="pageChanged(page)" items-per-page="itemsPerPage" boundary-links="false" rotate="false" max-size="10"></spagination>
+                    </div>
+                    <!--chart here-->
+                
+                </div>
+            </div>
+        </div> <!-- content_wrapper-->
+        
+            
+        
+    </div>
+    <!-- end main container -->
+</html>

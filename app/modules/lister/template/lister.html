@@ -1,0 +1,72 @@
+<div ng-include="'partials/_header.html'"></div>
+<div ng-include="'partials/_sidebar.html'"></div>
+    <!-- main container -->
+    <div class="content">
+        <div id="content_wrapper">
+        
+            <div class="block">
+                <div class="block_header">
+                    <div class="report-by">
+                        <!-- Gửi thông báo bằng 
+                        <div class="ui-select">
+                            <select>
+                                <option>Tin nhắn SMS</option>
+                            </select>
+                        </div>
+                        cho -->
+                        <input type="text" class="search right" placeholder="Tìm kiếm..." ng-model="searchText" ng-keyup="$event.keyCode == 13 ? search(searchText) : null" ng-change="searchStrChange(searchText)"/>
+                    </div>
+                </div>
+                <div ng-hide="hideLoading" class="loading-container-image-product">
+                    <div title="Code: 0xe800" class="the-icons span3"><i class="icon-fontello-spin6 animate-spin loading-product-image loading-icon"></i></div>
+                </div>
+                <div class="block_content no-padding" ng-hide="!hideLoading">
+                    <table class="z-table">
+                        <thead>
+                            <tr>
+                                <th class = "name">
+                                    ID
+                                </th>
+                                <th class = "name">
+                                    Brandname
+                                </th>
+                                <th class = "name">
+                                    Type of Business
+                                </th>
+                                <th class = "name">
+                                    Logo
+                                </th>
+                                <th class = "name">
+                                    Phone number
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody >
+
+                            <tr ng-repeat="brand in dataInCurrentPage">
+                                <td style="cursor:pointer" ng-click="moveToBrand(brand.id)"> <a href="#/brand/infor/{{brand.id}}">{{brand.id}}</a></td>
+                                <td style="cursor:pointer" ng-click="moveToBrand(brand.id)">{{brand.name}}</td>
+                                <td style="cursor:pointer" ng-click="moveToBrand(brand.id)">{{brand.type_business}}</td>
+                                <td style="cursor:pointer" ng-click="moveToBrand(brand.id)"><img ng-src="{{brand.logo}}" width="45" height="45" /></td>
+                                
+                                <td style="cursor:pointer" ng-click="moveToBrand(brand.id)">{{brand.owner_phone}}</td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                    <div style="margin: 20px;">
+                        Page: <input ng-model="pageNumber" ng-keyup="$event.keyCode == 13 ? pageChanged(pageNumber) : null"/>
+                    </div>
+                    <spagination ng-hide="dataInCurrentPage.length == 0" class="right" total-items="totalItems" page="currentPage" on-select-page="pageChanged(page)" items-per-page="itemsPerPage" boundary-links="true" first-text="Đầu tiên" rotate="false" last-text="Cuối cùng" next-text="Sau" previous-text="Trước" max-size="10"></spagination>
+                    <!--chart here-->
+                    
+                    
+                </div>
+            </div>
+        </div> <!-- content_wrapper-->
+        
+            
+        
+    </div>
+    <!-- end main container -->
+</html>

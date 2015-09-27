@@ -1,0 +1,1009 @@
+{
+    "group_shop": [{
+        "id": 1,
+        "name": "Ẩm Thực"
+    }, {
+        "id": 2,
+        "name": "Cafe & Bar"
+    }, {
+        "id": 3,
+        "name": "Làm Đẹp"
+    }, {
+        "id": 4,
+        "name": "Giải Trí"
+    }, {
+        "id": 5,
+        "name": "Thời Trang"
+    }, {
+        "id": 6,
+        "name": "Du Lịch"
+    }, {
+        "id": 7,
+        "name": "Sản Phẩm"
+    }, {
+        "id": 8,
+        "name": "Giáo Dục"
+    }],
+    "cities": [{
+        "name": "Hồ Chí Minh",
+        "id": 1,
+        "districts": []
+    }, {
+        "name": "An Giang",
+        "id": 82,
+        "districts": []
+    }, {
+        "name": "Bà Rịa",
+        "id": 83,
+        "districts": []
+    }, {
+        "name": "Vũng Tàu",
+        "id": 84,
+        "districts": []
+    }, {
+        "name": "Bắc Giang",
+        "id": 85,
+        "districts": []
+    }, {
+        "name": "Bắc Kạn",
+        "id": 86,
+        "districts": []
+    }, {
+        "name": "Bạc Liêu",
+        "id": 87,
+        "districts": []
+    }, {
+        "name": "Bắc Ninh",
+        "id": 88,
+        "districts": []
+    }, {
+        "name": "Bến Tre",
+        "id": 89,
+        "districts": []
+    }, {
+        "name": "Bình Định",
+        "id": 90,
+        "districts": []
+    }, {
+        "name": "Bình Dương",
+        "id": 91,
+        "districts": []
+    }, {
+        "name": "Bình Phước",
+        "id": 92,
+        "districts": []
+    }, {
+        "name": "Bình Thuận",
+        "id": 93,
+        "districts": []
+    }, {
+        "name": "Cà Mau",
+        "id": 94,
+        "districts": []
+    }, {
+        "name": "Cao Bằng",
+        "id": 95,
+        "districts": []
+    }, {
+        "name": "Đắk Lắk",
+        "id": 96,
+        "districts": []
+    }, {
+        "name": "Đắk Nông",
+        "id": 97,
+        "districts": []
+    }, {
+        "name": "Hội An",
+        "id": 98,
+        "districts": []
+    }, {
+        "name": "Quy Nhơn",
+        "id": 99,
+        "districts": []
+    }, {
+        "name": "Hạ Long",
+        "id": 100,
+        "districts": []
+    }, {
+        "name": "Ninh Hải",
+        "id": 101,
+        "districts": []
+    }, {
+        "name": "Điện Biên",
+        "id": 102,
+        "districts": []
+    }, {
+        "name": "Đồng Nai",
+        "id": 103,
+        "districts": []
+    }, {
+        "name": "Đồng Tháp",
+        "id": 104,
+        "districts": []
+    }, {
+        "name": "Gia Lai",
+        "id": 105,
+        "districts": []
+    }, {
+        "name": "Hà Giang",
+        "id": 106,
+        "districts": []
+    }, {
+        "name": "Côn Đảo",
+        "id": 107,
+        "districts": []
+    }, {
+        "name": "Phú Quốc",
+        "id": 108,
+        "districts": []
+    }, {
+        "name": "Phan Thiết",
+        "id": 109,
+        "districts": []
+    }, {
+        "name": "Phan Rang",
+        "id": 110,
+        "districts": []
+    }, {
+        "name": "Quảng Nam",
+        "id": 111,
+        "districts": []
+    }, {
+        "name": "Quảng Ngãi",
+        "id": 112,
+        "districts": []
+    }, {
+        "name": "Quảng Ninh",
+        "id": 113,
+        "districts": []
+    }, {
+        "name": "Quảng Trị",
+        "id": 114,
+        "districts": []
+    }, {
+        "name": "Sóc Trăng",
+        "id": 115,
+        "districts": []
+    }, {
+        "name": "Sơn La",
+        "id": 116,
+        "districts": []
+    }, {
+        "name": "Tuy Hòa",
+        "id": 117,
+        "districts": []
+    }, {
+        "name": "Ban Mê Thuột",
+        "id": 118,
+        "districts": []
+    }, {
+        "name": "Pleiku",
+        "id": 119,
+        "districts": []
+    }, {
+        "name": "Tây Ninh",
+        "id": 120,
+        "districts": []
+    }, {
+        "name": "Thái Bình",
+        "id": 121,
+        "districts": []
+    }, {
+        "name": "Thái Nguyên",
+        "id": 122,
+        "districts": []
+    }, {
+        "name": "Thanh Hóa",
+        "id": 123,
+        "districts": []
+    }, {
+        "name": "Thừa Thiên Huế",
+        "id": 124,
+        "districts": []
+    }, {
+        "name": "Huế",
+        "id": 125,
+        "districts": []
+    }, {
+        "name": "Mũi Né",
+        "id": 126,
+        "districts": []
+    }, {
+        "name": "Xuyên Mộc",
+        "id": 127,
+        "districts": []
+    }, {
+        "name": "Hàm Thuận Nam",
+        "id": 128,
+        "districts": []
+    }, {
+        "name": "Tiền Giang",
+        "id": 129,
+        "districts": []
+    }, {
+        "name": "Trà Vinh",
+        "id": 130,
+        "districts": []
+    }, {
+        "name": "Tuyên Quang",
+        "id": 131,
+        "districts": []
+    }, {
+        "name": "Vĩnh Long",
+        "id": 132,
+        "districts": []
+    }, {
+        "name": "Vĩnh Phúc",
+        "id": 133,
+        "districts": []
+    }, {
+        "name": "Yên Bái",
+        "id": 134,
+        "districts": []
+    }, {
+        "name": "Nha Trang",
+        "id": 135,
+        "districts": []
+    }, {
+        "name": "Đà Lạt",
+        "id": 136,
+        "districts": []
+    }, {
+        "name": "Đồng Hới",
+        "id": 137,
+        "districts": []
+    }, {
+        "name": "Phú Yên",
+        "id": 138,
+        "districts": []
+    }, {
+        "name": "Cần Thơ",
+        "id": 139,
+        "districts": []
+    }, {
+        "name": "Đà Nẵng",
+        "id": 140,
+        "districts": []
+    }, {
+        "name": "Hải Phòng",
+        "id": 141,
+        "districts": []
+    }, {
+        "name": "Hà Nội",
+        "id": 142,
+        "districts": []
+    }, {
+        "name": "Hà Nam",
+        "id": 143,
+        "districts": []
+    }, {
+        "name": "Hà Tĩnh",
+        "id": 144,
+        "districts": []
+    }, {
+        "name": "Hải Dương",
+        "id": 145,
+        "districts": []
+    }, {
+        "name": "Hậu Giang",
+        "id": 146,
+        "districts": []
+    }, {
+        "name": "Hòa Bình",
+        "id": 147,
+        "districts": []
+    }, {
+        "name": "Hưng Yên",
+        "id": 148,
+        "districts": []
+    }, {
+        "name": "Khánh Hòa",
+        "id": 149,
+        "districts": []
+    }, {
+        "name": "Kiên Giang",
+        "id": 150,
+        "districts": []
+    }, {
+        "name": "Kon Tum",
+        "id": 151,
+        "districts": []
+    }, {
+        "name": "Lai Châu",
+        "id": 152,
+        "districts": []
+    }, {
+        "name": "Lâm Đồng",
+        "id": 153,
+        "districts": []
+    }, {
+        "name": "Lạng Sơn",
+        "id": 154,
+        "districts": []
+    }, {
+        "name": "Lào Cai",
+        "id": 155,
+        "districts": []
+    }, {
+        "name": "Long An",
+        "id": 156,
+        "districts": []
+    }, {
+        "name": "Nam Định",
+        "id": 157,
+        "districts": []
+    }, {
+        "name": "Nghệ An",
+        "id": 158,
+        "districts": []
+    }, {
+        "name": "Ninh Bình",
+        "id": 159,
+        "districts": []
+    }, {
+        "name": "Ninh Thuận",
+        "id": 160,
+        "districts": []
+    }, {
+        "name": "Phú Thọ",
+        "id": 161,
+        "districts": []
+    }, {
+        "name": "Quảng Bình",
+        "id": 162,
+        "districts": []
+    }],
+    "meta_events": [{
+        "name": "view",
+        "name_display": "xem thông tin",
+        "properties": [{
+            "name_display": "select property"
+        }, {
+            "name": "shop_name",
+            "name_display": "cửa hàng",
+            "type": "group",
+            "available_values": "shops"
+        }, {
+            "name": "time",
+            "name_display": "thời gian",
+            "type": "time"
+        }, {
+            "name": "platform",
+            "name_display": "nền tảng",
+            "type": "group",
+            "available_values": "platforms"
+        }, {
+            "name": "user_age",
+            "name_display": "tuổi",
+            "type": "number"
+        }, {
+            "name": "user_gender",
+            "name_display": "giới tính",
+            "type": "group",
+            "available_values": "genders"
+        }, {
+            "name": "user_career",
+            "name_display": "nghề nghiệp",
+            "type": "group",
+            "available_values": "careers"
+        }, {
+            "name": "user_total_charge",
+            "name_display": "tổng chi tiêu",
+            "type": "number"
+        }, {
+            "name": "user_view_count",
+            "name_display": "số lần KH xem thông tin",
+            "type": "number"
+        }, {
+            "name": "user_checkin_count",
+            "name_display": "số lần KH đến cửa hàng",
+            "type": "number"
+        }, {
+            "name": "user_checkout_count",
+            "name_display": "số lần KH mua hàng",
+            "type": "number"
+        }, {
+            "name": "user_comment_count",
+            "name_display": "số bình luận của KH",
+            "type": "number"
+        }],
+        "compare_properties": [{
+            "name_display": "select property"
+        }, {
+            "name": "shop_name",
+            "name_display": "cửa hàng",
+            "type": "group"
+        }, {
+            "name": "time",
+            "name_display": "giờ trong ngày",
+            "unit": "hour",
+            "type": "time"
+        }, {
+            "name": "time",
+            "name_display": "ngày trong tuần",
+            "unit": "weekday",
+            "type": "time"
+        }, {
+            "name": "time",
+            "name_display": "tháng trong năm",
+            "unit": "month",
+            "type": "time"
+        }, {
+            "name": "platform",
+            "name_display": "nền tảng",
+            "type": "group"
+        }, {
+            "name": "user_age",
+            "name_display": "tuổi",
+            "type": "number",
+            "min_diff": 5
+        }, {
+            "name": "user_gender",
+            "name_display": "giới tính",
+            "type": "group"
+        }, {
+            "name": "user_career",
+            "name_display": "nghề nghiệp",
+            "type": "group"
+        }, {
+            "name": "user_total_charge",
+            "name_display": "mức chi tiêu",
+            "type": "number",
+            "min_diff": 5
+        }]
+    }, {
+        "name": "checkin",
+        "name_display": "đến cửa hàng",
+        "properties": [{
+            "name_display": "select property"
+        }, {
+            "name": "shop_name",
+            "name_display": "cửa hàng",
+            "type": "group",
+            "available_values": "shops"
+        }, {
+            "name": "time",
+            "name_display": "thời gian",
+            "type": "time"
+        }, {
+            "name": "platform",
+            "name_display": "nền tảng",
+            "type": "group",
+            "available_values": "platforms"
+        }, {
+            "name": "user_age",
+            "name_display": "tuổi",
+            "type": "number"
+        }, {
+            "name": "user_gender",
+            "name_display": "giới tính",
+            "type": "group",
+            "available_values": "genders"
+        }, {
+            "name": "user_career",
+            "name_display": "nghề nghiệp",
+            "type": "group",
+            "available_values": "careers"
+        }, {
+            "name": "user_total_charge",
+            "name_display": "tổng chi tiêu",
+            "type": "number"
+        }, {
+            "name": "user_view_count",
+            "name_display": "số lần KH xem thông tin",
+            "type": "number"
+        }, {
+            "name": "user_checkin_count",
+            "name_display": "số lần KH đến cửa hàng",
+            "type": "number"
+        }, {
+            "name": "user_checkout_count",
+            "name_display": "số lần KH mua hàng",
+            "type": "number"
+        }, {
+            "name": "user_comment_count",
+            "name_display": "số bình luận của KH",
+            "type": "number"
+        }],
+        "compare_properties": [{
+            "name_display": "select property"
+        }, {
+            "name": "shop_name",
+            "name_display": "cửa hàng",
+            "type": "group"
+        }, {
+            "name": "time",
+            "name_display": "giờ trong ngày",
+            "unit": "hour",
+            "type": "time"
+        }, {
+            "name": "time",
+            "name_display": "ngày trong tuần",
+            "unit": "weekday",
+            "type": "time"
+        }, {
+            "name": "time",
+            "name_display": "tháng trong năm",
+            "unit": "month",
+            "type": "time"
+        }, {
+            "name": "platform",
+            "name_display": "nền tảng",
+            "type": "group"
+        }, {
+            "name": "user_age",
+            "name_display": "tuổi",
+            "type": "number",
+            "min_diff": 5
+        }, {
+            "name": "user_gender",
+            "name_display": "giới tính",
+            "type": "group"
+        }, {
+            "name": "user_career",
+            "name_display": "nghề nghiệp",
+            "type": "group"
+        }, {
+            "name": "user_total_charge",
+            "name_display": "mức chi tiêu",
+            "type": "number",
+            "min_diff": 5
+        }]
+    }, {
+        "name": "checkout",
+        "name_display": "mua hàng",
+        "properties": [{
+            "name_display": "select property"
+        }, {
+            "name": "shop_name",
+            "name_display": "cửa hàng",
+            "type": "group",
+            "available_values": "shops"
+        }, {
+            "name": "time",
+            "name_display": "thời gian",
+            "type": "time"
+        }, {
+            "name": "platform",
+            "name_display": "nền tảng",
+            "type": "group",
+            "available_values": "platforms"
+        }, {
+            "name": "charge",
+            "name_display": "giá trị mua hàng",
+            "type": "number"
+        }, {
+            "name": "user_age",
+            "name_display": "tuổi",
+            "type": "number"
+        }, {
+            "name": "user_gender",
+            "name_display": "giới tính",
+            "type": "group",
+            "available_values": "genders"
+        }, {
+            "name": "user_career",
+            "name_display": "nghề nghiệp",
+            "type": "group",
+            "available_values": "careers"
+        }, {
+            "name": "user_total_charge",
+            "name_display": "tổng chi tiêu",
+            "type": "number"
+        }, {
+            "name": "user_view_count",
+            "name_display": "số lần KH xem thông tin",
+            "type": "number"
+        }, {
+            "name": "user_checkin_count",
+            "name_display": "số lần KH đến cửa hàng",
+            "type": "number"
+        }, {
+            "name": "user_checkout_count",
+            "name_display": "số lần KH mua hàng",
+            "type": "number"
+        }, {
+            "name": "user_comment_count",
+            "name_display": "số bình luận của KH",
+            "type": "number"
+        }],
+        "compare_properties": [{
+            "name_display": "select property"
+        }, {
+            "name": "shop_name",
+            "name_display": "cửa hàng",
+            "type": "group"
+        }, {
+            "name": "time",
+            "name_display": "giờ trong ngày",
+            "unit": "hour",
+            "type": "time"
+        }, {
+            "name": "time",
+            "name_display": "ngày trong tuần",
+            "unit": "weekday",
+            "type": "time"
+        }, {
+            "name": "time",
+            "name_display": "tháng trong năm",
+            "unit": "month",
+            "type": "time"
+        }, {
+            "name": "platform",
+            "name_display": "nền tảng",
+            "type": "group"
+        }, {
+            "name": "charge",
+            "name_display": "giá trị mua hàng",
+            "type": "number",
+            "min_diff": 5
+        }, {
+            "name": "user_age",
+            "name_display": "tuổi",
+            "type": "number",
+            "min_diff": 5
+        }, {
+            "name": "user_gender",
+            "name_display": "giới tính",
+            "type": "group"
+        }, {
+            "name": "user_career",
+            "name_display": "nghề nghiệp",
+            "type": "group"
+        }, {
+            "name": "user_total_charge",
+            "name_display": "tổng chi tiêu",
+            "type": "number",
+            "min_diff": 5
+        }]
+    }, {
+        "name": "comment",
+        "name_display": "bình luận",
+        "properties": [{
+            "name_display": "select property"
+        }, {
+            "name": "shop_name",
+            "name_display": "cửa hàng",
+            "type": "group",
+            "available_values": "shops"
+        }, {
+            "name": "created_time",
+            "name_display": "ngày bình luận",
+            "type": "time"
+        }, {
+            "name": "platform",
+            "name_display": "nền tảng",
+            "type": "group",
+            "available_values": "platforms"
+        }, {
+            "name": "content",
+            "name_display": "nội dung",
+            "type": "text"
+        }, {
+            "name": "user_age",
+            "name_display": "tuổi",
+            "type": "number"
+        }, {
+            "name": "user_gender",
+            "name_display": "giới tính",
+            "type": "group",
+            "available_values": "genders"
+        }, {
+            "name": "user_career",
+            "name_display": "nghề nghiệp",
+            "type": "group",
+            "available_values": "careers"
+        }, {
+            "name": "user_total_charge",
+            "name_display": "tổng chi tiêu",
+            "type": "number"
+        }, {
+            "name": "user_view_count",
+            "name_display": "số lần KH xem thông tin",
+            "type": "number"
+        }, {
+            "name": "user_checkin_count",
+            "name_display": "số lần KH đến cửa hàng",
+            "type": "number"
+        }, {
+            "name": "user_checkout_count",
+            "name_display": "số lần KH mua hàng",
+            "type": "number"
+        }, {
+            "name": "user_comment_count",
+            "name_display": "số bình luận của KH",
+            "type": "number"
+        }],
+        "compare_properties": [{
+            "name_display": "select property"
+        }, {
+            "name": "shop_name",
+            "name_display": "cửa hàng",
+            "type": "group"
+        }, {
+            "name": "created_time",
+            "name_display": "giờ trong ngày",
+            "unit": "hour",
+            "type": "time"
+        }, {
+            "name": "created_time",
+            "name_display": "ngày trong tuần",
+            "unit": "weekday",
+            "type": "time"
+        }, {
+            "name": "created_time",
+            "name_display": "tháng trong năm",
+            "unit": "month",
+            "type": "time"
+        }, {
+            "name": "platform",
+            "name_display": "nền tảng",
+            "type": "group"
+        }, {
+            "name": "user_age",
+            "name_display": "tuổi",
+            "type": "number",
+            "min_diff": 5
+        }, {
+            "name": "user_gender",
+            "name_display": "giới tính",
+            "type": "group"
+        }, {
+            "name": "user_career",
+            "name_display": "nghề nghiệp",
+            "type": "group"
+        }, {
+            "name": "user_total_charge",
+            "name_display": "tổng chi tiêu",
+            "type": "number",
+            "min_diff": 5
+        }]
+    }],
+    "meta_lists": {
+        "shops": [
+            "Infory Nowzone",
+            "Infory BMC",
+            "Infory Bitexco",
+            "Infory Quận 7",
+            "Infory Vincom A"
+        ],
+        "cities": [
+            "Hồ Chí Minh",
+            "An Giang",
+            "Bà Rịa",
+            "Vũng Tàu",
+            "Bắc Giang",
+            "Bắc Kạn",
+            "Bạc Liêu",
+            "Bắc Ninh",
+            "Bến Tre",
+            "Bình Định",
+            "Bình Dương",
+            "Bình Phước",
+            "Bình Thuận",
+            "Cà Mau",
+            "Cao Bằng",
+            "Đắk Lắk",
+            "Đắk Nông",
+            "Hội An",
+            "Quy Nhơn",
+            "Hạ Long",
+            "Ninh Hải",
+            "Điện Biên",
+            "Đồng Nai",
+            "Đồng Tháp",
+            "Gia Lai",
+            "Hà Giang",
+            "Côn Đảo",
+            "Phú Quốc",
+            "Phan Thiết",
+            "Phan Rang",
+            "Quảng Nam",
+            "Quảng Ngãi",
+            "Quảng Ninh",
+            "Quảng Trị",
+            "Sóc Trăng",
+            "Sơn La",
+            "Tuy Hòa",
+            "Ban Mê Thuột",
+            "Pleiku",
+            "Tây Ninh",
+            "Thái Bình",
+            "Thái Nguyên",
+            "Thanh Hóa",
+            "Thừa Thiên Huế",
+            "Huế",
+            "Mũi Né",
+            "Xuyên Mộc",
+            "Hàm Thuận Nam",
+            "Tiền Giang",
+            "Trà Vinh",
+            "Tuyên Quang",
+            "Vĩnh Long",
+            "Vĩnh Phúc",
+            "Yên Bái",
+            "Nha Trang",
+            "Đà Lạt",
+            "Đồng Hới",
+            "Phú Yên",
+            "Cần Thơ",
+            "Đà Nẵng",
+            "Hải Phòng",
+            "Hà Nội",
+            "Hà Nam",
+            "Hà Tĩnh",
+            "Hải Dương",
+            "Hậu Giang",
+            "Hòa Bình",
+            "Hưng Yên",
+            "Khánh Hòa",
+            "Kiên Giang",
+            "Kon Tum",
+            "Lai Châu",
+            "Lâm Đồng",
+            "Lạng Sơn",
+            "Lào Cai",
+            "Long An",
+            "Nam Định",
+            "Nghệ An",
+            "Ninh Bình",
+            "Ninh Thuận",
+            "Phú Thọ",
+            "Quảng Bình"
+        ],
+        "platforms": [
+            "ios",
+            "android",
+            "web"
+        ],
+        "genders": [
+            "Nam",
+            "Nữ"
+        ],
+        "careers": [],
+        "promotions": [
+            "Tích điểm cùng Infory",
+            "KM dành cho các đối tác đầu tiên",
+            "asd",
+            "KM cho các đối tác đầu tiên"
+        ]
+    },
+    "meta_profile": {
+        "name": "profile",
+        "name_display": "profile",
+        "properties": [{
+            "name_display": "select property"
+        }, {
+            "name": "dob",
+            "name_display": "ngày sinh",
+            "type": "time"
+        }, {
+            "name": "age",
+            "name_display": "tuổi",
+            "type": "number"
+        }, {
+            "name": "gender",
+            "name_display": "giới tính",
+            "type": "group",
+            "available_values": "genders"
+        }, {
+            "name": "career",
+            "name_display": "nghề nghiệp",
+            "type": "group",
+            "available_values": "careers"
+        }, {
+            "name": "charge",
+            "name_display": "tổng chi tiêu",
+            "type": "number"
+        }, {
+            "name": "view_count",
+            "name_display": "số lần xem",
+            "type": "number"
+        }, {
+            "name": "checkin_count",
+            "name_display": "số lần đến cửa hàng",
+            "type": "number"
+        }, {
+            "name": "checkout_count",
+            "name_display": "số lần mua hàng",
+            "type": "number"
+        }, {
+            "name": "last_visit",
+            "name_display": "lần đến cửa hàng gần nhất",
+            "type": "time"
+        }, {
+            "name": "first_visit",
+            "name_display": "lần đến cửa hàng đầu tiên",
+            "type": "time"
+        }, {
+            "name": "promotions_joined",
+            "name_display": "các khuyến mãi từng nhận",
+            "type": "multiple_group",
+            "available_values": "promotions"
+        }, {
+            "name": "shops_visited",
+            "name_display": "cửa hàng từng đến",
+            "type": "multiple_group",
+            "available_values": "shops"
+        }]
+    },
+    "meta_property_types": {
+        "number": {
+            "operators": [
+                "larger_than",
+                "smaller_than",
+                "between",
+                "larger_than_or_equal",
+                "smaller_than_or_equal",
+                "equal"
+            ],
+            "operators_display": [
+                "lớn hơn",
+                "nhỏ hơn",
+                "trong khoảng",
+                "lớn hơn hoặc bằng",
+                "bé hơn hoặc bằng",
+                "bằng"
+            ],
+            "operators_ui_controller": [
+                "number input",
+                "number input",
+                "two number input",
+                "number input",
+                "number input",
+                "number input"
+            ]
+        },
+        "group": {
+            "operators": [
+                "belong"
+            ],
+            "operators_display": [
+                "là"
+            ],
+            "operators_ui_controller": [
+                "dropdown"
+            ]
+        },
+        "multiple_group": {
+            "operators": [
+                "belong"
+            ],
+            "operators_display": [
+                "có"
+            ],
+            "operators_ui_controller": [
+                "dropdown"
+            ]
+        },
+        "text": {
+            "operators": [
+                "contain"
+            ],
+            "operators_display": [
+                "chứa từ"
+            ],
+            "operators_ui_controller": [
+                "text input"
+            ]
+        },
+        "time": {
+            "operators": [
+                "before",
+                "before_date",
+                "after_date",
+                "between_dates"
+            ],
+            "operators_display": [
+                "trước ngày",
+                "sau ngày",
+                "trong khoảng thời gian"
+            ],
+            "operators_ui_controller": [
+                "date picker",
+                "date picker",
+                "two date picker"
+            ]
+        }
+    }
+}

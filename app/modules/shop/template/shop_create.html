@@ -1,0 +1,265 @@
+<!-- navbar -->
+<div ng-include="'partials/_header.html'"></div>
+<!-- end navbar -->
+<div>
+<!-- sidebar -->
+<div ng-include="'partials/_sidebar.html'"></div>
+<!-- end sidebar -->
+
+<!-- main container -->
+<div class="content">
+    <div id="pad-wrapper" class="form-page">
+        <div class="row header">
+            <div class="col-md-12">
+                <h3>Tạo cửa hàng mới</h3>
+            </div>                
+        </div>
+        <div class="row form-wrapper">
+            <form>
+                <div class="col-md-9 with-sidebar">
+                    <div id="fuelux-wizard" class="wizard row">
+                        <ul class="wizard-steps">
+                            <li data-target="#step1" class="active">
+                                <span class="step">1</span>
+                                <span class="title">Tạo <br> cửa hàng</span>
+                            </li>
+                            <li data-target="#step2">
+                                <span class="step">2</span>
+                                <span class="title">Nhập <br> thông tin</span>
+                            </li>
+                            <li data-target="#step3">
+                                <span class="step">3</span>
+                                <span class="title"><br> Hoàn tất</span>
+                            </li>
+                        </ul>                            
+                    </div>
+                    <div class="step-content">
+                        <div class="step-pane active" id="step1">
+                            <div class="col-md-11" style="margin-left:-60px;margin-top:-20px">
+                                <div class="alert alert-info">
+                                    <i class="icon-lightbulb"></i>
+                                    <span>Sử dụng chức năng tìm kiếm để chọn một trong các cửa hàng đã có trên hệ thống của SmartGuide</span>
+                                </div>
+                                
+                                <div class="field-box">
+                                    <label>Tìm kiếm cửa hàng</label>
+                                    <input class="form-control" type="text" style="width:100%" placeholder="Nhập tên cửa hàng và nhấn enter" ng-click="search()"/>
+                                </div>
+
+                                <div class="field-box" ng-show="searchCompleted && searchResults.length > 0"style="padding-top:10px;">
+                                        <label style="width:100%;">Kết quả tìm kiếm (nhấn vào để chọn)</label>
+                                        <br/>
+                                        <div class="col-md-12">
+                                            <table class="table table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="col-md-5 sortable">
+                                                            Tên cửa hàng
+                                                        </th>
+                                                        <th class="col-md-5">
+                                                            <span class="line"></span>Địa chỉ
+                                                        </th>
+                                                        <th class="col-md-2 sortable">
+                                                            <span class="line"></span>Lượt xem
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr ng-repeat="shop in searchResults" ng-class="first:$first" ng-click="chooseShop($index)">
+                                                    <td>
+                                                        <div class="col-md-3" style="padding-left:0;">
+                                                            <img src="{{shop.logo}}" class="img-circle" style="width:55px;">
+                                                        </div>
+                                                        <div class="col-md-9" style="padding-left:0;">
+                                                            <span><strong>{{shop.shop_name}}</strong></span>
+                                                            <br/>
+                                                            <span class="subtext">{{shop.category}}</span>
+                                                        </div>
+                                                    </td>
+                                                    <td>{{shop.address}}</td>
+                                                    <td>{{shop.view}}</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+
+                                            <ul class="pagination pull-left" style="width:300px;margin-top:0;margin-bottom:50px;">
+                                                <li><a href="#">‹</a></li>
+                                                <li class="active"><a href="#">1</a></li>
+                                                <li><a href="#">2</a></li>
+                                                <li><a href="#">3</a></li>
+                                                <li><a href="#">4</a></li>
+                                                <li><a href="#">›</a></li>
+                                            </ul>
+                                        </div>
+                                </div>
+
+                                <div class="field-box" ng-show="searchCompleted && searchResults.length == 0"style="padding-top:10px;">
+                                        <label style="width:100%;"> Không tìm thấy cửa hàng nào khớp với tên này. Bạn có muốn tạo một cửa hàng mới?</label>
+                                        <br/>
+                                        <a class="btn-flat primary">Tạo cửa hàng mới</a>
+                                </div>
+
+                                <div class="field-box">
+                                    <label>Tạo mới cửa hàng</label>
+                                    <input class="form-control inline-input" type="text" readonly="readonly" value="{{chosenShop.shop_name}}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="step-pane" id="step2">
+                            <div class="col-md-11" style="margin-left:-40px;margin-top:-20px">
+                                <div class="row field-box" align="center">
+                                    <img src="../../vendor/theme/img/personal-info.png" />
+                                    <br/>
+                                    <label style="width:200px;float:none;">Chọn logo đại diện cho cửa hàng</label>
+                                    <br/>
+                                    <input style="width:40%;"class="form-control" type="file"/>
+                                </div>
+                                <div class="field-box">
+                                    <label>Mô tả</label>
+                                    <br/>
+                                    <textarea class="form-control" rows="4" placeholder="Nhập mô tả sơ lược về cửa hàng của bạn"></textarea>
+                                </div>
+                                <div class="field-box">
+                                    <label style="width:100%;">Địa chỉ</label>
+                                    <br/>
+                                    <input class="form-control inline-input" type="text">
+                                    <input class="form-control inline-input" placeholder="Phường/Xã" type="text">
+                                    <input class="form-control inline-input" placeholder="Quận/Huyện" type="text">
+                                </div>
+                                <div class="field-box">
+                                    <label style="width:100%;">Tỉnh/Thành phố</label>
+                                    <br/>
+                                    
+                                    <div class="ui-select" style="width:250px;">
+                                        <select>
+                                            <option ng-repeat="city in cityList" value="{{city.id}}">{{city.name}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="field-box">
+                                    <label style="width:100%;">Phone number</label>
+                                    <br/>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">(+84)</span>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="field-box">
+                                    <label style="width:100%;">Tags</label>
+                                    <br/>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="icon-tags"></i></span>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="step-pane" id="step3">
+                            <div class="row form-wrapper">
+                                <div class="col-md-8">
+                                    <form>
+                                        <div class="field-box">
+                                            <label>Username:</label>
+                                            <input class="form-control" type="text" />
+                                        </div>
+                                        <div class="field-box">
+                                            <label>Photo:</label>
+                                            <input type="file" />
+                                        </div>
+                                        <div class="field-box">
+                                            <label>App name:</label>
+                                            <input class="form-control" type="text" />
+                                        </div>
+                                        <div class="field-box">
+                                            <label>Time zone:</label>
+                                            <select>
+                                                <option value="Hawaii">(GMT-10:00) Hawaii</option>
+                                                <option value="Alaska">(GMT-09:00) Alaska</option>
+                                                <option value="Pacific Time (US &amp; Canada)">(GMT-08:00) Pacific Time (US &amp; Canada)</option>
+                                                <option value="Arizona">(GMT-07:00) Arizona</option>
+                                                <option value="Mountain Time (US &amp; Canada)">(GMT-07:00) Mountain Time (US &amp; Canada)</option>
+                                                <option value="Central Time (US &amp; Canada)">(GMT-06:00) Central Time (US &amp; Canada)</option>
+                                                <option value="Eastern Time (US &amp; Canada)">(GMT-05:00) Eastern Time (US &amp; Canada)</option>
+                                                <option value="Indiana (East)">(GMT-05:00) Indiana (East)</option><option value="" disabled="disabled">-------------</option>
+                                                <option value="American Samoa">(GMT-11:00) American Samoa</option>
+                                                <option value="International Date Line West">(GMT-11:00) International Date Line West</option>
+                                                <option value="Midway Island">(GMT-11:00) Midway Island</option>
+                                            </select>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wizard-actions">
+                            <button type="button" disabled="" class="btn-glow primary btn-prev"> 
+                                <i class="icon-chevron-left"></i> Quay lại
+                            </button>
+                            <button type="button" class="btn-glow primary btn-next">
+                                Tiếp tục <i class="icon-chevron-right"></i>
+                            </button>
+                            <button type="button" class="btn-glow success btn-finish">
+                                Tạo cửa hàng
+                            </button>
+                        </div>
+                </div>
+                <div class="col-md-3 form-sidebar">
+                        <div class="alert alert-info">
+                            <i class="icon-lightbulb pull-left"></i>
+                            Display a sidebar note over here
+                        </div>                        
+                        <h6>Sidebar text for instructions</h6>
+                        <p>Add multiple users at once</p>
+                        <p>Choose one of the following file types:</p>
+                        <ul>
+                            <li><a href="#">Upload a vCard file</a></li>
+                            <li><a href="#">Import from a CSV file</a></li>
+                            <li><a href="#">Import from an Excel file</a></li>
+                        </ul>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- end main container -->
+</div>
+
+<!-- scripts for this page -->
+<script src="vendor/theme/scripts/theme.js"></script>
+<script src="vendor/theme/scripts/select2.min.js"></script>
+<script src="vendor/theme/scripts/fuelux.wizard.js"></script>
+<script src="vendor/theme/scripts/jquery.uniform.min.js"></script>
+
+<script type="text/javascript">
+    $(function () {
+        var $wizard = $('#fuelux-wizard'),
+            $btnPrev = $('.wizard-actions .btn-prev'),
+            $btnNext = $('.wizard-actions .btn-next'),
+            $btnFinish = $(".wizard-actions .btn-finish");
+
+        $wizard.wizard().on('finished', function(e) {
+            // wizard complete code
+        }).on("changed", function(e) {
+            var step = $wizard.wizard("selectedItem");
+            // reset states
+            $btnNext.removeAttr("disabled");
+            $btnPrev.removeAttr("disabled");
+            $btnNext.show();
+            $btnFinish.hide();
+
+            if (step.step === 1) {
+                $btnPrev.attr("disabled", "disabled");
+            } else if (step.step === 3) {
+                $btnNext.hide();
+                $btnFinish.show();
+            }
+        });
+
+        $btnPrev.on('click', function() {
+            $wizard.wizard('previous');
+        });
+        $btnNext.on('click', function() {
+            $wizard.wizard('next');
+        });
+    });
+</script>

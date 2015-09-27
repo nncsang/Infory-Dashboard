@@ -1,0 +1,181 @@
+<div ng-include="'partials/_header.html'"></div>
+<div ng-include="'partials/_sidebar.html'"></div>
+<!-- main container -->
+<div class="content">    
+    <div id="pad-wrapper">
+        <div class="row">
+            <div class="col-md-12 col-xs-12">
+                <div id="fuelux-wizard" class="wizard row">
+                    <ul class="wizard-steps">
+                        <li data-target="#step1" class="active">
+                            <span class="step">1</span>
+                            <span class="title">Thông tin <br> cơ bản</span>
+                        </li>
+                        <li data-target="#step2">
+                            <span class="step">2</span>
+                            <span class="title">Nội dung<br>ưu đãi</span>
+                        </li>
+                        <li data-target="#step3">
+                            <span class="step">3</span>
+                            <span class="title">Thời gian<br>tổ chức</span>
+                        </li>
+                        <li data-target="#step4">
+                            <span class="step">4</span>
+                            <span class="title">Thông tin<br>khác</span>
+                        </li>
+                    </ul>                            
+                </div>
+                <div class="step-content">
+                    <div class="step-pane active" id="step1">
+                        <div class="row form-wrapper">
+                            <div class="col-md-8">
+                                <form>
+                                    <div class="field-box">
+                                        <label>Nhãn hiệu:</label>
+                                        <div class="col-md-8">
+                                            <label class="radio" ng-repeat="brand in brands">
+                                                <div class="radio" id="uniform-optionsRadios1"><span ng-class='{checked:$first}'><input type="radio" name="optionsRadios" id="optionsRadios1" value="{{brand.id}}" checked=""></span></div>
+                                                {{brand.name}}
+                                            </label>
+                                        </div>                                
+                                    </div>
+                                    
+                                    <!-- <div class="field-box error">
+                                        <label>Company:</label>
+                                        <input class="form-control" type="text" />
+                                        <span class="alert-msg"><i class="icon-remove-sign"></i> Please enter your company</span>
+                                    </div>
+                                    <div class="field-box">
+                                        <label>Email:</label>
+                                        <input class="form-control" type="text" />
+                                    </div>
+                                    <div class="field-box success">
+                                        <label>Username:</label>
+                                        <input class="form-control" type="text" />
+                                        <span class="alert-msg"><i class="icon-ok-sign"></i> Username available</span>
+                                    </div> -->
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step-pane" id="step2">
+                        <div class="row form-wrapper">
+                            <div class="col-md-8">
+                                <form>
+                                    <div class="field-box">
+                                        <label>Tên chương trình:</label>
+                                        <input class="form-control" type="text" />
+                                    </div>
+                                    <div class="field-box">
+                                        <label>Loại ưu đãi:</label>
+                                        <select ng-init="promotionTypeList = promotionTypes[0]"
+                                                ng-model="promotionTypeList" 
+                                                ng-options="promotion as promotion.label for promotion in promotionTypes">
+                                        </select>
+                                    </div>
+
+                                    <div class="field-box">
+                                        <label>Bắt đầu:</label>
+                                        <input type="text" value="03/29/2013" class="form-control input-datepicker">
+                                    </div>
+
+                                    <div class="field-box">
+                                        <label>Kết thúc:</label>
+                                        <input type="text" value="03/29/2013" class="form-control input-datepicker">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step-pane" id="step3">
+                        <div class="row form-wrapper">
+                            <div class="col-md-8">
+                                <div ng-if="promotionTypeList.value == 1">
+                                    <div ng-include="'modules/promotion/_voucher.html'"></div>    
+                                </div>
+                                <div ng-if="promotionTypeList.value != 1">
+                                    <div ng-include="'modules/promotion/_collection.html'"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step-pane" id="step4">
+                        <div class="row form-wrapper payment-info">
+                            <div class="col-md-8">
+                                <form>
+                                    <div class="field-box">
+                                        <label>Thời gian :</label>
+                                        <label class="checkbox-inline">
+                                            <div class="checker" id="uniform-inlineCheckbox1"><span><input type="checkbox" id="inlineCheckbox1" value="option1"></span></div> Cả ngày
+                                        </label>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="wizard-actions">
+                    <button type="button" disabled class="btn-glow primary btn-prev"> 
+                        <i class="icon-chevron-left"></i> Quay lại
+                    </button>
+                    <button type="button" class="btn-glow primary btn-next" data-last="Finish">
+                        Tiếp theo <i class="icon-chevron-right"></i>
+                    </button>
+                    <button type="button" class="btn-glow success btn-finish">
+                        Hoàn thành
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end main container -->
+
+
+<script type="text/javascript">
+    $(function () {
+        var $wizard = $('#fuelux-wizard'),
+            $btnPrev = $('.wizard-actions .btn-prev'),
+            $btnNext = $('.wizard-actions .btn-next'),
+            $btnFinish = $(".wizard-actions .btn-finish");
+
+        $wizard.wizard().on('finished', function(e) {
+            // wizard complete code
+        }).on("changed", function(e) {
+            var step = $wizard.wizard("selectedItem");
+            // reset states
+            $btnNext.removeAttr("disabled");
+            $btnPrev.removeAttr("disabled");
+            $btnNext.show();
+            $btnFinish.hide();
+
+            if (step.step === 1) {
+                $btnPrev.attr("disabled", "disabled");
+            } else if (step.step === 4) {
+                $btnNext.hide();
+                $btnFinish.show();
+            }
+        });
+
+        $btnPrev.on('click', function() {
+            $wizard.wizard('previous');
+        });
+        $btnNext.on('click', function() {
+            $wizard.wizard('next');
+        });
+
+
+        $("input:checkbox, input:radio").uniform();
+
+        // datepicker plugin
+        $('.input-datepicker').datepicker().on('changeDate', function (ev) {
+            $(this).datepicker('hide');
+        });
+    });
+
+</script>
+<style scoped>@import url('vendor/theme/styles/compiled/form-wizard.css')</style>
+<style scoped>@import url('vendor/theme/styles/lib/morris.css')</style>
+<style scoped>@import url('vendor/theme/styles/lib/uniform.default.css')</style>
+<style scoped>@import url('vendor/theme/styles/lib/select2.css')</style>
+<style scoped>@import url('vendor/theme/styles/lib/bootstrap.datepicker.css')</style>

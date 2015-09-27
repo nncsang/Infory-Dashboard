@@ -1,0 +1,145 @@
+<div ng-include="'partials/_header.html'"></div>
+<div ng-include="'partials/_sidebar.html'"></div>
+<!-- main container -->
+<div id="notify-new" class="content">
+    <div id="notify-fuelux-wizard" class="wizard">
+        <ul class="wizard-steps">
+            <li data-target="#notify-step1" >
+                <span class="z-step">COMPOSE</span><img class="line-step non-background" src="img/line_step.png" />
+            </li>
+            <li data-target="#notify-step2" class="active">
+                <span class="z-step">TARGET</span><img class="line-step non-background" src="img/line_step.png" />
+            </li>
+            <li data-target="#notify-step3">
+                <span class="z-step">ACTIVATE</span><img class="line-step non-background" src="img/line_step.png" />
+            </li>
+            <li data-target="#notify-step4" id="menu-manager" onclick="showManager('#menu-manager', '#notify-step4')">
+                <span class="z-step">MANAGE</span>
+            </li>
+        </ul>                            
+    </div>
+    <div id="notify-step-content" class="step-content form-page">
+        <div class="step-pane active" id="notify-step2">
+            <div class="step-description">
+                <div class="step-title">
+                    <span class="step-name">STEP 2:</span> CHOOSE YOUR CUSTOMER
+                </div>
+                You can use filter system to find out customer who satisfy your customer portrait. After that choose method to send notification. </br> 
+                <ol>
+                    <li><b>Once: </b> For sending directly and one time</li>
+                    <li><b>Automatic:</b> Message will be sent when user satisfy your condition</li>
+                </ol>
+            </div>
+            
+            <div class="wapper">
+                <div class="block">
+                    <div class="block_header">
+                        <div class="left control">
+                            Filter by
+                        </div>
+                        <div class="right">
+                            <div class="controller" ng-hide="true">
+                                <div class="z-dropdown-wapper">
+                                <div class="z-dropdown">
+                                    <a class="trigger"><span>{{profileBookmark.bookmark_name}}</span></a>
+                                    <ul>
+                                        <li ng-repeat="profileBookmark in profileBookmarks"><a ng-click="changeProfileBookmark(profileBookmark.id)" style="cursor:pointer">{{profileBookmark.bookmark_name}}</a></li>
+                                        
+                                        <li class="create-box">
+                                            <i class="icon-plus"></i>
+                                            <input type="text" placeholder="new category" ng-model="newCategoryName"/>
+                                            <input type="button" value="CREATE CATEGORY" ng-click="createProfile(newCategoryName)"/>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <i class="icon-sort-down"></i>
+                            </div>
+                            <span class="btn-glow success _large" ng-click="updateDataProfile()"><i class="icon-bookmark-empty"></i>Lưu</span>
+                                <!-- <select ng-model="event" ng-options="event as event.name_display for event in events" ng-init="event=events[0]"></select>
+                                <span class="btn-glow success"><i class="icon-bookmark-empty"></i> Lưu</span> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="block_content">
+                        <!-- <p class="notify"> People <span>{{event.name_display}}</span> thoả điều kiện</p> -->
+                        <div ng-hide="isVisibleFilter" class="loading-container-infor">
+                            <div title="Code: 0xe800" class="the-icons span3"><i class="icon-fontello-spin6 animate-spin loading-infor loading-icon"></i></div>
+                        </div>
+
+                        <div smg-filter metas="metas" events="events" metadata="metadata" event="event" subfilters="subfilters" oldsubfilters="oldsubfilters" visibility="isVisibleFilter"></div>
+                    </div>
+                    <div class="block_footer">
+                        <div class="left method">
+                            Method  <select ng-model="sendMethod" ng-options="sendMethod as sendMethod.name_display for sendMethod in sendMethods" ng-change="updateIsCanGo()"></select>
+                        </div>
+                        <button ng-hide="sendMethod.name == 'auto'" ng-click="getResult()" type="button" class="btn-glow primary right"><i class="icon-ok"></i> SHOW</button>
+                    </div><!-- block footer-->
+                </div><!-- block -->
+                
+                <div class="block" ng-hide="sendMethod.name == 'auto'">
+                    <div class="block_header">
+                        <div class="left control">
+                            <span class="highlight">{{numOfSelectedUsers}}</span> selected / <span class="highlight">{{isChecked.length}}</span> people(s)
+                        </div>
+                        <input type="text" class="search right" placeholder="Tìm kiếm..." ng-model="searchText" ng-change="filterUser()"/>
+                        <div class="fee right">
+                            Cost: <span>{{numOfSelectedUsers * 10}}</span> T-coin
+                        </div>
+                    </div>
+                    <div ng-hide="hideLoading" class="loading-container-image-product">
+                        <div title="Code: 0xe800" class="the-icons span3"><i class="icon-fontello-spin6 animate-spin loading-product-image loading-icon"></i></div>
+                    </div>
+                    
+                    <div class="block_content no-padding" ng-hide="!hideLoading">
+                        <table class="z-table">
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox" ng-model="all" ng-change="checkAll(); updateIsCanGo();"/></th>
+                                <th class = "name">
+                                    Phone number
+                                </th>
+                                <th class="name">Name</th>
+                                <th>Age</th>
+                                <th>Gender</th>
+                                <th>Location</th>
+                                <th>Last activity</th>
+                            </tr>
+                        </thead>
+                        <tbody ng-repeat="user in dataInCurrentPage">
+                            <tr>
+                                <td><input type="checkbox" ng-model="$parent.isChecked[user.stt]" ng-change="updateSelectedUsers($parent.isChecked[user.stt]); updateIsCanGo();"/></td>
+                                <td style="cursor:pointer" ng-click="showUserProfile(user.id, user.name)">{{user.phone}}</td>
+                                <td class="name"  style="cursor:pointer" ng-click="showUserProfile(user.id, user.name)">{{user.name}}</td>
+                                <td style="cursor:pointer" ng-click="showUserProfile(user.id, user.name)">{{user.dob}}</td>
+                                <td style="cursor:pointer" ng-click="showUserProfile(user.id, user.name)">{{user.gender}}</td>
+                                <td style="cursor:pointer" ng-click="showUserProfile(user.id, user.name)">{{user.city}}</td>
+                                <td style="cursor:pointer" ng-click="showUserProfile(user.id, user.name)">{{user.last_visit}}</td>
+                            </tr>
+                        </tbody>
+                        
+                    </table>
+                        <spagination ng-hide="dataInCurrentPage.length == 0" class="right" total-items="totalItems" page="currentPage" on-select-page="pageChanged(page)" items-per-page="itemsPerPage" boundary-links="false" rotate="false" max-size="10" style="width: 485px;"></spagination>
+                        <!--chart here-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8 with-sidebar">
+        <div class="col-md-11">
+            <div class="notify-wizard-actions wizard-actions">
+                <button type="button" class="btn-glow primary btn-prev" ng-click="goToStep1()"> 
+                    <i class="icon-chevron-left"></i> Back
+                </button>
+                <button type="button" class="btn-glow primary btn-next" ng-click="goToStep3()" ng-disabled="!isCanGo">
+                    Next <i class="icon-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- scripts -->
+<script src="vendor/theme/scripts/jquery-ui-1.10.2.custom.min.js"></script>
+<script src="vendor/theme/scripts/fuelux.wizard.js"></script>
+<script src="vendor/theme/scripts/tinymce/tinymce.min.js"></script>
+<script src="vendor/theme/scripts/tinymce/themes/modern/theme.min.js"></script>

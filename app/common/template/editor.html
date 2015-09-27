@@ -1,0 +1,13 @@
+<li>
+    <div class="property col-md-4">{{title}}</div>
+    <div class="value col-md-8">
+        <div class="overview" ng-hide="showEditor">
+            <span>{{data.name}}</span>
+            <a style="cursor:pointer" ng-click="showEditor = !showEditor;">sửa</a>
+        </div>
+        <div class="edit" ng-hide="!showEditor">
+            <input ng-model="data.name" class="form-control inline-block"/>
+            <i ng-click="change()" class="icon-ok-sign success" style="cursor:pointer" ></i>
+        </div>
+    </div>
+</li>

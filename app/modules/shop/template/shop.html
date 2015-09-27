@@ -1,0 +1,91 @@
+<div ng-include="'partials/_header.html'"></div>
+<div ng-include="'partials/_sidebar.html'"></div>
+<!-- main container -->
+<div class="content">
+    <div id="shop_wrap">
+        <div class="row">
+            <div class="col-md-7 shop_overview block">
+                <div id="shop_info" class="shadow">
+                    <a class="btn-glow btn-return" href="/#/brand/infor/{{brandId}}"> Back brand page</a>
+                    
+                    <div class="cover_wapper">
+                        <div class="blur"></div>
+                        <img ng-src="{{shop.cover}}" class="cover col-md-12">
+                    </div>
+                    <div class="info">
+                        <img src="{{shop.brand_logo}}" alt="contact" class="img-circle logo hidden-phone shop-logo"/>
+        
+                        <h4 ng-hide="hideLoadingInfor"><i class="icon-fontello-spin6 animate-spin loading-small-infor loading-icon" ng-hide="hideLoadingInfor"></i> - <i class="icon-fontello-spin6 animate-spin loading-small-infor loading-icon" ng-hide="hideLoadingInfor"></i> </h4>
+                        <h4 ng-hide="!hideLoadingInfor" style="z-index: 100;">{{shop.name}}- <span>{{shop.brand_type_business}}</span></h4>
+
+                        <h6 ng-hide="hideLoadingInfor"><i class="icon-fontello-spin6 animate-spin loading-small-infor loading-icon" ng-hide="hideLoadingInfor"></i></h6>
+                        <h6 ng-hide="!hideLoadingInfor"> {{shop.full_address}}</h6>
+
+                        <div class="info_detail">
+                            <p ng-hide="hideLoadingInfor"><i class="icon-fontello-spin6 animate-spin loading-infor loading-icon" ng-hide="hideLoadingInfor"></i></p>
+                            <p ng-hide="!hideLoadingInfor">{{shop.brand_description}}</p>        
+                            <p> <span>Website: </span> <a href="{{shop.brand_website}}" ng-hide="!hideLoadingInfor"> {{shop.brand_website}}</a> <i class="icon-fontello-spin6 animate-spin loading-small-infor loading-icon" ng-hide="hideLoadingInfor"></i></p>
+                            <p> <span>Fanpage: </span> <a href="{{shop.brand_fanpage}}" ng-hide="!hideLoadingInfor" >{{shop.brand_fanpage}}</a><i class="icon-fontello-spin6 animate-spin loading-small-infor loading-icon" ng-hide="hideLoadingInfor"></i></p>
+                            <p> <span>Contact: </span> <a href="http://smartguide.vn" ng-hide="!hideLoadingInfor">{{shop.phone}}</a><i class="icon-fontello-spin6 animate-spin loading-small-infor loading-icon" ng-hide="hideLoadingInfor"></i></p>
+                        </div>
+                    </div>
+                </div> <!-- shop info-->
+                <div id="add_shop" style="text-align: center;">
+                    <img ng-src="{{qrCode}}" style="height:150px;align-content:center;">
+                </div>
+                
+
+                <ul id="shop_list" style=" max-height: 250px; ">
+                    <li ng-repeat="shop in shop.shops">
+                        <img src="{{shop.logo}}" alt="contact" class="img-circle avatar hidden-phone left" height="42" width="42"/>
+                        <a href="user-profile.html" class="name">{{shop.name}}</a>
+                        <span class="subtext">{{shop.full_address}}</span>
+                        <i class="icon-remove-sign"></i>
+                    </li>
+                    <div class="clearfix"></div>
+                </ul>
+            </div>
+            <div class="col-md-4 property-box">
+
+                <ul class="nav nav-tabs">
+                  <li ng-class="{active: main.active.tab == 'info'}" class="active">
+                    <a ng-click='main.active.tab = "info" ' href=""> Information</a>
+                  </li>
+                  
+                  <!-- <li ng-class="{active: main.active.tab == 'product'}">
+                    <a ng-click='main.active.tab = "product";showProducts()' href=""> Sản phẩm</a>
+                  </li> -->
+
+                    <!-- <li ng-class="{active: main.active.tab == 'gallery'}">
+                      <a ng-click='main.active.tab = "gallery"; showGallery();' href=""> Hình ảnh</a>
+                    </li> -->
+                    
+                    <li ng-class="{active: main.active.tab == 'gallery_user'}">
+                      <a ng-click='main.active.tab = "gallery_user";showUsersGallery();' href=""> Users' gallery</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div ng-switch = "main.active.tab">
+                        <div ng-switch-default>
+                            <div ng-include='"modules/shop/template/tabs/_info.html"'> </div>  
+                        </div>
+
+                        <div ng-switch-when='product'>
+                            <div ng-include='"modules/shop/template/tabs/_product.html"'> </div>  
+                        </div>
+
+                        <!-- <div ng-switch-when='gallery'>
+                            <div ng-include='"modules/shop/tabs/_gallery.html"'> </div>  
+                        </div> -->
+                        
+                        <div ng-switch-when='gallery_user'>
+                            <div ng-include='"modules/shop/template/tabs/_gallery_user.html"'> </div>  
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+</div>
+<!-- scripts -->
+<script src="vendor/theme/scripts/jquery-ui-1.10.2.custom.min.js"></script>

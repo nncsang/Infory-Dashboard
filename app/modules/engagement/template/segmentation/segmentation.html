@@ -1,0 +1,156 @@
+<div ng-include="'partials/_header.html'"></div>
+<div ng-include="'partials/_sidebar.html'"></div>
+	<!-- main container -->
+    <div class="content">
+        <div id="content_wrapper">
+            <div class="notice shadow">
+                <div class='col-md-12'>
+                    <p class="title">EXPLORE YOUR CUSTOMER SEGMENTATION</p>
+                </div>
+                <p class="sub" style="margin-left:40px;">
+                    <b>Tips:</b>
+                    <ol style="margin-left:40px;">
+                        <li>To analyze a behavior: choose behavior need to be analyzed > specify your filter > click <b>Render chart</b></li>
+                        <li>You can change chart type, period of time, and time unit</li>
+                        <li>You can export the chart to image in different kind of formats: png, jpeg, pdf, svg by using the button on the top right corner</li>
+                        <li>To save the chart for further analysises: click in the bookmark textbox > enter the bookmark name > click <b>Bookmark this chart</b></li>
+                    </ol>
+                </p>
+                <div class="clearfix"></div>
+            </div>
+            
+
+            <div class="block">
+                <div class="block_header">
+                    <div class="left bold">
+                        Choose a customer's behavior 
+                        <select ng-model="event" ng-options="event as event.name_display for event in events" ng-change="updateEvent()"></select>
+                    </div>
+                    <div class="right">
+                        <div class="controller">
+                            <!--<select class="large ng-pristine ng-valid" ng-model="eventBookmark" ng-options="eventBookmark as eventBookmark.bookmark_name for eventBookmark in eventBookmarks" ng-change="updateEventBookmark(true)"><option value="0" selected="selected">user_platform</option><option value="1">user_platform</option><option value="2">user_platform</option><option value="3">user_age</option><option value="4">user_age</option><option value="5">user_age</option><option value="6">user_age</option><option value="7">user_age</option></select>
+                            -->
+                            <div class="z-dropdown-wapper">
+                                <div class="z-dropdown">
+                                    <a class="trigger" style="cursor:pointer">
+                                        <span>{{eventBookmark.bookmark_name}}</span>
+                                        <i class="icon-sort-down"></i></a>
+                                    <ul style=" max-height: 250px;">
+                                        <li ng-repeat="eventBookmark in eventBookmarks"><a ng-click="changeEventBookmark(eventBookmark.id)" style="cursor:pointer">{{eventBookmark.bookmark_name}}</a></li>
+                                        
+                                        <li class="create-box">
+                                            <i class="icon-plus"></i>
+                                            <input type="text" placeholder="Enter bookmark name" ng-model="newCategoryName"/>
+                                            <input type="button" value="Bookmark this chart" ng-click="createEvent(newCategoryName)"/>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <span class="btn-glow success _large" ng-click="updateDateEvent()"><i class="icon-bookmark-empty"></i>Bookmark</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="block_content">
+                    <!-- <p class="notify"> Filter condition:  </p> -->
+                    <div ng-hide="isVisibleFilter" class="loading-container-infor">
+                        <div title="Code: 0xe800" class="the-icons span3"><i class="icon-fontello-spin6 animate-spin loading-infor loading-icon"></i></div>
+                    </div>
+                    <div smg-filter metas="metas" events="events" metadata="metadata" event="event" subfilters="subfilters" oldsubfilters="oldsubfilters" visibility="isVisibleFilter">
+                    </div>
+                </div>
+                <div class="block_footer">
+                    <p class="notify left" style="margin-left: 20px;margin-top: 15px;"> Compare by</p>
+                    <select class="type_menu left" ng-model="compareUnit" ng-options="compareUnit as compareUnit.name_display for compareUnit in event.compare_properties" style="margin-left: 10px;margin-top: 10px;"></select>
+
+                    <span class="btn-glow primary right" ng-click="getResult()"><i class="icon-ok"></i> Render chart</span>
+                </div>
+            </div>
+
+           
+
+            <div class="block home-block">
+                <div class="block_header">
+                    <span>
+                        <div class="dropdown left" >
+                          <a class="dropdown-toggle" id="dropdown2" role="button" data-toggle="dropdown" data-target="#" href="#">
+                                <div class="select-date btn-glow">
+                                    <div class="input-append">From<input type="text" data-ng-model="data[0].dateDisplay" style="width: 100px;">
+                                    </div>
+                                    <i class="icon-sort-down"></i>
+                                </div>
+                          </a>
+                          <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                            <datetimepicker data-ng-model="data[0].dateDropDownInput" data-datetimepicker-config="{ dropdownSelector: '#dropdown2', minView: 'day' }" data-on-set-time="onTimeSetOne"/>
+                          </ul>
+                        </div>
+
+                        <div class="dropdown left" style="margin-left:10px;">
+                          <a class="dropdown-toggle" id="dropdown3" role="button" data-toggle="dropdown" data-target="#" href="#">
+                            <div class="select-date btn-glow">
+                                <div class="input-append">To<input type="text" class="form-control datetime inline-block" data-ng-model="data[1].dateDisplay" style="width: 100px;">
+                                </div>
+                                <i class="icon-sort-down"></i>
+                            </div>
+                          </a>
+                          <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                            <datetimepicker data-ng-model="data[1].dateDropDownInput" data-datetimepicker-config="{ dropdownSelector: '#dropdown3', minView: 'day' }" data-on-set-time="onTimeSetTwo"/>
+                          </ul>
+                        </div>
+                    </span>
+
+
+                     <select class="type_menu right z-select" ng-model="chartType" ng-options="chartType as chartType.display_name for chartType in chartTypes" ng-hide="hideTypeChart" ng-change="changeChartId(chartType)"></select>
+
+                     <select class="type_menu right z-select" ng-model="chartTypeSub" ng-options="chartTypeSub as chartTypeSub.display_name for chartTypeSub in chartTypeSubs" ng-hide="!hideTypeChart" ng-change="changeChartId(chartTypeSub)"></select>
+
+                     <span class="right text-chart" style="margin-left: 30px;">Chart type: </span>
+
+                     <select class="type_menu pull-right z-select" ng-model="time_unit" ng-options="time_unit as time_unit.name_display for time_unit in time_units" ng-change="updateChart()"></select>
+
+                     <span class="right text-chart">Time unit: </span>
+
+                </div>
+                <div ng-switch on="chartId" class="block_content" style="height: 420px;">
+                    <div title="Code: 0xe800" class="the-icons span3 loading-container" ng-hide="hideLoading"><i class="icon-fontello-spin6 animate-spin loading-chart loading-icon" style="margin-bottom:200px"></i></div>
+
+                    <div ng-switch-when="1">
+                        <div>
+                            <chart value='chartData[1]' height="400" ng-hide="!hideLoading">
+                            </chart>
+                        </div>
+                    </div>
+                   
+                    <div ng-switch-when="0">
+                        <div>
+                            <chart value='chartData[0]' height="400" ng-hide="!hideLoading">
+                            </chart>
+                        </div>
+                    </div>
+                    
+                    <div ng-switch-when="2">
+                        <div>
+                            <chart value='chartData[2]' height="400" ng-hide="!hideLoading">
+                            </chart>
+                        </div>
+                    </div>
+
+                    <div ng-switch-when="3">
+                        <div>
+                            <google-map class="google-view" center="map.center" zoom="map.zoom" draggable="true" control="map.control" events="map.events">
+
+                                <marker class="google-view" ng-repeat="marker in markers"coords="marker.coords" icon="marker.icon" events="marker.events" options="marker.options"></marker>
+                            </google-map>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div> <!-- content_wrapper-->
+        
+            
+        
+    </div>
+    <!-- end main container -->
+</html>
+
+<style scoped>@import url('vendor/theme/styles/compiled/user-list.css')</style>

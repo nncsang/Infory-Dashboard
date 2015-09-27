@@ -1,0 +1,101 @@
+<div ng-include="'partials/_header.html'"></div>
+<div ng-include="'partials/_sidebar.html'"></div>
+    <!-- main container -->
+    <div class="content">
+        <div id="content_wrapper">
+            <div class="notice shadow">
+                <div class='col-md-12'>
+                    <p class="title">COMMENT</p>
+                    <p class="sub">You can manage all your customers' comment(s), and reply to any comment needing your answer</p>
+
+                    <div class="btn-group" style="margin-left: 25px;">
+                        <div class="left comment-sorter-title">
+                            <p>Comment(s) at: </p>
+                        </div>
+                         <select ng-model="shop" ng-options="s.name for s in brand.shops" ng-change="updateShopComment()"></select>
+                    </div>
+                    
+                    <div class="btn-group right">
+                        <select ng-model="sorter" ng-options="s.display for s in oderComments" ng-change="updateShopComment()"></select>
+                    </div>
+                    <div class="right comment-sorter-title">
+                        <p>Order by: </p>
+                    </div>
+                </div>
+                
+                <div class="clearfix"></div>
+            </div>
+            
+            <div class="gray-background">
+                <table class="table-hover shadow comment white-background" cellspacing="0" cellpadding="0">
+                    <thead>
+                        <tr>
+                            <th class="col-md-9">
+                                {{shop.name}}
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- row -->
+                        <tr class="first">
+                            <td style="text-align: left !important;">
+                                <div class="col-md-1">
+                                    <img src="{{brand.logo}}" alt="contact" class="img-circle avatar hidden-phone" style="height:50px; width:50px;"/>
+                                </div>
+                                <div class="col-md-9 comment-content">
+                                        <span class="user_name"><a ng-click = "goToShopInfo(shop)" style="cursor:pointer">{{shop.name}}</a></span> 
+                                        </br>
+                                        <textarea id="inputContent1" class="form-control first-comment" placeholder="Enter your message" rows="5" ng-model="commentInput"></textarea>  
+                                </div>
+                                <div class="clearfix"></div>
+                                                                
+                                <div id="num-of-like">
+                                    <br />
+                                    <span class="btn-flat success right" id="reply-button" ng-click="addComment(); updateShopComment();">Reply</span>
+                                </div> 
+                            </td>
+                        </tr>
+
+                        <tr class="first" ng-repeat="message in shop.comments | orderBy:sorter.field">
+                            <td style="text-align: left !important;">
+                                <div class="col-md-1">
+                                    <img src="{{message.user_avatar}}" alt="contact" class="img-circle avatar hidden-phone" style="height:50px; width:50px;"/>
+                                </div>
+                                <div class="col-md-9 comment-content">
+                                        <div ng-switch on="message.user_type">
+                                            <div ng-switch-when="shop">
+                                                <span class="user_name"><a ng-click = "goToShopInfo({id:message.user_id, name:message.user_name})" style="cursor:pointer">{{message.user_name}}</a></span>   -   <span class="bold">{{message.dateDisplay}}</span>
+                                                   <span class="boldanditalic">{{message.timeDisplay}}</span>
+                                                </br>
+                                                <span class="comment_content">{{message.content}}</span>  
+                                            </div>
+                                            <div ng-switch-when="user">
+                                                <span class="user_name"><a ng-click = "showUserProfile(brand.id, message.user_id, message.user_name, message.user_avatar)" style="cursor:pointer">{{message.user_name}}</a></span>   -   <span class="bold">{{message.dateDisplay}}</span>
+                                                   <span class="boldanditalic">{{message.timeDisplay}}</span>
+                                                </br>
+                                                <span class="comment_content">{{message.content}}</span>  
+                                            </div>
+                                        </div>
+                                        
+                                </div>
+                                <div class="clearfix"></div>
+                                <div id="num-of-like">
+                                    <span class="left bold">{{message.like_count}}</span>&nbsp;<span>liked</span>
+                                    <!-- <span class="btn-flat success right" id="reply-button">Trả lời</span> -->
+                                    <span class="btn-flat gray back right" ng-click="delComment(message.id); updateShopComment();">Delete</span>
+                                </div>   
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+        
+            
+        
+    </div>
+    <!-- end main container -->
+</html>
+
+<style scoped>@import url('vendor/theme/styles/compiled/user-list.css')</style>

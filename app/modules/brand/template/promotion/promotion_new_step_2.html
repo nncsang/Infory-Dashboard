@@ -1,0 +1,162 @@
+<div ng-include="'partials/_header.html'"></div>
+<div ng-include="'partials/_sidebar.html'"></div>
+<!-- main container -->
+<div id="promotion-new" class="content">
+    <div id="promotion-fuelux-wizard" class="wizard">
+        <ul class="wizard-steps">
+            <li data-target="#promotion-step1">
+                <span class="z-step">TYPE</span><img class="line-step non-background" src="img/line_step.png" />
+            </li>
+            <li data-target="#promotion-step2" class="active">
+                <span class="z-step">INFORMATION</span><img class="line-step non-background" src="img/line_step.png" />
+            </li>
+            <li data-target="#promotion-step3">
+                <span class="z-step">CONTENT</span><img class="line-step non-background" src="img/line_step.png" />
+            </li>
+            <li data-target="#promotion-step4">
+                <span class="z-step">MANAGE</span>
+            </li>
+        </ul>                            
+    </div>
+    <div id="promotion-step-content" class="step-content form-page">
+        <div>
+            <div class="step-pane active" id="promotion-step2">
+                <div class="step-description">
+                    <div class="step-title">
+                        <span class="step-name">Step 2:</span> Campaign information
+                    </div>
+                    Create campagin's information easily by listing 
+                    
+                </div>
+                <div class="form-wrapper">
+                    <div class="col-md-8">
+                        <form class="step-wapper" name="step_2_form">
+                            <div class="field-box">
+                                <span class="title">Campaign name</span>
+                                <input class="form-control inline-block" name="promotionName" type="text" ng-model="name" placeholder="Name" required/>
+
+                                <span class="alert-msg" ng-show="step_2_form.promotionName.$error.required">
+                                    <i class="icon-remove-sign"></i>
+                                    Name is required
+                                </span>
+                            </div>
+                            <div class="field-box">
+                                <span class="title">Duration</span>
+                                <div class="dropdown inline-block">
+                                  <a class="dropdown-toggle" id="dropdown2" role="button" data-toggle="dropdown" data-target="#" href="#">
+                                    <div class="select-date btn-glow">
+                                        <div class="input-append"><input type="text" class="form-control date inline-block" data-ng-model="data[0].dateDisplay">
+                                            <span class="add-on hide"><i class="icon-calendar"></i></span>
+                                        </div>
+                                        <i class="icon-sort-down"></i>
+                                    </div>
+                                  </a>
+                                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                    <datetimepicker data-ng-model="data[0].dateDropDownInput" data-datetimepicker-config="{ dropdownSelector: '#dropdown2', minView: 'day' }" data-on-set-time="onTimeSetOne"/>
+                                  </ul>
+                                </div>
+                                <div class="dropdown inline-block">
+                                  <a class="dropdown-toggle" id="dropdown3" role="button" data-toggle="dropdown" data-target="#" href="#">
+                                    <div class="select-date btn-glow">
+                                        <div class="input-append"><input type="text" class="form-control date inline-block" data-ng-model="data[1].dateDisplay">
+                                            <span class="add-on hide"><i class="icon-calendar"></i></span>
+                                        </div>
+                                        <i class="icon-sort-down"></i>
+                                    </div>
+                                  </a>
+                                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                    <datetimepicker data-ng-model="data[1].dateDropDownInput" data-datetimepicker-config="{ dropdownSelector: '#dropdown3', minView: 'day' }" data-on-set-time="onTimeSetTwo"/>
+                                  </ul>
+                                </div> 
+                            </div>
+                            <div class="field-box">
+                                <span class="title">Description</span>
+                                <div class="block">
+                                    <div class="block_header">
+                                        <div class="left control">
+                                            <span class="highlight">{{numOfSelectedShops}}</span> shop(s) selected
+                                        </div>
+                                        <input type="text" class="search right small-input no-margin" placeholder="Looking for ..." ng-model="searchText"/>
+                                    </div>
+                                    <div class="block_content no-padding">
+                                        <table class="z-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>
+                                						<input type="checkbox" class="css-checkbox lrg" id="checkbox_klaus" ng-model="checkAllShops" ng-change="checkAll()"/>
+                                						<label for="checkbox_klaus" class="css-label lrg klaus"></label>
+                                					</th>
+                                                    <th class="name">Shop name</th>
+                                                    <th>Address</th>
+                                                </tr>
+                                            </thead>
+
+                                            <tbody>
+                                                <tr ng-repeat="shop in brand.shops | filter:searchText">
+                                                    <td class="_checkbox">
+                                                        <input type="checkbox" class="css-checkbox lrg" id="{{shop.id}}" ng-model="$parent.selectedShops[shop.selectedId]" ng-change="updateSelectedShops($parent.selectedShops[shop.selectedId])"/>
+                                						<label for="{{shop.id}}" class="css-label lrg klaus"></label>
+                                                    </td>
+                                                    <td class="name">{{shop.name}}</td>
+                                                    <td>{{shop.full_address}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <div class="col-md-4" style="height: 0;">
+                        <div class="step-view-content">
+                            PREVIEW
+                            <tabset>
+                                <tab>
+                                  <tab-heading>
+                                    <i class="icon-reorder"></i>
+                                  </tab-heading>
+                                  <table class="table attribute-table">
+                                    <thead>
+                                        <tr><th>Property</th><th>Content</th></tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr><td>Type</td><td>{{promotionType.name_display}}</td></tr>
+                                        <tr><td>Campaign</td><td>{{name}}</td></tr>
+                                        <tr><td>Time</td><td>{{time}}</td></tr>
+                                        <tr><td>Description</td><td>{{description}}</td></tr>
+                                    </tbody>
+                                  </table>
+                                </tab>
+                                <tab>
+                                  <tab-heading>
+                                    <i class="icon-mobile-phone"></i>
+                                  </tab-heading>
+                                  <img src="http://wowcamera.net/image/cache/data/phone/iphone-5-16gb-white-360x360.jpg" />
+                                </tab>
+                            </tabset>
+                        </div>
+                    </div>
+
+                    <div class="col-md-8 with-sidebar">
+                        <div class="col-md-11">
+                            <div class="promotion-wizard-actions wizard-actions">
+                                <button type="button" class="btn-glow primary btn-prev" ng-click="goToStep1()"> 
+                                    <i class="icon-chevron-left"></i> Back
+                                </button>
+                                <button class="btn-glow primary btn-next" ng-disabled="step_2_form.$invalid || numOfSelectedShops == 0" ng-click="goToStep3()">
+                                    Next <i class="icon-chevron-right"></i>
+                                </button>
+                                <button type="button" class="btn-glow success btn-finish">
+                                    Back
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- scripts -->
+<style scoped>@import url('vendor/theme/styles/lib/flexslider.css')</style>

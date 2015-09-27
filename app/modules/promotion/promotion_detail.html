@@ -1,0 +1,111 @@
+
+<div ng-include="'partials/_header.html'"></div>
+<div ng-include="'partials/_sidebar.html'"></div>
+<!-- main container -->
+<div class="content">
+    <div id="pad-wrapper" class="user-profile">
+        <!-- header -->
+        <div class="row header">
+            <div class="col-md-8">
+                <img src="{{promotionDetail.logo}}" alt="contact" class="avatar img-circle" />
+                <h3 class="name">{{promotionDetail.name}}</h3>
+                <span class="area">{{promotionDetail.type}}</span>
+            </div>
+            <a class="btn-flat icon pull-right delete-user" data-toggle="tooltip" title="Delete user" data-placement="top">
+                <i class="icon-trash"></i>
+            </a>
+             <a class="btn-flat icon large pull-right edit">
+                Edit this person
+            </a>
+        </div>
+
+        <div class="row profile">
+            <!-- bio, new note & orders column -->
+            <div class="col-md-9 bio">
+            	<div class="profile-box">
+            	    
+            	    <h6>Thông tin tổng quát</h6>
+            	    <br>
+            	    
+            	    <!-- recent orders table -->
+            	                  
+            	</div>
+                <div class="profile-box">
+                    
+                    <h6>Giao dịch mới nhất</h6>
+                    <br>
+                    <!-- recent orders table -->
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th class="col-md-2">
+                                    ID
+                                </th>
+                                <th class="col-md-3">
+                                    <span class="line"></span>
+                                    Thời gian
+                                </th>
+                                <th class="col-md-3">
+                                    <span class="line"></span>
+                                    Người dùng
+                                </th>
+                                <th class="col-md-3">
+                                    <span class="line"></span>
+                                    Trạng thái
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- row -->
+                            <tr ng-class='{first:$first}' ng-repeat="transaction in promotionDetail.transactions">
+                                <td>
+                                    {{transaction.id}}
+                                </td>
+                                <td>
+                                    {{transaction.created}}
+                                </td>
+                                <td>
+                                    <a href="#">{{transaction.user}}</a>
+                                </td>
+                                <td>
+                                    {{transaction.status}}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>      
+                    <input type="button" class="btn-flat primary" value="Xem tất cả">                               
+                </div>
+
+                <br>	
+                <div class="profile-box">
+                    <br>
+                    <!-- recent orders table -->
+                                  
+                </div>
+
+            </div>
+
+            <!-- side address column -->
+            <div class="col-md-3 col-xs-12 address pull-right">
+                <h6>Address</h6>
+                <iframe width="300" height="133" scrolling="no" src="https://maps.google.com.mx/?ie=UTF8&amp;t=m&amp;ll=19.715081,-155.071421&amp;spn=0.010746,0.025749&amp;z=14&amp;output=embed"></iframe>
+                <ul>
+                    <li>2301 East Lamar Blvd. Suite 140. </li>
+                    <li>City, Arlington. United States,</li>
+                    <li>Zip Code, TX 76006.</li>
+                    <li class="ico-li">
+                        <i class="ico-phone"></i>
+                        1817 274 2933
+                    </li>
+                     <li class="ico-li">
+                        <i class="ico-mail"></i>
+                        <a href="#">alejandra@detail.com</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end main container -->
+
+<style scoped>@import url('vendor/theme/styles/compiled/user-profile.css')</style>

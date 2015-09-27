@@ -1,0 +1,165 @@
+<div ng-include="'partials/_header.html'"></div>
+
+
+<div class="content wide-content white-background">
+    <div class="settings-wrapper" id="pad-wrapper">
+        <div class="row">
+            <!-- avatar column -->
+            <div class="col-md-3 col-md-offset-1 avatar-box">
+                <div class="personal-image">
+                    <img ng-src="{{account.avatar}}" class="avatar img-circle" alt="avatar" style="height:100px; width:100px;"/>
+                    <p>Upload a different photo...</p>
+                    
+                    <input type="file" ng-file-select="changeAvatar($files)"/>
+                </div>
+            </div>
+
+            <!-- edit form column -->
+            <div class="col-md-7 personal-info">
+
+                 <div class="personal-bugget">
+                    <h5 class="setting-title personal-title">{{account.name}}</h5>
+                    <h4 class="personal-normal-title">Balance</h4>
+                    <div>
+                        <div class="budget-remain col-md-5">
+                            <span class="right t-coin-title">T-coin</span>
+                            <span class="right t-coin">{{account.balance}}</span> 
+                        </div>
+                        <!-- <button class="buy-t-coin col-md-6" ng-click="showBill()"> -->
+                         
+                        </button>
+                    </div>
+                </div>
+
+                <div class="clearfix"></div>
+                <!-- <div style="margin-bottom: 25px;">
+                    <u class="right price-form">Xem bảng giá</u>
+                </div> -->
+                <h5 class="personal-title">Your information</h5>
+                <div ng-hide="hideLoading" class="loading-container-image-product">
+                    <div title="Code: 0xe800" class="the-icons span3"><i class="icon-fontello-spin6 animate-spin loading-product-image loading-icon"></i></div>
+                </div>
+                <div class="form-wrapper" ng-hide="!hideLoading" >
+                    <form class="form-horizontal" role="form" name="updateForm">
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">Name</label>
+                            <div class="col-lg-8">
+                                <input class="form-control" type="text" ng-model="account.name" ng-minlength="6" name="name" required/>
+                                <span class="alert-msg" ng-show="updateForm.name.$error.minlength">
+                                    <i class="icon-remove-sign"></i>
+                                at least 6 characters
+                                </span>
+    
+                                <span class="alert-msg" ng-show="updateForm.name.$error.required">
+                                    <i class="icon-remove-sign"></i>
+                                Name is required
+                                </span>
+    
+                            </div>
+                        </div>
+    
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">Company</label>
+                            <div class="col-lg-8">
+                                <input class="form-control" type="text" ng-model="account.company" ng-minlength="6" name="company" required/>
+    
+                                <span class="alert-msg" ng-show="updateForm.company.$error.minlength">
+                                    <i class="icon-remove-sign"></i>
+                                at least 6 characters
+                                </span>
+    
+                                <span class="alert-msg" ng-show="updateForm.company.$error.required">
+                                    <i class="icon-remove-sign"></i>
+                                Company name is required
+                                </span>
+                            </div>
+                        </div>
+    
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">Email</label>
+                            <div class="col-lg-8">
+                                <input class="form-control" type="email" ng-model="account.email" name="email" required/>
+    
+                                <span class="alert-msg" ng-show="updateForm.email.$error.email">
+                                    <i class="icon-remove-sign"></i>
+                                Email invalid
+                                </span>
+    
+                                <span class="alert-msg" ng-show="updateForm.email.$error.required">
+                                    <i class="icon-remove-sign"></i>
+                                Email is required
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">Current password</label>
+                            <div class="col-lg-8">
+                                <input class="form-control" type="password" ng-model="account.currentPass" ng-minlength="6" name="currentPassword" required/>
+    
+                                <span class="alert-msg" ng-show="updateForm.currentPassword.$error.required">
+                                    <i class="icon-remove-sign"></i>
+                                Current password is require to make changes
+                                </span>
+    
+                                <span class="alert-msg" ng-show="updateForm.currentPassword.$error.minlength">
+                                    <i class="icon-remove-sign"></i>
+                                at least 6 characters
+                                </span>
+    
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">New password</label>
+                            <div class="col-lg-8">
+                                <input class="form-control" type="password" ng-model="account.password" ng-minlength="6" name="password" ng-change="markPassChange()" required/>
+    
+                                <span class="alert-msg" ng-show="updateForm.password.$error.required">
+                                    <i class="icon-remove-sign"></i>
+                                New password is required
+                                </span>
+    
+                                <span class="alert-msg" ng-show="updateForm.password.$error.minlength">
+                                    <i class="icon-remove-sign"></i>
+                                at least 6 characters
+                                </span>
+    
+                            </div>
+                        </div>
+    
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">Password confirm</label>
+                            <div class="col-lg-8">
+                                <input class="form-control" type="password" ng-model="account.confirmPassword" ng-minlength="6" name="confirmPassword" ng-change="markPassChange()" required/>
+    
+                                <span class="alert-msg" ng-show="!IsRightPass">
+                                    <i class="icon-remove-sign"></i>
+                                Invalid
+                                </span>
+    
+                            </div>
+                        </div>
+    
+                        <div class="actions">
+                            <input type="button" class="btn-glow primary" value="Save" ng-click="update()" ng-disabled="updateForm.$invalid">
+                            <span>OR</span>
+                            <input type="reset" value="Cancel" class="reset" ng-click="cancel()">
+                        </div>
+    
+                        <div ng-hide="!showSuccessNotify">
+                            <span class="alert-msg">
+                                Save successful
+                            </span>
+                        <div>
+                        <div class="error">
+    
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>            
+    </div>
+</div>
+
+<style scoped>@import url('vendor/theme/styles/compiled/personal-info.css')</style>    

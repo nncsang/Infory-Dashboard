@@ -1,0 +1,85 @@
+ <div ng-include="'partials/_header.html'"></div>
+<div ng-include="'partials/_sidebar.html'"></div>
+<!-- main container -->
+<div id="notify-new" class="content">
+    <div id="notify-fuelux-wizard" class="wizard">
+        <ul class="wizard-steps">
+            <li data-target="#notify-step1">
+                <span class="z-step">COMPOSE</span><img class="line-step non-background" src="img/line_step.png" />
+            </li>
+            <li data-target="#notify-step2">
+                <span class="z-step">TARGET</span><img class="line-step non-background" src="img/line_step.png" />
+            </li>
+            <li data-target="#notify-step3">
+                <span class="z-step">ACTIVATE</span><img class="line-step non-background" src="img/line_step.png" />
+            </li>
+            <li data-target="#notify-step4" class="active" id="menu-manager" onclick="showManager('#menu-manager', '#notify-step4')">
+                <span class="z-step">MANAGE</span>
+            </li>
+        </ul>                            
+    </div>
+    <div id="notify-step-content" class="step-content form-page">
+        <div class="step-pane active" id="notify-step4">
+            <div class="step-description">
+                <div class="step-title">
+                    SEND NOTIFICATION TO YOUR CUSTOMER
+                </div>
+                <div>
+                    This feature help you interact with your customer in an easiest way. Specially, you can measure how much it be effective
+                        </br>
+                    </br>
+                        <b>Tips: </b> </br>
+                        <ol>
+                            <li>Compose your message</li>
+                            <li>Select your customer with filter system</li>
+                            <li>Select type and time to send your message</li>
+                            <li>Select your suitable budget > Active your notification</li>
+                        </ol>
+                </div>
+                <div class="btn-glow success" ng-click="goToStep1()" style="margin-top:0px !important;"><i class="icon-plus"></i> Create a notification</div>
+            </div>
+            <div class="form-wrapper">
+                <div class="col-md-12">
+                    <div ng-hide="hideLoading" class="loading-container-image-product" style="padding-top:300px">
+                        <div title="Code: 0xe800" class="the-icons span3"><i class="icon-fontello-spin6 animate-spin loading-product-image loading-icon"></i></div>
+                    </div>
+
+                    <table class="z-table bordered-table" ng-hide="!hideLoading">
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Type</th>
+                                <th>Method</th>
+                                <th>Time</th>
+                                <th>Sent</th>
+                                <th>
+                                    <div class="ui-select">
+                                        <select ng-model="statusType" ng-options="statusType as statusType.name_display for statusType in statusTypes" ng-init="statusType=statusTypes[0]" ng-change="sortNotificationListByStatus()"></select>
+                                    </div>
+                                </th>
+                                <!-- <th>Thao tác</th> -->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="{{message.sttClass}}" ng-repeat="message in dataInCurrentPage">
+                                <td class="name" style="cursor:pointer;" ng-click="editMessage(message.id)">{{message.name}}</td>
+                                <td>{{message.typeName}}</td>
+                                <td>{{message.methodName}}</td>
+                                <td>{{message.time_begin}}</td>
+                                <td> {{message.sentAmount}} </td>
+                                <td><a class="{{$parent.messageListFull[message.index].statusClass}}" ng-click="changeStatus(message.index)" style="width:auto;">{{$parent.messageListFull[message.index].statusName}}</a></td>
+                                <!-- <td><i class="icon-remove-sign"></i> Xoá</td> -->
+                            </tr>
+                        </tbody>
+                    </table>
+                    <spagination ng-hide="dataInCurrentPage.length == 0" class="right" total-items="totalItems" page="currentPage" on-select-page="pageChanged(page)" items-per-page="itemsPerPage" boundary-links="false" rotate="false" max-size="10" style="width: 650px;"></spagination>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- scripts -->
+<script src="vendor/theme/scripts/jquery-ui-1.10.2.custom.min.js"></script>
+<script src="vendor/theme/scripts/fuelux.wizard.js"></script>
+<script src="vendor/theme/scripts/tinymce/tinymce.min.js"></script>
+<script src="vendor/theme/scripts/tinymce/themes/modern/theme.min.js"></script>

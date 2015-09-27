@@ -1,0 +1,289 @@
+<div ng-include="'partials/_header.html'"></div>
+<div ng-include="'partials/_sidebar.html'"></div>
+<!-- main container -->
+<div id="promotion-new" class="content">
+    <div id="promotion-fuelux-wizard" class="wizard">
+        <ul class="wizard-steps">
+            <li data-target="#promotion-step1">
+                <span class="z-step">TYPE</span><img class="line-step non-background" src="img/line_step.png" />
+            </li>
+            <li data-target="#promotion-step2">
+                <span class="z-step">INFORMATION</span><img class="line-step non-background" src="img/line_step.png" />
+            </li>
+            <li data-target="#promotion-step3" class="active">
+                <span class="z-step">CONTENT</span><img class="line-step non-background" src="img/line_step.png" />
+            </li>
+            <li data-target="#promotion-step4">
+                <span class="z-step">MANAGE</span>
+            </li>
+        </ul>                            
+    </div>
+    <div id="promotion-step-content" class="step-content form-page">
+        <form>
+            <div class="step-pane active" id="promotion-step3">
+                <div class="step-description">
+                    <div class="step-title">
+                        <span class="step-name">STEP 3:</span> Specify all information of your event
+                    </div>
+                    All information will be shown in INFORY mobile app. Your customer can interact with this information in mobile
+                </div>
+                <div class="form-wrapper">
+                    <div class="col-md-7">
+                        <div class="step-wapper">
+                            <div ng-switch on="promotionType.name">
+                                <div ng-switch-when="voucher" class="voucher-box" name="voucher">
+                                    <div class="z-box"  ng-repeat="present in presentDescriptions" style="margin-top:10px;">
+                                        <div class="z-box-header">
+                                            <div class="left">
+                                                <span class="circle-box">{{$parent.presentDescriptions[$parent.indexInArray[present.id]].stt + 1}}</span>
+                                            </div>
+                                            <i class="icon-remove-sign right" ng-click="removePresent(present.id)"></i>
+                                        </div>
+                                        <div class="z-box-content">
+                                            <div class="detail-voucher">
+                                                <div class="field-box">
+                                                    <div class="inline-block left">
+                                                        <span class="title">REWARD</span>
+                                                        <input type="text" class="description form-control" ng-model = "$parent.presentDescriptions[$parent.indexInArray[present.id]].description" placeholder="Reward's description" name="description" required ng-change="updateValidation(present.id, 0)"/>
+                                                        <span class="alert-msg" ng-show="$parent.presentDescriptions[$parent.indexInArray[present.id]].validation[0]">
+                                                            <i class="icon-remove-sign"></i>
+                                                        Desciption is required
+                                                        </span>
+                                                    </div>
+                                                    <div class="inline-block left">
+                                                        <span class="title">AMOUNT</span>
+                                                        <input type="text" class="quality form-control left" ng-model="$parent.presentDescriptions[$parent.indexInArray[present.id]].amount" ng-change="updateValidation(present.id, 2)"/>
+                                                        <label class="checkbox-inline" style="margin: 5px 0 5px 10px;">
+                                                          <input type="checkbox" id="inlineCheckbox1" value="option1" ng-model="$parent.presentDescriptions[$parent.indexInArray[present.id]].noLimitedChecked" ng-change="updateValidation(present.id)"> No limited
+                                                        </label>
+                                                        <div class="clearfix"></div>
+                                                        <span class="alert-msg" ng-show="$parent.presentDescriptions[$parent.indexInArray[present.id]].validation[1]">
+                                                            <i class="icon-remove-sign"></i>
+                                                        Amount is required
+                                                        </span>
+                                                        <span class="alert-msg" ng-show="$parent.presentDescriptions[$parent.indexInArray[present.id]].validation[2]">
+                                                            <i class="icon-remove-sign"></i>
+                                                        Amount must be larger than 0
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="field-box">
+                                                    <span class="title">CONDITION</span>
+                                                    <div class="condition">
+                                                        <span class="title">TARGETING CUSTORMERS</span>
+                                                        <input type="text" class="form-control" placeholder="Type your target" ng-model="$parent.presentDescriptions[$parent.indexInArray[present.id]].target" ng-change="updateValidation(present.id, 3)"/>
+                                                        <span class="alert-msg" ng-show="$parent.presentDescriptions[$parent.indexInArray[present.id]].validation[3]">
+                                                            <i class="icon-remove-sign"></i>
+                                                        Type your target
+                                                        </span>
+                                                        <br />
+                                                        <span class="title">Time apply</span>
+                                                        <label class="checkbox-inline">
+                                                          <input type="checkbox" id="inlineCheckbox1" value="1" ng-model="$parent.presentDescriptions[$parent.indexInArray[present.id]].monChecked" ng-change="updateValidation(present.id, 4)"
+                                                            /> Monday
+                                                        </label>
+                                                        <label class="checkbox-inline">
+                                                          <input type="checkbox" id="inlineCheckbox1" value="1" ng-model="$parent.presentDescriptions[$parent.indexInArray[present.id]].tueChecked" ng-change="updateValidation(present.id, 4)"/> Tuesday
+                                                        </label>
+                                                        <label class="checkbox-inline">
+                                                          <input type="checkbox" id="inlineCheckbox1" value="1" ng-model="$parent.presentDescriptions[$parent.indexInArray[present.id]].wedChecked" ng-change="updateValidation(present.id, 4)"/> Wednesday
+                                                        </label>
+                                                        <label class="checkbox-inline">
+                                                          <input type="checkbox" id="inlineCheckbox1" value="1" ng-model="$parent.presentDescriptions[$parent.indexInArray[present.id]].thuChecked" ng-change="updateValidation(present.id, 4)"/> Thursday
+                                                        </label>
+                                                        <div class="clearfix"></div>
+                                                        <label class="checkbox-inline">
+                                                          <input type="checkbox" id="inlineCheckbox1" value="1" ng-model="$parent.presentDescriptions[$parent.indexInArray[present.id]].friChecked" ng-change="updateValidation(present.id, 4)"/> Friday
+                                                        </label>
+                                                        <label class="checkbox-inline">
+                                                          <input type="checkbox" id="inlineCheckbox1" value="1" ng-model="$parent.presentDescriptions[$parent.indexInArray[present.id]].satChecked" ng-change="updateValidation(present.id, 4)"/> Saturday
+                                                        </label>
+                                                        <label class="checkbox-inline">
+                                                          <input type="checkbox" id="inlineCheckbox1" value="1" ng-model="$parent.presentDescriptions[$parent.indexInArray[present.id]].sunChecked" ng-change="updateValidation(present.id, 4)"/> Sunday
+                                                        </label>
+                                                        <label class="checkbox-inline">
+                                                          <input type="checkbox" id="inlineCheckbox1" value="option1" ng-model="$parent.presentDescriptions[$parent.indexInArray[present.id]].allChecked" ng-change="allCheck(present.id)"/> All week
+                                                        </label>
+
+                                                        <span class="alert-msg" ng-show="$parent.presentDescriptions[$parent.indexInArray[present.id]].validation[4]">
+                                                            <i class="icon-remove-sign"></i>
+                                                        Select a weekdate
+                                                        </span>
+                                                        <div class="rule-time" ng-hide="true">
+                                                            <div class="item">
+                                                                <div class="dropdown left" >
+                                                                  <a class="dropdown-toggle" id="dropdown2" role="button" data-toggle="dropdown" data-target="#" href="#">
+                                                                    <div class="input-append"> From <input type="text" class="form-control datetime inline-block" data-ng-model="data[0].dateDisplay" style="width: 100px;">
+                                                                    </div>
+                                                                  </a>
+                                                                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                                                    <datetimepicker data-ng-model="data[0].dateDropDownInput" data-datetimepicker-config="{ dropdownSelector: '#dropdown2', minView: 'minute', startView: 'hour' }" data-on-set-time="onTimeSetOne"/>
+                                                                  </ul>
+                                                                </div>
+        
+                                                                <div class="dropdown left" style="margin-left:10px;">
+                                                                  <a class="dropdown-toggle" id="dropdown3" role="button" data-toggle="dropdown" data-target="#" href="#">
+                                                                    <div class="input-append">to <input type="text" class="form-control datetime inline-block" data-ng-model="data[1].dateDisplay" style="width: 100px;">
+                                                                    </div>
+                                                                  </a>
+                                                                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                                                    <datetimepicker data-ng-model="data[1].dateDropDownInput" data-datetimepicker-config="{ dropdownSelector: '#dropdown3', minView: 'minute' , startView: 'hour' }" data-on-set-time="onTimeSetTwo"/>
+                                                                  </ul>
+                                                                </div>
+                                                            </div>
+                                                            <div class="item">
+                                                                <div class="dropdown left" >
+                                                                  <a class="dropdown-toggle" id="dropdown2" role="button" data-toggle="dropdown" data-target="#" href="#">
+                                                                    <div class="input-append"> From <input type="text" class="form-control datetime inline-block" data-ng-model="data[0].dateDisplay" style="width: 100px;">
+                                                                    </div>
+                                                                  </a>
+                                                                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                                                    <datetimepicker data-ng-model="data[0].dateDropDownInput" data-datetimepicker-config="{ dropdownSelector: '#dropdown2', minView: 'minute', startView: 'hour' }" data-on-set-time="onTimeSetOne"/>
+                                                                  </ul>
+                                                                </div>
+        
+                                                                <div class="dropdown left" style="margin-left:10px;">
+                                                                  <a class="dropdown-toggle" id="dropdown3" role="button" data-toggle="dropdown" data-target="#" href="#">
+                                                                    <div class="input-append">to <input type="text" class="form-control datetime inline-block" data-ng-model="data[1].dateDisplay" style="width: 100px;">
+                                                                    </div>
+                                                                  </a>
+                                                                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                                                    <datetimepicker data-ng-model="data[1].dateDropDownInput" data-datetimepicker-config="{ dropdownSelector: '#dropdown3', minView: 'minute' , startView: 'hour' }" data-on-set-time="onTimeSetTwo"/>
+                                                                  </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div><div class="add-time"><i class="icon-plus-sign"></i></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </div>
+                                    <div class="add-bar shadow" style="cursor:pointer" ng-click="addPresent()">
+                                        <i class="icon-plus"></i> Add a reward
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="news-box" ng-switch-when="news">
+                                    <div class="field-box">
+                                        <span class="title">Title</span>
+                                        <input class="form-control inline-block" type="text" ng-model="$parent.title" ng-change="updateValidationNews(0)"/>
+
+                                        <span class="alert-msg" ng-show="$parent.validation[0]">
+                                                            <i class="icon-remove-sign"></i>
+                                                        Title is required
+                                                        </span>
+                                    </div>
+                                    <div class="field-box" ng-hide="hideCover">
+                                        <img ng-src="{{cover}}" style="height:auto; width:400px;"/>
+
+                                        <span class="title">Image</span>
+                                        <input type="file" ng-file-select="changeCover($files)"/> 
+                                        <span class="alert-msg" ng-show="$parent.validation[1]">
+                                            <i class="icon-remove-sign"></i>
+                                            Image is required
+                                        </span>
+                                    </div>
+                                    <div class="field-box">
+                                        <span class="title">Content</span>
+                                        <textarea placeholder="Nhập nội dung" class="form-control" rows="6" ng-model="$parent.content" ng-change="updateValidationNews(2)"></textarea>
+                                         <span class="alert-msg" ng-show="$parent.validation[2]">
+                                                            <i class="icon-remove-sign"></i>
+                                                        Content is required
+                                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--
+                            <div class="field-box">
+                                <span class="title">Phần thưởng</span>
+                                <input placeholder="Điều kiện" class="form-control inline-block small-input" type="text"/><input placeholder="Phần thưởng" class="form-control inline-block small-input" type="text"/>
+                            </div>
+                            <div class="field-box">
+                                <span class="title">LOẠI THẺ</span>
+                                <div class="ui-select">
+                                    <select>
+                                        <option selected>Dropdown</option>
+                                        <option>Custom selects</option>
+                                        <option>Pure css styles</option>
+                                    </select>
+                                </div> 
+                            </div>
+                            <div class="field-box">
+                                <span class="title">SỐ LƯỢNG</span>
+                                <div class="ui-select">
+                                    <select>
+                                        <option selected>Dropdown</option>
+                                        <option>Custom selects</option>
+                                        <option>Pure css styles</option>
+                                    </select>
+                                </div> 
+                            </div>
+                            <div class="field-box">
+                                <span class="title">THỜI GIAN ÁP DỤNG</span>
+                                <div class="ui-select">
+                                    <select>
+                                        <option selected>Dropdown</option>
+                                        <option>Custom selects</option>
+                                        <option>Pure css styles</option>
+                                    </select>
+                                </div> 
+                            </div>
+                            -->
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4" style="height: 0;">
+                    <div class="step-view-content">
+                        <h5>PREVIEW</h5>
+                        <tabset>
+                            <tab>
+                              <tab-heading>
+                                <i class="icon-reorder"></i>
+                              </tab-heading>
+                              <table class="attribute-table">
+                                <thead>
+                                    <tr><th class="col-md-5">Property</th><th>Content</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>Type</td><td>{{promotionType.name_display}}</td></tr>
+                                    <tr class="odd"><td>Campaign</td><td>{{name}}</td></tr>
+                                    <tr><td>Duration</td><td>{{time}}</td></tr>
+                                    <tr class="odd"><td>Description</td><td>{{description}}</td></tr>
+                                </tbody>
+                              </table>
+                            </tab>
+                            <tab>
+                              <tab-heading>
+                                <i class="icon-mobile-phone"></i>
+                              </tab-heading>
+                              <img src="http://wowcamera.net/image/cache/data/phone/iphone-5-16gb-white-360x360.jpg" />
+                            </tab>
+                        </tabset>
+                    </div>
+                </div>
+                
+                <div class="col-md-8 with-sidebar">
+                        <div class="col-md-11">
+                            <div class="promotion-wizard-actions wizard-actions">
+                                <button type="button" class="btn-glow primary btn-prev" ng-click="goToStep2()"> 
+                                    <i class="icon-chevron-left"></i> Back
+                                </button>
+                                <button type="button" class="btn-glow primary btn-next" ng-disabled="!isCanGoNext" ng-click="goToStep4()">
+                                    {{mode}} <i class="icon-chevron-right"></i>
+                                </button>
+                                <button type="button" class="btn-glow success btn-finish">
+                                    Back
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            
+            <!-- display step info -->
+        </form>
+    </div>
+</div>
+<!-- scripts -->
+<style scoped>@import url('vendor/theme/styles/lib/flexslider.css')</style>

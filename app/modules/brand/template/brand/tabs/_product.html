@@ -1,0 +1,108 @@
+<div class="z-product">
+    <div class="z-header">
+        <!--<div class="ui-select left">
+             <select ng-model="category" ng-options="category as category.name for category in brand.categories"></select>
+        </div>
+        -->
+        <div ng-hide="hideLoadingProduct" class="loading-container-image-product">
+            <div title="Code: 0xe800" class="the-icons span3"><i class="icon-fontello-spin6 animate-spin loading-product-image loading-icon"></i></div>
+        </div>
+        <div ng-hide="!hideLoadingProduct">
+            <div class="z-dropdown-wapper z-dropdown-btn left">
+                <div class="z-dropdown">
+                    <a class="trigger" style="cursor:pointer">
+                        <span>{{category.name}}</span>
+                        <i class="icon-sort-down"></i>
+                    </a>
+                    <ul>
+                        <li class="create-box">
+                            <i class="icon-plus"></i>
+                            <input type="text" placeholder="new category" ng-model="newCategoryName"/>
+                            <input type="button" value="CREATE CATEGORY" ng-click="createCategory(newCategoryName)"/>
+                        </li>
+                        <li style="cursor:pointer" ng-repeat="category in brand.categories"><a  ng-click="changeCategory(category.id)">{{category.name}}</a></li>
+                        
+                    </ul>
+                    <i class="close"></i>
+                </div>
+            </div>
+            <span>{{category.products.length}}</span> product(s)
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="add-product" style="cursor:pointer" ng-click="hideAdd = !hideAdd" ng-init="hideAdd = true" ng-hide="!hideLoadingProduct">
+        <i class="icon-plus"></i> Create new product
+    </div>
+    <div ng-hide="hideAdd">
+        <ul class="detail-product" ng-hide="hideDetail">
+            <li>
+                <div class="property col-md-3">Image</div>
+                <div class="value col-md-9">
+                    <div class="edit">
+                        <img src="" class="left" /> 
+                        <input type="file" class="right"/>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="property col-md-3">Name</div>
+                <div class="value col-md-9">
+                    <div class="edit">
+                        <input class="form-control inline-block" ng-model="productTemp.name" placeholder="Name"/>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="property col-md-3">Description</div>
+                <div class="value col-md-9">
+                    <div class="edit">
+                        <textarea class="form-control inline-block" ng-model="productTemp.description" placeholder="Descirption"></textarea>
+                        <i style="cursor:pointer" class="icon-ok-sign success" ng-click="addProduct(category.id); hideAdd = !hideAdd;"></i>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div ng-repeat="product in category.products" ng-init="hideDetail = true">
+        <ul class="list-product">
+            <li>
+                <span class="circle left">1</span>
+                <img ng-src="{{product.images[0]}}" class="left"/>
+                <span class="name">{{product.name}}</span>
+                <br />
+                <span class="description">{{product.full_description}}</span>
+                <!-- <i class="right icon-remove-sign" ng-click="deleteProduct(product.id)"></i> -->
+                <a class="right" ng-click="hideDetail = !hideDetail" style="cursor:pointer">edit</a>
+            </li>
+        </ul>
+        <ul class="detail-product" ng-hide="hideDetail">
+            <li>
+                <div class="property col-md-3">Image</div>
+                <div class="value col-md-9">
+                    <div class="edit">
+                        <img ng-src="{{product.images[0]}}" class="left" /> 
+                        <input type="file" class="right" ng-file-select="changeProductLogo(product.category_id, product.id, $files); hideDetail = !hideDetail"/>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="property col-md-3">Name</div>
+                <div class="value col-md-9">
+                    <div class="edit">
+                        <input class="form-control inline-block" ng-model="name" ng-init="name = product.name"/>
+                        <i style="cursor:pointer" class="icon-ok-sign success" ng-click="changeProductName(product.category_id, product.id, name); hideDetail = !hideDetail"></i>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="property col-md-3">Description</div>
+                <div class="value col-md-9">
+                    <div class="edit">
+                        <textarea class="form-control inline-block" ng-model="description" ng-init="description = product.full_description"></textarea>
+                        <i style="cursor:pointer" class="icon-ok-sign success" ng-click="changeProductDescription(product.category_id, product.id, description); hideDetail = !hideDetail;"></i>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

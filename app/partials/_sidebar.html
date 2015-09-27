@@ -1,0 +1,65 @@
+<!-- sidebar -->
+<div id="sidebar-nav" ng-controller="BrandCtrl">
+    <ul id="dashboard-menu">
+        <li class="active open">
+            <a href="#/home/{{brand.id}}">
+                <i class="icon-home"></i>
+                <span>ACTIVITY</span>
+            </a>
+        </li>
+        <li class="active">
+            <a href="javacript:void(0)" class="toggle">
+                <i class="icon-certificate"></i>
+                <span>BRAND</span>            
+            </a>        
+            <ul class="submenu">
+                <li><a href="#/brand/infor/{{brandId}}"><i class="icon-info-sign sub-icon"></i>Information</a></li>
+                <li><a href="#/brand/promotion/step4/{{brandId}}" ng-click="resetEditPromotionNotification()"><i class="icon-tag sub-icon"></i>Event</a></li>
+                <li><a href="#/brand/comment/{{brandId}}"><i class="icon-comment sub-icon"></i>Comment</a></li>
+            </ul>
+        </li>
+        <li class="active">
+            <a href="javacript:void(0)" class="toggle">        
+                <i class="icon-signal"></i>
+                <span>ENGAGEMENT</span>
+            </a>                
+            <ul class="submenu">
+                <li><a href="#/segmentation/{{brandId}}"><i class="icon-bar-chart sub-icon"></i>Segmentation </a></li>
+                <li><a href="#/funnel/step2/{{brandId}}"><i class="icon-filter sub-icon"></i>Funnels</a></li>
+            </ul>
+        </li>
+        <li class="active">
+            <a href="javacript:void(0)" class="toggle">        
+                <i class="icon-group"></i>
+                <span>PEOPLE</span>
+            </a>                
+            <ul class="submenu">
+                <li><a href="#/user/manager/{{brandId}}"><i class="icon-reorder sub-icon"></i>Explore</a></li>
+                <li><a href="#/user/notify-new/step4/{{brandId}}" ng-click="resetEditPromotionNotification()"><i class="icon-bullhorn sub-icon"></i>Notification</a></li>
+            </ul>
+        </li>      
+    </ul>
+
+    <!--
+    <div class="footer_controls project_settings_buttons absolute_bottom"><div class="ftsection ftbutton"><a id="settings_link"><div class="settings"><div id="fttooltip" class="project">Update project settings</div></div></a></div><div class="ftsection ftbutton"><div class="invite" id="invite_link"><div id="fttooltip" class="invite">Invite team members</div></div></div></div>
+    -->
+</div>
+<!-- end sidebar -->
+
+<script type="text/javascript"> 
+    $('#wrapper').css("padding", "24px");
+    $('#width_wrapper').width("1150px");
+</script>
+
+<script src="vendor/theme/scripts/theme.js"></script>
+<!-- <script>
+    var side_bar_top = $('#sidebar-nav').offset().top;
+    $(window).scroll(function (event) {
+        var y = $(this).scrollTop();
+        if(y > side_bar_top){
+            $('#sidebar-nav').css({"position": "fixed", "top": 0});
+        }else{
+            $('#sidebar-nav').css({"position": "relative", "top": 0});
+        }
+    });
+</script> -->

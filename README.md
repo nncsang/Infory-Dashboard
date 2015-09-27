@@ -1,1 +1,2 @@
-# Infory-Dashboard
+smartguide-dashboard
+====================

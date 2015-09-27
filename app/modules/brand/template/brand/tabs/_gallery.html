@@ -1,0 +1,16 @@
+<div class="z-gallery">
+    <div ng-hide="hideLoadingImage" class="loading-container-image-product">
+        <div title="Code: 0xe800" class="the-icons span3"><i class="icon-fontello-spin6 animate-spin loading-product-image loading-icon"></i></div>
+    </div>
+    <div class="z-header" ng-hide="!hideLoadingImage">
+        <span>{{gallery.length}}</span> image(s) uploaded
+        <input type="file" class="right" ng-file-select="uploadImage($files)" multiple/>
+    </div>
+    <div class="z-content">
+        <div class="item" ng-repeat="image in gallery">
+            <i class="icon-remove-sign" ng-click="removeImage(image.thumbnail)" style="cursor:pointer; z-index:1;"></i>
+            <div class="mask"><img ng-src="{{image.thumbnail}}" /></div>
+            <!--<img src="{{image.url}}" ng-repeat="image in gallery"/>-->
+        </div>
+    </div>          
+</div>

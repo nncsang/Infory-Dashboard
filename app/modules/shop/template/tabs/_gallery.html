@@ -1,0 +1,13 @@
+<div class="z-gallery">
+    <div class="z-header">
+        <span>{{gallery.length}}</span> image(s) uploaded
+        <input type="file" class="right"/>
+    </div>
+    <div class="z-content">
+        <div class="item" ng-repeat="image in gallery">
+            <i class="icon-remove-sign"></i>
+            <div class="mask"><img src="{{image.url}}" /></div>
+            <!--<img src="{{image.url}}" ng-repeat="image in gallery"/>-->
+        </div>
+    </div>   
+</div>

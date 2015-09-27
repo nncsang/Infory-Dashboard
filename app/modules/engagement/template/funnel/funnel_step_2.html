@@ -1,0 +1,150 @@
+<div ng-include="'partials/_header.html'"></div>
+<div ng-include="'partials/_sidebar.html'"></div>
+<!-- main container -->
+<div id="promotion-new" class="content">
+    <div id="funnel-fuelux-wizard" class="wizard">
+        <ul class="wizard-steps">
+            <li data-target="#funnel-step1" >
+                <span class="z-step">Build a funnel</span><img class="line-step non-background" src="img/line_step.png" />
+            </li>
+            <li data-target="#funnel-step2" class="active">
+                <span class="z-step">Result</span><img class="line-step non-background" src="img/line_step.png" />
+            </li>
+        </ul>                            
+    </div>
+    <div id="funnel-step-content" class="step-content form-page">
+        <form>
+            <div class="step-pane active" id="funnel-step2">
+                <div class="step-description">
+                    <div class="step-title">
+                        MANAGE YOUR FUNNELS
+                    </div>
+                    Let's find out where your users drop off and discover secret information with FUNNEL of INFORY system 
+                    <div>
+                        <a class="btn-flat success right" ng-click="goToStep1()">BUILD A FUNNEL</a>
+                    </div>
+                </div>
+                <div class="form-wrapper">
+                    <div class="wapper">
+                        <div class="step-wapper">
+                            <div class="step-wapper-header">
+                                <!-- <div class="left">
+                                    <h4>Tổng quan</h4>
+                                </div> -->
+                                <div class="right" ng-hide="false">
+                                    <div class="controller">
+                                        <div class="z-dropdown-wapper">
+                                            <div class="z-dropdown">
+                                                <a class="trigger" style="cursor:pointer"><span>{{funnelBookmark.bookmark_name}}</span>
+                                                <i class="icon-sort-down"></i></a>
+                                                <ul style=" max-height: 250px;">
+                                                    <li ng-repeat="funnelBookmark in funnelBookmarks"><a ng-click="changeFunnelBookmark(funnelBookmark.id)" style="cursor:pointer">{{funnelBookmark.bookmark_name}}</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <span class="btn-glow success"><i class="icon-bookmark-empty"></i> View</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                            
+                            <div class="z-box">
+                                <div class="z-box-header">
+                                    <div class="left">
+                                        <span>
+                                            <div class="dropdown left" >
+                                              <a class="dropdown-toggle" id="dropdown2" role="button" data-toggle="dropdown" data-target="#" href="#">
+                                                    <div class="select-date btn-glow">
+                                                        From<div class="input-append"><input type="text" class="form-control datetime inline-block" data-ng-model="data[0].dateDisplay"/>
+                                                        </div>
+                                                        <i class="icon-sort-down"></i>
+                                                    </div>
+                                              </a>
+                                              <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                                <datetimepicker data-ng-model="data[0].dateDropDownInput" data-datetimepicker-config="{ dropdownSelector: '#dropdown2', minView: 'day' }" data-on-set-time="onTimeSetOne"/>
+                                              </ul>
+                                            </div>
+
+                                            <div class="dropdown left" style="margin-left:10px;">
+                                              <a class="dropdown-toggle" id="dropdown3" role="button" data-toggle="dropdown" data-target="#" href="#">
+                                                <div class="select-date btn-glow">
+                                                    to<div class="input-append"><input type="text" class="form-control datetime inline-block" data-ng-model="data[1].dateDisplay" style="width: 100px;">
+                                                    </div>
+                                                    <i class="icon-sort-down"></i>
+                                                </div>
+                                              </a>
+                                              <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                                <datetimepicker data-ng-model="data[1].dateDropDownInput" data-datetimepicker-config="{ dropdownSelector: '#dropdown3', minView: 'day' }" data-on-set-time="onTimeSetTwo"/>
+                                              </ul>
+                                            </div>
+                                        </span>
+                                    </div>
+                                    <div class="right">
+                                        <span>Group by <div class="ui-select">
+                                                                     <select ng-model="computeBy" ng-options="computeBy as computeBy.name_display for computeBy in computeBys" ng-change="updateComputeBy()"></select>
+                                                                </div>
+                                        </span>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div id="funnelChartData" class="z-box-content" style="height: 420px">
+                                    <div title="Code: 0xe800" class="the-icons span3 loading-container" ng-hide="hideLoading"><i class="icon-fontello-spin6 animate-spin loading-chart loading-icon"></i></div>
+
+                                    <div class="bar"></div>
+                                        <chart value='columnChart' ng-hide="!hideLoading"></chart>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="wapper" ng-show="currentEvent">
+                                <div class="block" style="margin: 0 -10px;">
+                                    <div class="block_header">
+                                        <div class="left control">
+                                            Compare by 
+                                            <div class="ui-select">
+                                               <select class="type_menu left" ng-init="compareUnit=currentEvent.compare_properties[0].name_display" ng-model="compareUnit" ng-options="compareUnit as compareUnit.name_display for compareUnit in currentEvent.compare_properties" ng-change="updateCompareUnit()"></select>                                            
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div ng-hide="hideLoadingTable" class="loading-container-infor">
+                                        <div title="Code: 0xe800" class="the-icons span3"><i class="icon-fontello-spin6 animate-spin loading-infor loading-icon"></i></div>
+                                    </div>
+                                    <div class="block_content no-padding" ng-repeat="table in tables" ng-hide="!hideLoadingTable">
+                                        <table class="z-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>{{compareUnitName}}</th>
+                                                    <th>People on previous step</th>
+                                                    <th>Average time between two steps</th>
+
+
+                    
+                                                    <th>People who on previous step continued to this step</th>
+                                                    <th>Conversion rate base on the previous step</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>                                                
+                                                <tr ng-repeat="row in table">
+                                                    <td>{{row.name}}</td>
+                                                    <td>{{row.previousStepCount}}</td>
+                                                    <td>{{row.avgTime}}</td>
+                                                    <td>{{row.currentStepCount}}</td>
+                                                    <td class="name">{{row.rateBetweenTwoStep}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <br/>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- modal -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- display step info -->
+        </form>
+    </div>
+</div>
+<!-- scripts -->
+<style scoped>@import url('vendor/theme/styles/lib/flexslider.css')</style>

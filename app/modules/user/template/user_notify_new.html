@@ -1,0 +1,366 @@
+<div ng-include="'partials/_header.html'"></div>
+<div ng-include="'partials/_sidebar.html'"></div>
+<!-- main container -->
+<div id="notify-new" class="content">
+    <div id="notify-fuelux-wizard" class="wizard">
+        <ul class="wizard-steps">
+            <li data-target="#notify-step1" class="active">
+                <span class="z-step">Soạn tin</span><img class="line-step" src="img/line_step.png" />
+            </li>
+            <li data-target="#notify-step2">
+                <span class="z-step">Đối tượng</span><img class="line-step" src="img/line_step.png" />
+            </li>
+            <li data-target="#notify-step3">
+                <span class="z-step">Kích hoạt</span><img class="line-step" src="img/line_step.png" />
+            </li>
+            <li data-target="#notify-step4" id="menu-manager" onclick="showManager('#menu-manager', '#notify-step4')">
+                <span class="z-step">Quản lý tin</span>
+            </li>
+        </ul>                            
+    </div>
+    <div id="notify-step-content" class="step-content form-page">
+        <div class="step-pane active" id="notify-step1">
+            <div class="step-description">
+                <div class="step-title">
+                    <span class="step-name">Bước 1:</span> Soạn tin thông báo cho từng khách hàng
+                </div>
+                Tạo hệ thông tin mới từ dịch vụ cũng như chiến dịch khuyến mãi của bạn.
+            </div>
+            <div class="form-wrapper">
+                <div class="col-md-8">
+                    <div class="step-wapper">
+                        <form>
+                            <div class="field-box">
+                                <span class="title">TÊN CHIẾN DỊCH</span>
+                                <div class="ui-select">
+                                    <select>
+                                        <option selected>Khuyến mãi valentin</option>
+                                        <option selected>Khuyến mãi cá t4</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="field-box">
+                                <span class="title">CHỌN LOẠI HÌNH THÔNG BÁO</span>
+                                <div class="ui-select">
+                                    <select ng-model="notifyType" ng-options="s=nt.name for nt in notifyTypes" ng-init="notifyType=notifyTypes[0]"></select>
+                                </div>
+                            </div>
+                            <div ng-switch on="notifyType.id">
+                                <div ng-switch-when="1">
+                                    <div class="sms-box">
+                                        <div class="field-box">
+                                            <span class="title">TÊN NGƯỜI GỬI</span>
+                                            <input class="form-control inline-block" type="text">
+                                        </div>
+                                        <div class="field-box">
+                                            <span class="title">NỘI DUNG</span>
+                                            <textarea class="form-control" rows="4"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div ng-switch-when="2">
+                                    <div class="email-box">
+                                        <div class="subject">
+                                            <div class="field-box">
+                                                <span class="title">TIÊU ĐỀ</span>
+                                                <input class="form-control inline-block" type="text"/>
+                                            </div>
+                                        </div>
+                                        <div class="sender">
+                                            <div class="field-box">
+                                                <span class="title">EMAIL NGƯỜI GỬI</span>
+                                                <input class="form-control inline-block" type="text"/>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="field-box">
+                                            <span class="title">Nội dung</span>
+                                            <textarea class="editor"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="step-pane" id="notify-step2">
+            <div class="step-description">
+                <div class="step-title">
+                    <span class="step-name">Bước 2:</span> Chọn lọc khách hàng trong danh sách
+                </div>
+                Tạo hệ thống tin tức mới từ dịch vụ cũng như những chiến dịch của bạn dễ dàng theo dạng danh sách và thao tác đợn giản
+            </div>
+            
+            <div class="wapper">
+                <div class="block">
+                    <div class="block_header">
+                        <div class="left control">
+                            Lọc danh sách khách hàng theo
+                        </div>
+                        <div class="right">
+                            <div class="controller">
+                                <select ng-model="event" ng-options="event as event.name_display for event in events" ng-init="event=events[0]"></select>
+                                <span class="btn-glow success"><i class="icon-bookmark-empty"></i> Lưu</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="block_content">
+                        <p class="notify"> Danh sách khách hàng nhận thông báo <span>{{event.name_display}}</span> thoả điều kiện</p>
+                        <div smg-filter metas="metas" events="events" metadata="metadata" event="event" subfilters="subfilters"></div>
+                    </div>
+                    <div class="block_footer">
+                        <div class="left method">
+                            Phương thức <div class="ui-select">
+                                            <select>
+                                                <option selected="">Gửi 1 lần</option>
+                                                <option>Gửi tự động</option>
+                                            </select>
+                                        </div>
+                        </div>
+                        <button ng-click="getAllFilter()" type="button" class="btn-glow primary right"><i class="icon-ok"></i> View</button>
+                    </div><!-- block footer-->
+                </div><!-- block -->
+                
+                <div class="block">
+                    <div class="block_header">
+                        <div class="left control">
+                            <span class="highlight">2</span> khách hàng được chọn / <span class="highlight">200</span> khách hàng thoả điều kiện
+                        </div>
+                        <input type="text" class="search right" placeholder="Tìm kiếm..."/>
+                        <div class="fee right">
+                            Chi phí: <span>40</span> T-coin
+                        </div>
+                    </div>
+                    <div class="block_content no-padding">
+                        <table class="z-table">
+                            <thead>
+                                <tr>
+                                    <th><input type="checkbox" /></th>
+                                    <th class="name">Tên</th>
+                                    <th>Tuổi</th>
+                                    <th>Giới tính</th>
+                                    <th>Vị trí</th>
+                                    <th>Lần sử dụng cuối</th>
+                                    <th>
+                                        <div class="ui-select">
+                                            <select>
+                                                <option>giờ / ngày</option>
+                                                <option>giờ / tuần</option>
+                                            </select>
+                                        </div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><input type="checkbox" /></td>
+                                    <td class="name">wayne rooney</td>
+                                    <td>28</td>
+                                    <td>Nam</td>
+                                    <td>Manchester United</td>
+                                    <td>12:23 PM 2/20/2014</td>
+                                    <td>1 giờ / ngày</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" /></td>
+                                    <td>wayne rooney</td>
+                                    <td>28</td>
+                                    <td>Nam</td>
+                                    <td>Manchester United</td>
+                                    <td>12:23 PM 2/20/2014</td>
+                                    <td>1 giờ / ngày</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!--chart here-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="step-pane" id="notify-step3">
+            <div class="step-description">
+                <div class="step-title">
+                    <span class="step-name">Bước 3:</span> Chạy chương trình thông báo gửi tới khách hàng
+                </div>
+                Tạo hệ thống tin tức mới từ dịch vụ cũng như những chiến dịch của bạn dễ dàng theo dạng danh sách và thao tác đợn giản
+            </div>
+            <div class="col-md-8">
+                <div class="step-wapper">
+                    <div id="coin-box" class="field-box">
+                        <span class="title">NGÂN SÁCH CHO CHIẾN DỊCH</span>
+                        <div class="once"><span class="coin">40</span> T-COIN</div>
+                        <div class="auto">
+                            <div class="slider" id="red" ui-slider="colorpicker.options" ng-model="colorpicker.red"></div>
+                            <div class="coin"><input ng-model="colorpicker.red"/></span>T-COIN</div>
+                        </div>
+                        <div class="report">
+                            <p><b>Số tin gửi được: <span>15</span> tin</b><i> / 1000</i></p>
+                            <p><b>Số dư hiện tại: <span>15</span> tin</b></p>
+                        </div>
+                    </div>
+                    <div class="field-box">
+                        <span class="title">THỜI ĐIỂM GỬI TIN</span>
+                        <div class="dropdown">
+                          <a class="dropdown-toggle" id="dropdown2" role="button" data-toggle="dropdown" data-target="#" href="#">
+                            <div class="input-append"><input type="text" class="form-control datetime inline-block" data-ng-model="data.dateDisplay">
+                                <span class="add-on"><i class="icon-calendar"></i></span>
+                            </div>
+                          </a>
+                          <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                            <datetimepicker data-ng-model="data.dateDropDownInput" data-datetimepicker-config="{ dropdownSelector: '#dropdown2', minView: 'minute' }" data-on-set-time="onTimeSet"/>
+                          </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="step-pane" id="notify-step4">
+            <div class="step-description">
+                <div class="step-title">
+                    Quản lý tin gửi cho khách hàng
+                </div>
+                Tạo hệ thông tin mới từ dịch vụ cũng như chiến dịch khuyến mãi của bạn.
+                <div class="btn-glow success"><i class="icon-plus"></i> Tạo Tin Mới</div>
+            </div>
+            <div class="form-wrapper">
+                <div class="col-md-12">
+                    <table class="z-table bordered-table">
+                        <thead>
+                            <tr>
+                                <th>Tự đề</th>
+                                <th>Loại hình</th>
+                                <th>Lịch trình</th>
+                                <th>Đã gửi</th>
+                                <th>
+                                    <div class="ui-select">
+                                        <select>
+                                            <option>Trạng thái</option>
+                                        </select>
+                                    </div>
+                                </th>
+                                <th>Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="even">
+                                <td class="name">Thông báo số 11</td>
+                                <td>Gửi SMS</td>
+                                <td>30 sau khi kích hoạt</td>
+                                <td>10 tin</td>
+                                <td><a class="btn-flat success">Kích hoạt</a></td>
+                                <td><i class="icon-remove-sign"></i> Xoá</td>
+                            </tr>
+                            <tr class="odd">
+                                <td class="name">Thông báo số 11</td>
+                                <td>Gửi SMS</td>
+                                <td>30 sau khi kích hoạt</td>
+                                <td>10 tin</td>
+                                <td><a class="btn-flat gray">Chờ</a></td>
+                                <td><i class="icon-remove-sign"></i> Xoá</td>
+                            </tr>
+                            <tr class="even">
+                                <td class="name">Thông báo số 11</td>
+                                <td>Gửi SMS</td>
+                                <td>30 sau khi kích hoạt</td>
+                                <td>10 tin</td>
+                                <td><a class="btn-flat gray">Chờ</a></td>
+                                <td><i class="icon-remove-sign"></i> Xoá</td>
+                            </tr>
+                            <tr class="odd">
+                                <td class="name">Thông báo số 11</td>
+                                <td>Gửi SMS</td>
+                                <td>30 sau khi kích hoạt</td>
+                                <td>10 tin</td>
+                                <td><a class="btn-flat gray">Chờ</a></td>
+                                <td><i class="icon-remove-sign"></i> Xoá</td>
+                            </tr>
+                            <tr class="even">
+                                <td class="name">Thông báo số 11</td>
+                                <td>Gửi SMS</td>
+                                <td>30 sau khi kích hoạt</td>
+                                <td>10 tin</td>
+                                <td><a class="btn-flat gray">Chờ</a></td>
+                                <td><i class="icon-remove-sign"></i> Xoá</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8 with-sidebar">
+        <div class="col-md-11">
+            <div class="notify-wizard-actions wizard-actions">
+                <button type="button" disabled class="btn-glow primary btn-prev"> 
+                    <i class="icon-chevron-left"></i> Prev
+                </button>
+                <button type="button" class="btn-glow primary btn-next" data-last="Finish">
+                    Next <i class="icon-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- scripts -->
+<script src="vendor/theme/scripts/jquery-ui-1.10.2.custom.min.js"></script>
+<script src="vendor/theme/scripts/fuelux.wizard.js"></script>
+<script src="vendor/theme/scripts/tinymce/tinymce.min.js"></script>
+<script src="vendor/theme/scripts/tinymce/themes/modern/theme.min.js"></script>
+<script>
+//winzard create notify
+$(function () {
+    var $wizard = $('#notify-fuelux-wizard'),
+        $btnPrev = $('.notify-wizard-actions .btn-prev'),
+        $btnNext = $('.notify-wizard-actions .btn-next');
+
+    $wizard.wizard().on('finished', function(e) {
+        // wizard complete code
+    }).on("changed", function(e) {
+        var step = $wizard.wizard("selectedItem");
+        // reset states
+        $btnNext.removeAttr("disabled");
+        $btnPrev.removeAttr("disabled");
+        $btnNext.show();
+
+        if (step.step === 1) {
+            $btnPrev.attr("disabled", "disabled");
+        } else if (step.step === 4) {
+            $btnNext.hide();
+            $btnPrev.hide();
+        }
+    });
+
+    $btnPrev.on('click', function() {
+        $wizard.wizard('previous');
+    });
+    $btnNext.on('click', function() {
+        $wizard.wizard('next');
+    });
+});
+
+/** show tab **/
+function showManager(menu, tab){
+    $('.wizard-steps li').removeClass('active');
+    $('.step-pane').removeClass('active');
+    $('.wizard-actions').hide();
+    
+    $(menu).addClass('active');
+    $(tab).addClass('active');
+
+}
+
+/** mce editor **/
+tinymce.init({
+    selector: "textarea.editor"
+ });
+ 
+/** slider **/
+$(".slider-sample2").slider({
+    range: "min",
+    value: 130,
+    min: 1,
+    max: 500
+});
+</script>

@@ -1,0 +1,58 @@
+<div class="login-wrapper login-bg">
+    <a href="index.html">
+        <img class="logo non-background" src="img/logo-white.png" alt="logo" />
+    </a>
+
+    <div class="box">
+        <div class="content-wrap">
+            <form name="loginForm">
+                <h6>Sign in</h6>
+                <input class="form-control" type="text" placeholder="Email address" ng-model="username" name="email" required ng-minlength=6>
+                <input class="form-control" type="password" placeholder="Password" ng-model="password" name="password" required g-minlength=6>
+                <a href="#/forget_password" class="forgot">Forgot your password?</a>
+                <div class="remember">
+                    <input id="remember-me" type="checkbox" ng-model="rememberme">
+                    <label for="remember-me">Remember me</label>
+                </div>
+                <div ng-hide="hideLoading" class="loading-container-infor" style="margin-bottom: 10px;">
+                    <div title="Code: 0xe800" class="the-icons span3"><i class="icon-fontello-spin6 animate-spin loading-infor loading-icon"></i></div>
+                </div>
+                <div class="forget" style="margin-bottom: 10px;">
+                    <a ng-hide="hideMessage" style="color: rgb(112, 38, 38)">{{message}}</a>
+                </div>
+                <button type="submit" class="btn-glow primary login" ng-click="login()" ng-disabled="loginForm.$invalid">Sign In</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="no-account">
+        <p>You did not have account?</p>
+        <a href="#signup">Sign up now</a>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $('#wrapper').css("padding", "0px");
+    $('#width_wrapper').width("100%");
+</script>
+<!-- <script>
+    console.log('start connection');
+    var conn = new ab.Session(
+        'ws://116.251.210.100:8080' // The host (our Ratchet WebSocket server) to connect to
+      , function() {            // Once the connection has been established
+            console.log('connected');
+            conn.subscribe('kittensCategory', function(topic, data) {
+                // This is where you would add the new article to the DOM (beyond the scope of this tutorial)
+                console.log('New article published to category "' + topic + '" : ' + data.title);
+            });
+        }
+      , function() {            // When the connection is closed
+            console.warn('WebSocket connection closed');
+        }
+      , {                       // Additional parameters, we're ignoring the WAMP sub-protocol for older browsers
+            'skipSubprotocolCheck': true
+        }
+    );
+</script> -->
+
+<style scoped>@import url('vendor/theme/styles/compiled/signin.css')</style>    

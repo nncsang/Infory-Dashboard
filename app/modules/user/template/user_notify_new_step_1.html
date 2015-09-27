@@ -1,0 +1,140 @@
+<div ng-include="'partials/_header.html'"></div>
+<div ng-include="'partials/_sidebar.html'"></div>
+<!-- main container -->
+<div id="notify-new" class="content">
+    <div id="notify-fuelux-wizard" class="wizard">
+        <ul class="wizard-steps">
+            <li data-target="#notify-step1" class="active">
+                <span class="z-step">COMPOSE</span><img class="line-step non-background" src="img/line_step.png" />
+            </li>
+            <li data-target="#notify-step2">
+                <span class="z-step">TARGET</span><img class="line-step non-background" src="img/line_step.png" />
+            </li>
+            <li data-target="#notify-step3">
+                <span class="z-step">ACTIVATE</span><img class="line-step non-background" src="img/line_step.png" />
+            </li>
+            <li data-target="#notify-step4" id="menu-manager" onclick="showManager('#menu-manager', '#notify-step4')">
+                <span class="z-step">MANAGE</span>
+            </li>
+        </ul>                            
+    </div>
+    <div id="notify-step-content" class="step-content form-page">
+        <div class="step-pane active" id="notify-step1">
+            <div class="step-description">
+                <div class="step-title">
+                    <span class="step-name">STEP 1:</span> COMPOSE YOUR MESSAGE
+                </div>
+                Fill campaign name, select sending method and type your content which you want to send to your customers
+            </div>
+            <div class="form-wrapper">
+                <div class="col-md-8">
+                    <div class="step-wapper">
+                        <form>
+                            <div class="field-box">
+                                <div class="field-box">
+                                            <span class="title">Name</span>
+                                            <input class="form-control inline-block" type="text" ng-model="name" ng-change="updateValidation(3, 0)">
+                                            <span class="alert-msg" ng-show="validation[3][0]">
+                                                            <i class="icon-remove-sign"></i>
+                                                        Name is required
+                                            </span>
+                                </div>
+                            </div>
+                            <div class="field-box">
+                                <span class="title">Type of Notification</span>
+                                <div class="ui-select">
+                                    <select ng-model="notifyType" ng-options="notifyType as notifyType.name_display for notifyType in notifyTypes"></select>
+                                </div>
+                            </div>
+                            <div ng-switch on="notifyType.name">
+                                <div ng-switch-when="sms">
+                                    <div class="sms-box">
+                                        <div class="field-box" ng-hide = "true">
+                                            <span class="title">Sender name</span>
+                                            <input class="form-control inline-block" type="text" ng-model="$parent.sms_sender" ng-change="updateValidation(0, 0)" >
+                                            <span class="alert-msg" ng-show="$parent.validation[0][0]">
+                                                            <i class="icon-remove-sign"></i>
+                                                        Sender name is required
+                                            </span>
+                                        </div>
+                                        <div class="field-box">
+                                            <span class="title">Content</span>
+                                            <textarea class="form-control" rows="4" ng-model="$parent.sms_content" ng-change="updateValidation(0, 1)"></textarea>
+                                            <span class="alert-msg" ng-show="validation[0][1]">
+                                                            <i class="icon-remove-sign"></i>
+                                                        Content is requireds
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div ng-switch-when="email">
+                                    <div class="email-box">
+                                        <div class="subject">
+                                            <div class="field-box">
+                                                <span class="title">Title</span>
+                                                <input class="form-control inline-block" type="text" ng-model="$parent.email_title" ng-change="updateValidation(1, 0)"/>
+                                                <span class="alert-msg" ng-show="validation[1][0]">
+                                                            <i class="icon-remove-sign"></i>
+                                                        Title is required
+                                                </span>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="sender">
+                                            <div class="field-box">
+                                                <span class="title">Sender email</span>
+                                                <input class="form-control inline-block" type="text" ng-model="$parent.email_sender" ng-change="updateValidation(1, 1)"/>
+                                                <span class="alert-msg" ng-show="validation[1][1]">
+                                                            <i class="icon-remove-sign"></i>
+                                                        Sender email is required
+                                            </span>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="field-box">
+                                            <span class="title">Content</span>
+                                            <textarea class="editor" ng-model="$parent.email_content" ng-change="updateValidation(1, 2)"></textarea>
+                                            <span class="alert-msg" ng-show="validation[1][2]">
+                                                            <i class="icon-remove-sign"></i>
+                                                        Content is required
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div ng-switch-when="in-app">
+                                    <div class="sms-box">
+                                        <div class="field-box">
+                                            <span class="title">Content</span>
+                                            <textarea class="form-control" rows="4" ng-model="$parent.in_app_content" ng-change="updateValidation(2, 0)"></textarea>
+                                            <span class="alert-msg" ng-show="validation[2][0]">
+                                                            <i class="icon-remove-sign"></i>
+                                                        Content is required
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8 with-sidebar">
+        <div class="col-md-11">
+            <div class="notify-wizard-actions wizard-actions">
+                <button type="button" disabled class="btn-glow primary btn-prev"> 
+                    <i class="icon-chevron-left"></i> Back
+                </button>
+                <button type="button" class="btn-glow primary btn-next" ng-click="goToStep2()" ng-disabled="!isCanGo">
+                    Next <i class="icon-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- scripts -->
+<script src="vendor/theme/scripts/jquery-ui-1.10.2.custom.min.js"></script>
+<script src="vendor/theme/scripts/fuelux.wizard.js"></script>
+<script src="vendor/theme/scripts/tinymce/tinymce.min.js"></script>
+<script src="vendor/theme/scripts/tinymce/themes/modern/theme.min.js"></script>

@@ -1,0 +1,81 @@
+<div ng-include="'partials/_header.html'"></div>
+<div ng-include="'partials/_sidebar.html'"></div>
+<!-- main container -->
+<div id="notify-new" class="content">
+    <div id="notify-fuelux-wizard" class="wizard">
+        <ul class="wizard-steps">
+            <li data-target="#notify-step1">
+                <span class="z-step">COMPOSE</span><img class="line-step non-background" src="img/line_step.png" />
+            </li>
+            <li data-target="#notify-step2">
+                <span class="z-step">TARGET</span><img class="line-step non-background" src="img/line_step.png" />
+            </li>
+            <li data-target="#notify-step3" class="active">
+                <span class="z-step">ACTIVATE</span><img class="line-step non-background" src="img/line_step.png" />
+            </li>
+            <li data-target="#notify-step4" id="menu-manager" onclick="showManager('#menu-manager', '#notify-step4')">
+                <span class="z-step">MANAGE</span>
+            </li>
+        </ul>                            
+    </div>
+    <div id="notify-step-content" class="step-content form-page">
+        <div class="step-pane active" id="notify-step3">
+            <div class="step-description">
+                <div class="step-title">
+                    <span class="step-name">STEP 3:</span> ACTIVATE TO SEND YOUR MESSAGE
+                </div>
+                Select time to send message to your customer. 
+            </div>
+            <div class="col-md-8">
+                <div class="step-wapper">
+                    <div id="coin-box" class="field-box">
+                        <span class="title">Budget</span>
+                        <div class="once"><span class="coin">{{colorpicker.red}}</span> T-COIN</div>
+                        <div class="auto"  ng-hide="sendMethod.name=='once'">
+                            <div class="slider" id="red" ui-slider="colorpicker.options" ng-model="colorpicker.red"></div>
+                            <div class="coin"><input ng-model="colorpicker.red"/></span>T-COIN</div>
+                        </div>
+                        <div class="report">
+                            <p><b>Expected message: <span>{{colorpicker.red / 10}}</span> tin</b></p>
+                            <p><b>Current balance: <span>{{balance}}</span> T-Coin</b></p>
+                        </div>
+                    </div>
+                    <div class="field-box">
+                        <span class="title">Time</span>
+                        <div class="dropdown">
+                          <a class="dropdown-toggle" id="dropdown2" role="button" data-toggle="dropdown" data-target="#" href="#">
+                            <div class="select-date btn-glow">
+                                <div class="input-append"><input type="text" data-ng-model="data.dateDisplay" style="width: 130px;"/>
+                                    <span class="add-on hide"><i class="icon-calendar"></i></span>
+                                </div>
+                                <i class="icon-sort-down"></i>
+                            </div>
+                          </a>
+                          <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                            <datetimepicker data-ng-model="data.dateDropDownInput" data-datetimepicker-config="{ dropdownSelector: '#dropdown2', minView: 'minute' }" data-on-set-time="onTimeSet"/>
+                          </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <div class="col-md-8 with-sidebar">
+        <div class="col-md-11">
+            <div class="notify-wizard-actions wizard-actions">
+                <button type="button" class="btn-glow primary btn-prev" ng-click="goToStep2()"> 
+                    <i class="icon-chevron-left"></i> Back
+                </button>
+                <button type="button" class="btn-glow primary btn-next" ng-click="goToStep4()">
+                    Next <i class="icon-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- scripts -->
+<script src="vendor/theme/scripts/jquery-ui-1.10.2.custom.min.js"></script>
+<script src="vendor/theme/scripts/fuelux.wizard.js"></script>
+<script src="vendor/theme/scripts/tinymce/tinymce.min.js"></script>
+<script src="vendor/theme/scripts/tinymce/themes/modern/theme.min.js"></script>

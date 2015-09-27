@@ -1,0 +1,73 @@
+<div ng-include="'partials/_header.html'"></div>
+<div ng-include="'partials/_sidebar.html'"></div>
+<!-- main container -->
+<div id="promotion-new" class="content">
+    <div id="promotion-fuelux-wizard" class="wizard">
+        <ul class="wizard-steps">
+            <li data-target="#promotion-step1">
+                <span class="z-step">TYPE</span><img class="line-step non-background" src="img/line_step.png" />
+            </li>
+            <li data-target="#promotion-step2" >
+                <span class="z-step">INFORMATION</span><img class="line-step non-background" src="img/line_step.png" />
+            </li>
+            <li data-target="#promotion-step3">
+                <span class="z-step">CONTENT</span><img class="line-step non-background" src="img/line_step.png" />
+            </li>
+            <li data-target="#promotion-step4" class="active">
+                <span class="z-step">MANAGE</span>
+            </li>
+        </ul>                            
+    </div>
+    <div id="promotion-step-content" class="step-content form-page">
+        <form>
+            <div class="step-pane active" id="promotion-step4">
+                <div class="step-description">
+                    <div class="step-title">
+                        <span class="step-name">MANAGE YOUR EVENTS</span>
+                    </div>
+                    All of your event will be managed here. It's include all information about event listing
+                    <div>
+                        <a class="btn-flat success right" ng-click="goToStep1()">BUILD A EVENT</a>
+                    </div>
+                </div>
+                <div class="form-wrapper">
+                    <div class="col-md-12">
+                        <div class="step-wapper">
+                            <div ng-hide="hideLoading" class="loading-container-image-product" style="margin-top:200px;">
+                                <div title="Code: 0xe800" class="the-icons span3"><i class="icon-fontello-spin6 animate-spin loading-product-image loading-icon"></i></div>
+                            </div>
+                            <div class="step-success" ng-hide="!hideLoading" >
+                                <table class="z-table bordered-table">
+                                    <thead>
+                                        <tr>
+                                            <th class="center">
+                                                <select class="z-select" ng-model="orderPromotion" ng-options="orderPromotion as orderPromotion.name_display for orderPromotion in orderPromotions" ng-init="orderPromotion=orderPromotions[0]" ng-change="sortPromotionList()"></select>
+                                            </th>
+                                            <th class="center">Campaign</th>
+                                            <th class="center">Duration</th>
+                                            <th class="center">
+                                                <select class="z-select" ng-model="statusType" ng-options="statusType as statusType.name_display for statusType in statusTypes" ng-init="statusType=statusTypes[0]" ng-change="sortPromotionListByStatus()"></select>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="{{promotion.stt}}" ng-repeat="promotion in dataInCurrentPage">
+                                            <td class="bold">{{promotion.typeDisplay}}</td>
+                                            <td style="cursor:pointer" class="name" ng-click="editPromotion(promotion.id)">{{promotion.name}}</td>
+                                            <td>{{promotion.time}}</td>
+                                            <td class="center"><a class="{{$parent.promotionListFull[promotion.index].statusClass}}" ng-click="changeStatus(promotion.index)" style="width:auto;">{{$parent.promotionListFull[promotion.index].statusName}}</a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <spagination ng-hide="dataInCurrentPage.length == 0" class="right" total-items="totalItems" page="currentPage" on-select-page="pageChanged(page)" items-per-page="itemsPerPage" boundary-links="false" rotate="false" max-size="10" style="width: 650px;"></spagination>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+            <!-- display step info -->
+        </form>
+    </div>
+</div>
+<!-- scripts -->
+<style scoped>@import url('vendor/theme/styles/lib/flexslider.css')</style>

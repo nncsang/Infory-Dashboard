@@ -1,0 +1,132 @@
+<ul>
+    <li>
+        <div class="property col-md-4">Logo</div>
+        <div ng-hide="hideLoadingInfor" class="loading-container-infor">
+            <div title="Code: 0xe800" class="the-icons span3"><i class="icon-fontello-spin6 animate-spin loading-infor loading-icon"></i></div>
+        </div>
+        <div class="value col-md-8" ng-hide="!hideLoadingInfor">
+            <img ng-src="{{brand.logo}}" width="45" height="45" />
+            <input id="logoInput" type="file" ng-file-select="changeLogo($files)" />
+        </div>
+    </li>
+    <li>
+        <div class="property col-md-4">Cover</div>
+        <div ng-hide="hideLoadingInfor" class="loading-container-infor">
+            <div title="Code: 0xe800" class="the-icons span3"><i class="icon-fontello-spin6 animate-spin loading-infor loading-icon"></i></div>
+        </div>
+        <div class="value col-md-8" ng-hide="!hideLoadingInfor">
+            <img ng-src="{{brand.cover}}" width="45" height="45" />
+            <input type="file" id="cover" name="cover" ng-file-select="changeCover($files)" />
+        </div>
+    </li>
+
+    <li>
+        <div class="property col-md-4">Brandname</div>
+        <div ng-hide="hideLoadingInfor" class="loading-container-infor">
+            <div title="Code: 0xe800" class="the-icons span3"><i class="icon-fontello-spin6 animate-spin loading-infor loading-icon"></i></div>
+        </div>
+        <div class="value col-md-8" ng-hide="!hideLoadingInfor">
+            <div class="overview" ng-hide="bundle.editName">
+                <span>{{bundle.brandName}}</span>
+                <a ng-click="bundle.editName = true" style="cursor:pointer" >edit</a>
+            </div>
+            <div class="edit" ng-hide="!bundle.editName">
+                <input ng-model="bundle.brandName" class="form-control inline-block"/>
+                <i ng-click="changeName()" class="icon-ok-sign success" style="cursor:pointer" ></i>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="property col-md-4">Type of business:</div>
+        <div ng-hide="hideLoadingInfor" class="loading-container-infor">
+            <div title="Code: 0xe800" class="the-icons span3"><i class="icon-fontello-spin6 animate-spin loading-infor loading-icon"></i></div>
+        </div>
+        <div class="value col-md-8" ng-hide="!hideLoadingInfor">
+            <div class="overview" ng-hide="bundle.editGroupShop">
+                <span>{{bundle.groupShop}}</span>
+                <a ng-click="bundle.editGroupShop = true" style="cursor:pointer" >edit</a>
+            </div>
+            <div class="edit" ng-hide="!bundle.editGroupShop">
+                <div class="controller">
+                    <div class="z-dropdown-wapper">
+                        <div class="z-dropdown">
+                            <a class="trigger" style="cursor:pointer"><span>{{bundle.groupShop}}</span><i class="icon-sort-down"></i></a>
+                            <ul>
+                                <li ng-repeat="groupShop in groupShops"><a ng-click="changeGroupShop(groupShop.name)" style="cursor:pointer">{{groupShop.name}}</a></li>
+                            </ul>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="property col-md-4">Description</div>
+        <div ng-hide="hideLoadingInfor" class="loading-container-infor">
+            <div title="Code: 0xe800" class="the-icons span3"><i class="icon-fontello-spin6 animate-spin loading-infor loading-icon"></i></div>
+        </div>
+        <div class="value col-md-8" ng-hide="!hideLoadingInfor">
+            <div class="overview" ng-hide="bundle.editDescription">
+                <span class="description ellipsis">{{bundle.brandDescription}}</span>
+                <a ng-click="bundle.editDescription = true; updateEditor()" style="cursor:pointer" >edit</a>
+            </div>
+            <div class="edit" ng-hide="!bundle.editDescription">
+                <textarea ng-auto-expand ng-model="bundle.brandDescription" class="form-control inline-block text-area-editor" id="editor"></textarea>
+                <!-- <textarea ng-model="bundle.brandDescription" class="form-control inline-block" rows="5"></textarea> -->
+                <i ng-click="changeDescription()" class="icon-ok-sign success" style="cursor:pointer" ></i>
+            </div>
+        </div>
+    </li>
+
+    <li>
+        <div class="property col-md-4">Website</div>
+        <div ng-hide="hideLoadingInfor" class="loading-container-infor">
+            <div title="Code: 0xe800" class="the-icons span3"><i class="icon-fontello-spin6 animate-spin loading-infor loading-icon"></i></div>
+        </div>
+        <div class="value col-md-8" ng-hide="!hideLoadingInfor">
+            <div class="overview" ng-hide="bundle.editWebsite">
+                <span><a href="{{bundle.brandWebsite}}">{{bundle.brandWebsite}}</a></span>
+                <a ng-click="bundle.editWebsite = true" style="cursor:pointer" >edit</a>
+            </div>
+            <div class="edit" ng-hide="!bundle.editWebsite">
+                <input ng-model="bundle.brandWebsite" class="form-control inline-block"/>
+                <i ng-click="changeWebsite()" class="icon-ok-sign success" style="cursor:pointer" ></i>
+            </div>
+        </div>
+    </li>
+
+    <li>
+        <div class="property col-md-4">Fanpage</div>
+        <div ng-hide="hideLoadingInfor" class="loading-container-infor">
+            <div title="Code: 0xe800" class="the-icons span3"><i class="icon-fontello-spin6 animate-spin loading-infor loading-icon"></i></div>
+        </div>
+        <div class="value col-md-8" ng-hide="!hideLoadingInfor">
+            <div class="overview" ng-hide="bundle.editFanpage">
+                <span><a href="{{bundle.brandFanpage}}">{{bundle.brandFanpage}}</a></span>
+                <a ng-click="bundle.editFanpage = true" style="cursor:pointer" >edit</a>
+            </div>
+            <div class="edit" ng-hide="!bundle.editFanpage">
+                <input ng-model="bundle.brandFanpage" class="form-control inline-block"/>
+                <i ng-click="changeFanpage()" class="icon-ok-sign success" style="cursor:pointer" ></i>
+            </div>
+        </div>
+    </li>
+
+    <li ng-hide="true">
+        <div class="property col-md-4">Contact</div>
+        <div ng-hide="hideLoadingInfor" class="loading-container-infor">
+            <div title="Code: 0xe800" class="the-icons span3"><i class="icon-fontello-spin6 animate-spin loading-infor loading-icon"></i></div>
+        </div>
+        <div class="value col-md-8" ng-hide="!hideLoadingInfor">
+            <div class="overview" ng-hide="bundle.editPhone">
+                <span><a href="{{bundle.brandPhone}}">{{bundle.brandPhone}}</a></span>
+                <a ng-click="bundle.editPhone = true" style="cursor:pointer" >edit</a>
+            </div>
+            <div class="edit" ng-hide="!bundle.editPhone">
+                <input ng-model="bundle.brandPhone" class="form-control inline-block"/>
+                <i ng-click="changePhone()" class="icon-ok-sign success" style="cursor:pointer" ></i>
+            </div>
+        </div>
+    </li>
+</ul>

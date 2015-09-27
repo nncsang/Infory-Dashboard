@@ -1,0 +1,439 @@
+<div ng-include="'partials/_header.html'"></div>
+<div ng-include="'partials/_sidebar.html'"></div>
+<!-- main container -->
+<div id="promotion-new" class="content">
+    <div id="promotion-fuelux-wizard" class="wizard">
+        <ul class="wizard-steps">
+            <li data-target="#promotion-step1" class="active">
+                <span class="z-step">Event</span><img class="line-step" src="img/line_step.png" />
+            </li>
+            <li data-target="#promotion-step2">
+                <span class="z-step">Information</span><img class="line-step" src="img/line_step.png" />
+            </li>
+            <li data-target="#promotion-step3">
+                <span class="z-step">Content</span><img class="line-step" src="img/line_step.png" />
+            </li>
+            <li data-target="#promotion-step4">
+                <span class="z-step">Finish</span>
+            </li>
+        </ul>                            
+    </div>
+    <div id="promotion-step-content" class="step-content form-page">
+        <form>
+            <div class="step-pane active" id="promotion-step1">
+                <div class="step-description">
+                    <div class="step-title">
+                        <span class="step-name">Step 1:</span> Select type of your event.
+                    </div>
+                    Build information for your campaign
+                </div>
+                <div class="form-wrapper">
+                    <div class="col-md-8">
+                        <div class="step-wapper">
+                            <div class="field-box">
+                                <div class="flexslider">
+                                  <ul class="slides">
+                                    <li>
+                          	    	    <img src="img/kitchen_adventurer_cheesecake_brownie.jpg" />
+                          	    		</li>
+                          	    		<li>
+                          	    	    <img src="img/kitchen_adventurer_lemon.jpg" />
+                          	    		</li>
+                          	    		<li>
+                          	    	    <img src="img/kitchen_adventurer_donut.jpg" />
+                          	    		</li>
+                          	    		<li>
+                          	    	    <img src="img/kitchen_adventurer_caramel.jpg" />
+                          	    		</li>
+                                  </ul>
+                                </div>
+                            </div>
+                            <div class="field-box">
+                                <span class="title">TYPE OF EVENT</span>
+                                <div class="ui-select">
+                                    <select ng-model="promotionType" ng-options="promotionType as promotionType.name_display for promotionType in promotionTypes" ng-init="promotionType=promotionTypes[0]"></select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4" style="height: 0;">
+                    <div class="step-view-content">
+                        PREVIEW
+                        <tabset>
+                            <tab>
+                              <tab-heading>
+                                <i class="icon-reorder"></i>
+                              </tab-heading>
+                              <table class="table attribute-table">
+                                <thead>
+                                    <tr><th>Property</th><th>Content</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>Type</td><td>{{promotionType.name_display}}</td></tr>
+                                    <tr><td>Campaign</td><td>{{name}}</td></tr>
+                                    <tr><td>Time</td><td>{{time}}</td></tr>
+                                    <tr><td>Description</td><td>{{description}}</td></tr>
+                                </tbody>
+                              </table>
+                            </tab>
+                            <tab>
+                              <tab-heading>
+                                <i class="icon-mobile-phone"></i>
+                              </tab-heading>
+                              <img src="http://wowcamera.net/image/cache/data/phone/iphone-5-16gb-white-360x360.jpg" />
+                            </tab>
+                        </tabset>
+                    </div>
+                </div>
+
+                <div class="col-md-8 with-sidebar">
+                    <div class="col-md-11">
+                        <div class="promotion-wizard-actions wizard-actions">
+                            <button type="button" disabled class="btn-glow primary btn-prev"> 
+                                <i class="icon-chevron-left"></i> Prev
+                            </button>
+                            <button type="button" class="btn-glow primary btn-next" data-last="Finish">
+                                Next <i class="icon-chevron-right"></i>
+                            </button>
+                            <button type="button" class="btn-glow success btn-finish">
+                                Back
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="step-pane" id="promotion-step2">
+                <div class="step-description">
+                    <div class="step-title">
+                        <span class="step-name">Bước 2:</span> Thông tin chiến dịch
+                    </div>
+                    Tạo hệ thống tin tức mới từ dịch vụ cũng như những chiến dịch của bạn dễ dàng theo dạng danh sách và thao tác đợn giản
+                </div>
+                <div class="form-wrapper">
+                    <div class="col-md-8">
+                        <form class="form-horizontal" role="form" name="updateForm">
+                           
+                        </form>
+                        <form class="step-wapper" name="step_2_form">
+                            <div class="field-box">
+                                <span class="title">TÊN CHIẾN DỊCH</span>
+                                <input class="form-control inline-block" name="promotionName" type="text" ng-model="name" required/>
+
+                                <span class="alert-msg" ng-show="step_2_form.promotionName.$error.required">
+                                    <i class="icon-remove-sign"></i>
+                                    Vui lòng nhập tên chiến dịch
+                                </span>
+                            </div>
+                            <div class="field-box">
+                                <span class="title">THỜI GIAN</span>
+                                <div class="dropdown inline-block">
+                                  <a class="dropdown-toggle" id="dropdown2" role="button" data-toggle="dropdown" data-target="#" href="#">
+                                    <div class="input-append"><input type="text" class="form-control date inline-block" data-ng-model="data[0].dateDisplay">
+                                        <span class="add-on hide"><i class="icon-calendar"></i></span>
+                                    </div>
+                                  </a>
+                                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                    <datetimepicker data-ng-model="data[0].dateDropDownInput" data-datetimepicker-config="{ dropdownSelector: '#dropdown2', minView: 'minute' }" data-on-set-time="onTimeSetOne"/>
+                                  </ul>
+                                </div>
+                                <div class="dropdown inline-block">
+                                  <a class="dropdown-toggle" id="dropdown3" role="button" data-toggle="dropdown" data-target="#" href="#">
+                                    <div class="input-append"><input type="text" class="form-control date inline-block" data-ng-model="data[1].dateDisplay">
+                                        <span class="add-on hide"><i class="icon-calendar"></i></span>
+                                    </div>
+                                  </a>
+                                  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                    <datetimepicker data-ng-model="data[1].dateDropDownInput" data-datetimepicker-config="{ dropdownSelector: '#dropdown3', minView: 'minute' }" data-on-set-time="onTimeSetTwo"/>
+                                  </ul>
+                                </div> 
+                            </div>
+                            <div class="field-box">
+                                <span class="title">MÔ TẢ</span>
+                                <div class="block">
+                                    <div class="block_header">
+                                        <div class="left control">
+                                            <span class="highlight">{{numOfSelectedShops}}</span> của hàng được chọn
+                                        </div>
+                                        <input type="text" class="search right small-input no-margin" placeholder="Tìm kiếm..." ng-model="searchText"/>
+                                    </div>
+                                    <div class="block_content no-padding">
+                                        <table class="z-table">
+                                            <thead>
+                                                <tr>
+                                                    <th><input type="checkbox" ng-model="checkAllShops" ng-change="checkAll()"/></th>
+                                                    <th class="name">Tên cửa hàng</th>
+                                                    <th>Địa chỉ</th>
+                                                </tr>
+                                            </thead>
+
+                                            <tbody  ng-repeat="shop in brand.shops | filter:searchText">
+                                                <tr>
+                                                    <td><input type="checkbox" ng-model="$parent.selectedShops[shop.selectedId]" ng-change="updateSelectedShops()"></td>
+                                                    <td class="name">{{shop.name}}</td>
+                                                    <td>{{shop.full_address}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="col-md-8 with-sidebar">
+                        <div class="col-md-11">
+                            <div class="promotion-wizard-actions wizard-actions">
+                                <button type="button" class="btn-glow primary btn-prev"> 
+                                    <i class="icon-chevron-left"></i> Prev
+                                </button>
+                                <button class="btn-glow primary btn-next" ng-disabled="{{step_2_form.$invalid || numOfSelectedShops == 0}}" data-last="Finish">
+                                    Next <i class="icon-chevron-right"></i>
+                                </button>
+                                <button type="button" class="btn-glow success btn-finish">
+                                    Back
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="step-pane" id="promotion-step3">
+                <div class="step-description">
+                    <div class="step-title">
+                        <span class="step-name">Bước 3:</span> chọn loại khuyến mãi hoặc sự kiện cho chiến dịch của bạn.
+                    </div>
+                    Tạo hệ thông tin mới từ dịch vụ cũng như chiến dịch khuyến mãi của bạn.
+                </div>
+                <div class="form-wrapper">
+                    <div class="col-md-7">
+                        <div class="step-wapper">
+                            <div ng-switch on="promotionType.name">
+                                <div ng-switch-when="voucher" class="voucher-box">
+                                    <div class="z-box">
+                                        <div class="z-box-header">
+                                            <div class="left">
+                                                <span class="circle-box">A</span>
+                                            </div>
+                                            <i class="icon-remove-sign right"></i>
+                                        </div>
+                                        <div class="z-box-content">
+                                            <div class="detail-voucher">
+                                                <div class="field-box">
+                                                    <div class="inline-block">
+                                                        <span class="title">MÔ TẢ PHẦN QUÀ</span>
+                                                        <input type="text" class="description form-control"/>
+                                                    </div>
+                                                    <div class="inline-block">
+                                                        <span class="title">SỐ LƯỢNG</span>
+                                                        <input type="text" class="quality form-control"/>
+                                                    </div>
+                                                    <div class="inline-block">
+                                                        <label class="checkbox-inline">
+                                                          <input type="checkbox" id="inlineCheckbox1" value="option1"> Không giới hạn
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="field-box">
+                                                    <span class="title">ĐIỀU KIỆN</span>
+                                                    <div class="condition">
+                                                        <span class="title">Đối tượng</span>
+                                                        <input type="text" class="form-control" />
+                                                        <br />
+                                                        <span class="title">Thời gian</span>
+                                                        <label class="checkbox-inline">
+                                                          <input type="checkbox" id="inlineCheckbox1" value="1"/> Thứ 2
+                                                        </label>
+                                                        <label class="checkbox-inline">
+                                                          <input type="checkbox" id="inlineCheckbox1" value="1"/> Thứ 3
+                                                        </label>
+                                                        <label class="checkbox-inline">
+                                                          <input type="checkbox" id="inlineCheckbox1" value="1"/> Thứ 4
+                                                        </label>
+                                                        <label class="checkbox-inline">
+                                                          <input type="checkbox" id="inlineCheckbox1" value="1"/> Thứ 5
+                                                        </label>
+                                                        <div class="clearfix"></div>
+                                                        <label class="checkbox-inline">
+                                                          <input type="checkbox" id="inlineCheckbox1" value="1"/> Thứ 6
+                                                        </label>
+                                                        <label class="checkbox-inline">
+                                                          <input type="checkbox" id="inlineCheckbox1" value="1"/> Thứ 7
+                                                        </label>
+                                                        <label class="checkbox-inline">
+                                                          <input type="checkbox" id="inlineCheckbox1" value="1"/> Chủ nhật
+                                                        </label>
+                                                        <label class="checkbox-inline">
+                                                          <input type="checkbox" id="inlineCheckbox1" value="option1"/> Cả tuần
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </div>
+                                    <div class="add-bar shadow">
+                                        <i class="icon-plus"></i> THÊM PHẦN QUÀ
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="news-box" ng-switch-when="news">
+                                    <div class="field-box">
+                                        <span class="title">TÊN TIÊU ĐỀ</span>
+                                        <input class="form-control inline-block" type="text"/>
+                                    </div>
+                                    <div class="field-box">
+                                        <span class="title">HÌNH ẢNH</span>
+                                        <input type="file" class="form-control inline-block"/>  
+                                    </div>
+                                    <div class="field-box">
+                                        <span class="title">TÊN TIÊU ĐỀ</span>
+                                        <textarea placeholder="Nhập nội dung" class="form-control" rows="6"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--
+                            <div class="field-box">
+                                <span class="title">Phần thưởng</span>
+                                <input placeholder="Điều kiện" class="form-control inline-block small-input" type="text"/><input placeholder="Phần thưởng" class="form-control inline-block small-input" type="text"/>
+                            </div>
+                            <div class="field-box">
+                                <span class="title">LOẠI THẺ</span>
+                                <div class="ui-select">
+                                    <select>
+                                        <option selected>Dropdown</option>
+                                        <option>Custom selects</option>
+                                        <option>Pure css styles</option>
+                                    </select>
+                                </div> 
+                            </div>
+                            <div class="field-box">
+                                <span class="title">SỐ LƯỢNG</span>
+                                <div class="ui-select">
+                                    <select>
+                                        <option selected>Dropdown</option>
+                                        <option>Custom selects</option>
+                                        <option>Pure css styles</option>
+                                    </select>
+                                </div> 
+                            </div>
+                            <div class="field-box">
+                                <span class="title">THỜI GIAN ÁP DỤNG</span>
+                                <div class="ui-select">
+                                    <select>
+                                        <option selected>Dropdown</option>
+                                        <option>Custom selects</option>
+                                        <option>Pure css styles</option>
+                                    </select>
+                                </div> 
+                            </div>
+                            -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8 with-sidebar">
+                        <div class="col-md-11">
+                            <div class="promotion-wizard-actions wizard-actions">
+                                <button type="button" disabled class="btn-glow primary btn-prev"> 
+                                    <i class="icon-chevron-left"></i> Prev
+                                </button>
+                                <button type="button" class="btn-glow primary btn-next" data-last="Finish" ng-disabled="{{step_2_form.$invalid || numOfSelectedShops == 0}}">
+                                    Next <i class="icon-chevron-right"></i>
+                                </button>
+                                <button type="button" class="btn-glow success btn-finish">
+                                    Back
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            <div class="step-pane" id="promotion-step4">
+                <div class="step-description">
+                    <div class="step-title">
+                        <span class="step-name">Hoàn thành:</span> chọn loại khuyến mãi hoặc sự kiện cho chiến dịch của bạn.
+                    </div>
+                    Tạo hệ thông tin mới từ dịch vụ cũng như chiến dịch khuyến mãi của bạn.
+                </div>
+                <div class="form-wrapper">
+                    <div class="col-md-12">
+                        <div class="step-wapper">
+                            <div class="step-success">
+                                <table class="z-table bordered-table">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                <div class="ui-select">
+                                                    <select ng-model="orderPromotion" ng-options="orderPromotion as orderPromotion.name_display for orderPromotion in orderPromotions" ng-init="orderPromotion=orderPromotions[0]" ng-change="sortPromotionList()"></select>
+                                                </div>
+                                            </th>
+                                            <th>Chiến dịch</th>
+                                            <th>Thời gian</th>
+                                            <th>Trạng thái</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody ng-repeat="promotion in promotionList">
+                                        <tr class="{{promotion.stt}}">
+                                            <td>{{promotion.typeDisplay}}</td>
+                                            <td class="name">{{promotion.name}}</td>
+                                            <td>{{promotion.time}}</td>
+                                            <td><a class="{{promotion.statusClass}}">{{promotion.status}}</a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- display step info -->
+        </form>
+    </div>
+</div>
+<!-- scripts -->
+<style scoped>@import url('vendor/theme/styles/lib/flexslider.css')</style>
+<script src="vendor/theme/scripts/jquery-ui-1.10.2.custom.min.js"></script>
+<script src="vendor/theme/scripts/fuelux.wizard.js"></script>
+<script src="vendor/theme/scripts/jquery.flexslider.js"></script>
+<script>
+//winzard create promotion
+$(function () {
+    var $wizard = $('#promotion-fuelux-wizard'),
+        $btnPrev = $('.promotion-wizard-actions .btn-prev'),
+        $btnNext = $('.promotion-wizard-actions .btn-next'),
+        $btnFinish = $(".promotion-wizard-actions .btn-finish");
+
+    $wizard.wizard().on('finished', function(e) {
+        // wizard complete code
+    }).on("changed", function(e) {
+        var step = $wizard.wizard("selectedItem");
+        // reset states
+        //$btnNext.removeAttr("disabled");
+        //$btnPrev.removeAttr("disabled");
+        $btnNext.show();
+        $btnFinish.hide();
+
+        if (step.step === 1) {
+            $btnPrev.attr("disabled", "disabled");
+        } else if (step.step === 4) {
+            $btnNext.hide();
+            $btnFinish.show();
+        }
+    });
+
+    $btnPrev.on('click', function() {
+        $wizard.wizard('previous');
+    });
+    $btnNext.on('click', function() {
+        $wizard.wizard('next');
+    });
+});
+/** slide image **/
+$(window).load(function() {
+  $('.flexslider').flexslider({
+    animation: "slide",
+    controlNav: false,
+  });
+});
+</script>

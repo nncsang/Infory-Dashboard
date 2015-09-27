@@ -1,0 +1,98 @@
+<div ng-include="'partials/_header.html'"></div>
+<div ng-include="'partials/_sidebar.html'"></div>
+<!-- main container -->
+<div class="content z-content">
+    <div id="brand_wrap">
+        <div class="row">
+            <div class="col-md-7 brand_overview block">
+                <div id="brand_info" class="shadow">
+                    <div class="cover_wapper">
+                        <div class="blur"></div>
+                        <img ng-src="{{brand.cover}}" class="cover col-md-12"/>
+                    </div>
+                    <div class="info">
+                        <img src="{{brand.logo}}" alt="contact" class="img-circle logo hidden-phone"/>
+                        <h4 ng-hide="!hideLoadingInfor">{{brand.name}} - <span>{{brand.type_business}}</span></h4>
+                        <h4 ng-hide="!hideLoadingInfor"><i class="icon-fontello-spin6 animate-spin loading-small-infor loading-icon" ng-hide="hideLoadingInfor"></i> - <i class="icon-fontello-spin6 animate-spin loading-small-infor loading-icon" ng-hide="hideLoadingInfor"></i> </h4>
+
+                        <h6> {{brand.owner_address}}</h6>
+                        <div class="info_detail">
+                            <p ng-hide="hideLoadingInfor"><i class="icon-fontello-spin6 animate-spin loading-infor loading-icon" ng-hide="hideLoadingInfor"></i></p>        
+                            <p ng-hide="!hideLoadingInfor">{{brand.description}}</p>
+                            
+                            <p> <span>Website: </span> <a href="{{brand.website}}" ng-hide="!hideLoadingInfor"> {{brand.website}}</a> <i class="icon-fontello-spin6 animate-spin loading-small-infor loading-icon" ng-hide="hideLoadingInfor"></i> </p>
+                            <p> <span>Fanpage: </span> <a href="{{brand.fanpage}}" ng-hide="!hideLoadingInfor">{{brand.fanpage}}</a> <i class="icon-fontello-spin6 animate-spin loading-small-infor loading-icon" ng-hide="hideLoadingInfor"></i></p>
+                            <p> <span>Contact: </span> <a ng-hide="!hideLoadingInfor"> {{brand.owner_phone}}</a><i class="icon-fontello-spin6 animate-spin loading-small-infor loading-icon" ng-hide="hideLoadingInfor"></i></p>
+                            
+                            <div class="alert alert-danger" ng-hide="true">
+                                <i class="icon-remove-sign"></i>
+                                Chưa xác nhận quyền sở hữu nhãn hiệu 
+                            </div>
+                            <input type="file">
+                        </div>
+                    </div>
+                </div> <!-- brand info-->
+                    <div id="add_shop">
+                        <input class="shop_name form-control" type="text" placeholder="Store's name" ng-model="newShopName">    
+                        <a class="btn-flat success" ng-click="addShop(newShopName)"><i class="icon-plus"></i>Create new store</a>
+                    </div>       
+
+                    <div ng-hide="hideLoadingInfor" class="loading-container-image-product">
+                        <div title="Code: 0xe800" class="the-icons span3"><i class="icon-fontello-spin6 animate-spin loading-product-image loading-icon"></i></div>
+                    </div>
+
+                    <ul id="shop_list" ng-hide="!hideLoadingInfor">
+                        <li ng-repeat="shop in brand.shops">
+                            <img src="{{brand.logo}}" alt="contact" class="img-circle avatar hidden-phone left" height="45" width="45"/>
+                            <a ng-click="goToShopInfo(shop)" style="cursor:pointer" class="name">{{shop.name}}</a>
+                            <span class="subtext">{{shop.full_address}}</span>
+                            <i class="icon-remove-sign" ng-click="delShop(shop.id)"></i>
+                        </li>
+                        <div class="clearfix"></div>
+                    </ul>
+            </div>
+            <div class="col-md-4 property-box">
+
+                <ul class="nav nav-tabs">
+                  <li ng-class="{active: main.active.tab == 'info'}" class="active">
+                    <a ng-click='main.active.tab = "info" ' href=""> Information</a>
+                  </li>
+                  
+                  <li ng-class="{active: main.active.tab == 'product'}">
+                    <a ng-click='main.active.tab = "product";showProducts()' href=""> Products</a>
+                  </li>
+
+                    <li ng-class="{active: main.active.tab == 'gallery'}">
+                      <a ng-click='main.active.tab = "gallery"; showGallery();' href=""> Gallery</a>
+                    </li>
+                    <!-- <li ng-class="{active: main.active.tab == 'gallery_user'}">
+                      <a ng-click='main.active.tab = "gallery_user";showUsersGallery();' href=""> Hình ảnh KH</a>
+                    </li> -->
+                </ul>
+                <div class="tab-content">
+                    <div ng-switch = "main.active.tab">
+                        <div ng-switch-default>
+                            <div ng-include='"modules/brand/template/brand/tabs/_info.html"'> </div>  
+                        </div>
+
+                        <div ng-switch-when='product'>
+                            <div ng-include='"modules/brand/template/brand/tabs/_product.html"'> </div>  
+                        </div>
+
+                        <div ng-switch-when='gallery'>
+                            <div ng-include='"modules/brand/template/brand/tabs/_gallery.html"'> </div>  
+                        </div>
+                        
+                        <!-- <div ng-switch-when='gallery_user'>
+                            <div ng-include='"modules/brand/brand/tabs/_gallery_user.html"'> </div>  
+                        </div> -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+</div>
+<!-- scripts -->
+<script src="vendor/theme/scripts/jquery-ui-1.10.2.custom.min.js"></script>
+<script src="vendor/theme/scripts/ajaxfileupload.js"></script>

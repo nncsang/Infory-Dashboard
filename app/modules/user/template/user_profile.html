@@ -1,0 +1,132 @@
+
+<div ng-include="'partials/_header.html'"></div>
+<div ng-include="'partials/_sidebar.html'"></div>
+<!-- main container -->
+<div id="user-info-content" class="content">
+    <div id="user-info" class="col-md-7">
+        <div class="top-block">
+            <!-- <div class="report-by">
+                Gửi thông báo qua 
+                <select>
+                    <option>SMS</option>
+                    <option>EMAIL</option>
+                </select>
+            </div> -->
+            <div id="top-block">
+                <a class="btn-glow btn-return" ng-click="goBack()"> Back</a>
+            </div>
+            
+            <div id="infomation">
+                <div class="logo">
+                    <img ng-src="{{avatar}}" alt="contact" class="avatar img-circle" height="90px" width="90px"/>
+                    
+                </div>
+                <div class="detail">
+                    <h1 class="name">{{username}}</h1>
+                    <p><i class="icon-phone-sign" ng-hide="!hideLoading"></i>{{userProfile.phone}}</p>
+                    <p><i ng-hide="hideLoading"></i><i class="icon-fontello-spin6 animate-spin loading-small-infor loading-icon" ng-hide="hideLoading"></i></p>
+                    <p><i class="icon-map-marker" ng-hide="!hideLoading"></i>{{userProfile.city}}</p>
+                    <p><i ng-hide="hideLoading"></i><i class="icon-fontello-spin6 animate-spin loading-small-infor loading-icon" ng-hide="hideLoading"></i></p>
+                    <p><i class="icon-time" ng-hide="!hideLoading"></i>{{userProfile.last_visit}}</p>
+                    <p><i ng-hide="hideLoading"></i><i class="icon-fontello-spin6 animate-spin loading-small-infor loading-icon" ng-hide="hideLoading"></i></p>
+                </div>
+            </div>
+        </div>
+        <div id="activity">
+            <div class="header" >
+                <span class="time">Time</span>
+                <span class="action">Activity</span>
+            </div>
+            <div ng-hide="hideLoading" class="loading-container-image-product">
+                <div title="Code: 0xe800" class="the-icons span3"><i class="icon-fontello-spin6 animate-spin loading-product-image loading-icon"></i></div>
+            </div>
+            <ul class="time-line" ng-repeat="activity in dataInCurrentPage" ng-hide="!hideLoading">
+                <li>
+                    <span class="date">{{activity.time_str}}</span>
+                    <ul ng-repeat="event in activity.infor">
+                        <li>
+                            <span class="time">{{event.hour}}</span>
+                            <span class="action">{{event.name}}</span>
+                        </li>
+                    </ul>
+                </li>
+             </ul>
+            <div style="margin-top: 15px;margin-bottom: 5px;margin-right: 5px;">
+                <spagination ng-hide="dataInCurrentPage.length == 0" class="right" total-items="totalItems" page="currentPage" on-select-page="pageChanged(page)" items-per-page="itemsPerPage" boundary-links="false" first-text="Đầu tiên" rotate="false" last-text="Cuối cùng" next-text="Sau" previous-text="Trước" max-size="10"></spagination>
+                <br><br><br>
+            </div>
+
+                    <!--chart here-->
+        </div>
+    </div>
+    <div class="col-md-4 property-box" style="width: 380px;">
+        <ul class="nav nav-tabs">
+          <li class="active"><a onclick="javascript:void(0)">Information</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active">
+                <ul>  
+                    <li>
+                        <div class="property col-md-4">Name</div>
+                        <div ng-hide="hideLoading" class="loading-container-infor">
+                            <div title="Code: 0xe800" class="the-icons span3"><i class="icon-fontello-spin6 animate-spin loading-infor loading-icon"></i></div>
+                        </div>
+                        <div class="value col-md-8" ng-hide="!hideLoading">{{username}}</div>
+                    </li>
+                    <li>
+                        <div class="property col-md-4">DOB</div>
+                        <div ng-hide="hideLoading" class="loading-container-infor">
+                            <div title="Code: 0xe800" class="the-icons span3"><i class="icon-fontello-spin6 animate-spin loading-infor loading-icon"></i></div>
+                        </div>
+                        <div class="value col-md-8" ng-hide="!hideLoading">{{userProfile.dob}}</div>
+                    </li>
+                    <li>
+                        <div class="property col-md-4">Age</div>
+                        <div ng-hide="hideLoading" class="loading-container-infor">
+                            <div title="Code: 0xe800" class="the-icons span3"><i class="icon-fontello-spin6 animate-spin loading-infor loading-icon"></i></div>
+                        </div>
+                        <div class="value col-md-8" ng-hide="!hideLoading">{{userProfile.age}}</div>
+                    </li>
+                    <li>
+                        <div class="property col-md-4">Gender</div>
+                        <div ng-hide="hideLoading" class="loading-container-infor">
+                            <div title="Code: 0xe800" class="the-icons span3"><i class="icon-fontello-spin6 animate-spin loading-infor loading-icon"></i></div>
+                        </div>
+                        <div class="value col-md-8" ng-hide="!hideLoading">{{userProfile.gender}}</div>
+                    </li>
+                    <li>
+                        <div class="property col-md-4">City</div>
+                        <div ng-hide="hideLoading" class="loading-container-infor">
+                            <div title="Code: 0xe800" class="the-icons span3"><i class="icon-fontello-spin6 animate-spin loading-infor loading-icon"></i></div>
+                        </div>
+                        <div class="value col-md-8" ng-hide="!hideLoading">{{userProfile.city}}</div>
+                    </li>
+                    <li>
+                        <div class="property col-md-4">Phone number</div>
+                        <div ng-hide="hideLoading" class="loading-container-infor">
+                            <div title="Code: 0xe800" class="the-icons span3"><i class="icon-fontello-spin6 animate-spin loading-infor loading-icon"></i></div>
+                        </div>
+                        <div class="value col-md-8" ng-hide="!hideLoading">{{userProfile.phone}}</div>
+                    </li>
+                    <li>
+                        <div class="property col-md-4">Facebook</div>
+                        <div ng-hide="hideLoading" class="loading-container-infor">
+                            <div title="Code: 0xe800" class="the-icons span3"><i class="icon-fontello-spin6 animate-spin loading-infor loading-icon"></i></div>
+                        </div>
+                        <div class="value col-md-8" ng-hide="!hideLoading"><a href="{{userProfile.facebook}}">{{userProfile.facebook}}</a></div>
+                    </li>
+                    <li>
+                        <div class="property col-md-4">Email</div>
+                        <div ng-hide="hideLoading" class="loading-container-infor">
+                            <div title="Code: 0xe800" class="the-icons span3"><i class="icon-fontello-spin6 animate-spin loading-infor loading-icon"></i></div>
+                        </div>
+                        <div class="value col-md-8" ng-hide="!hideLoading">{{userProfile.email}}</div>
+                    <li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end main container -->
+
+<style scoped>@import url('vendor/theme/styles/compiled/user-profile.css')</style>

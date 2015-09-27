@@ -1,0 +1,238 @@
+<div ng-include="'partials/_header.html'"></div>
+<div ng-include="'partials/_sidebar.html'"></div>
+<!-- main container -->
+<div class="content white-background content-home">
+    
+    <!-- upper main stats -->
+    <div id="main-stats">
+        <div class="row stats-row">
+            <div class="col-md-3 col-sm-3 stat">
+                <div class="data">
+                    <span class="number">{{brandInfo.user_count}}</span>
+                    USERS
+                </div>
+                <span class="date">In database</span>
+            </div>
+            <div class="col-md-3 col-sm-3 stat">
+                <div class="data">
+                    <span class="number">{{brandInfo.view_count}}</span>
+                    VIEWS
+                </div>
+                <span class="date">From 2014/01/01</span>
+            </div>
+            <div class="col-md-3 col-sm-3 stat">
+                <div class="data">
+                    <span class="number">{{brandInfo.like_count}}</span>
+                    LIKES 
+                </div>
+                <span class="date">From 2014/01/01</span>
+            </div>
+            <div class="col-md-3 col-sm-3 stat last">
+                <div class="data">
+                    <span class="number">${{brandInfo.balance}}</span>
+                    t-coin
+                </div>
+                <span class="date">Balance</span>
+            </div>
+        </div>
+    </div>
+    <!-- end upper main stats -->
+
+    <div class="white-background">
+        <div class="home-title">
+            
+            <div id="report-header" class="gray-gradient-box"><div id="report-title">Overview</div><div id="report-description">Growth rate </div><div id="bookmark" style="display: block;">BOOKMARK</div></div>
+        </div>
+        <div class="block" ng-hide="true">
+            <div class="block_header">
+                <span>
+                    <div class="dropdown left" >
+                      <a class="dropdown-toggle" id="dropdown1" role="button" data-toggle="dropdown" data-target="#" href="#">
+                        <div class="select-date btn-glow">
+                            Từ<div class="input-append"><input type="text" class="form-control datetime inline-block" data-ng-model="data[0].dateDisplay"/>
+                            </div>
+                            <i class="icon-sort-down"></i>
+                        </div>
+                      </a>
+                      <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                        <datetimepicker data-ng-model="data[0].dateDropDownInput" data-datetimepicker-config="{ dropdownSelector: '#dropdown1', minView: 'day' }" data-on-set-time="onTimeSetOne"/>
+                      </ul>
+                    </div>
+
+                    <div class="dropdown left" style="margin-left:10px;">
+                      <a class="dropdown-toggle" id="dropdown2" role="button" data-toggle="dropdown" data-target="#" href="#">
+                        <div class="select-date btn-glow">
+                            To<div class="input-append"><input type="text" class="form-control datetime inline-block" data-ng-model="data[1].dateDisplay"/>
+                            </div>
+                        <i class="icon-sort-down"></i>
+                        </div>
+                      </a>
+                      <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                        <datetimepicker data-ng-model="data[1].dateDropDownInput" data-datetimepicker-config="{ dropdownSelector: '#dropdown2', minView: 'day' }" data-on-set-time="onTimeSetTwo"/>
+                      </ul>
+                    </div>
+                </span>
+
+                <select class="type_menu pull-right z-select" ng-model="time_unit_1" ng-options="time_unit_1 as time_unit_1.name_display for time_unit_1 in time_units" ng-change="updateTimeUnit(time_unit_1, 0)"></select>
+                <span class="right text-chart">Unit: </span>
+            </div>
+            <div  style="height: 420px !important;">
+                <div title="Code: 0xe800" class="the-icons span3 loading-container" ng-hide="hideLoading[0]"><i class="icon-fontello-spin6 animate-spin loading-chart loading-icon"></i></div>
+                <chart value='dataChart[0]' height="400" ng-hide="!hideLoading[0]"></chart>
+            </div>
+        </div>
+
+        <div class="block">
+            <div class="block_header">
+                <span>
+                    <div class="dropdown left" >
+                      <a class="dropdown-toggle" id="dropdown3" role="button" data-toggle="dropdown" data-target="#" href="#">
+                         <div class="select-date btn-glow">
+                            From<div class="input-append"><input type="text" class="form-control datetime inline-block" data-ng-model="data[2].dateDisplay">
+                            </div>
+                            <i class="icon-sort-down"></i>
+                         </div>
+                      </a>
+                      <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                        <datetimepicker data-ng-model="data[2].dateDropDownInput" data-datetimepicker-config="{ dropdownSelector: '#dropdown3', minView: 'day' }" data-on-set-time="onTimeSetThree"/>
+                      </ul>
+                    </div>
+
+                    <div class="dropdown left" style="margin-left:10px;">
+                      <a class="dropdown-toggle" id="dropdown4" role="button" data-toggle="dropdown" data-target="#" href="#">
+                        <div class="select-date btn-glow">
+                            To<div class="input-append"><input type="text" class="form-control datetime inline-block" data-ng-model="data[3].dateDisplay"/>
+                            </div>
+                            <i class="icon-sort-down"></i>
+                        </div>
+                      </a>
+                      <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                        <datetimepicker data-ng-model="data[3].dateDropDownInput" data-datetimepicker-config="{ dropdownSelector: '#dropdown4', minView: 'day' }" data-on-set-time="onTimeSetFour"/>
+                      </ul>
+                    </div>
+                </span>
+
+                <select class="type_menu pull-right z-select" ng-model="time_unit_2" ng-options="time_unit_2 as time_unit_2.name_display for time_unit_2 in time_units" ng-change="updateTimeUnit(time_unit_2, 1)"></select>
+                <span class="right text-chart">Unit: </span>
+            </div>
+            <div  style="height: 420px !important;">
+                <div title="Code: 0xe800" class="the-icons span3 loading-container" ng-hide="hideLoading[1]"><i class="icon-fontello-spin6 animate-spin loading-chart loading-icon"></i></div>
+
+                <chart value='dataChart[1]' height="400" ng-hide="!hideLoading[1]"></chart>
+            </div>
+        </div>
+
+        <div class="block" ng-hide="true">
+            <div class="block_header">
+                <span>
+                    <div class="dropdown left" >
+                      <a class="dropdown-toggle" id="dropdown5" role="button" data-toggle="dropdown" data-target="#" href="#">
+                        <div class="select-date btn-glow">
+                            Từ<div class="input-append"><input type="text" class="form-control datetime inline-block" data-ng-model="data[4].dateDisplay"/>
+                            </div>
+                            <i class="icon-sort-down"></i>
+                        </div>
+                      </a>
+                      <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                        <datetimepicker data-ng-model="data[4].dateDropDownInput" data-datetimepicker-config="{ dropdownSelector: '#dropdown5', minView: 'day' }" data-on-set-time="onTimeSetFive"/>
+                      </ul>
+                    </div>
+
+                    <div class="dropdown left" style="margin-left:10px;">
+                      <a class="dropdown-toggle" id="dropdown6" role="button" data-toggle="dropdown" data-target="#" href="#">
+                        <div class="select-date btn-glow">
+                            To<div class="input-append"><input type="text" class="form-control datetime inline-block" data-ng-model="data[5].dateDisplay"/>
+                            </div>
+                            <i class="icon-sort-down"></i>
+                        </div>
+                      </a>
+                      <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                        <datetimepicker data-ng-model="data[5].dateDropDownInput" data-datetimepicker-config="{ dropdownSelector: '#dropdown6', minView: 'day' }" data-on-set-time="onTimeSetSix"/>
+                      </ul>
+                    </div>
+                </span>
+
+                <select class="type_menu pull-right z-select" ng-model="time_unit_3" ng-options="time_unit_3 as time_unit_3.name_display for time_unit_3 in time_units" ng-change="updateTimeUnit(time_unit_3, 2)"></select>
+                <span class="right text-chart">Unit: </span>
+            </div>
+            <div style="height: 420px !important;">
+                <div title="Code: 0xe800" class="the-icons span3 loading-container" ng-hide="hideLoading[2]"><i class="icon-fontello-spin6 animate-spin loading-chart loading-icon"></i></div>
+
+                <chart value='dataChart[2]' height="400" ng-hide="!hideLoading[2]"></chart>
+            </div>
+        </div>
+        <div class="home-title-2" ng-hide="!isHasBookmark">
+            <!-- <span >Biểu đồ của bạn</span> -->
+
+            <div id="report-header" class="gray-gradient-box"><div id="report-title">Chart</div><div id="report-description">Ananlytics report  </div><div id="bookmark" style="display: block;">BOOKMARK</div></div>
+            <div class="clearfix" style="display:block;">
+                <div class="right">
+                    <div class="controller">
+                        <select class="large" ng-model="eventBookmark" ng-options="eventBookmark as eventBookmark.bookmark_name for eventBookmark in eventBookmarks" ng-change="updateEventBookmark(true)"></select>
+                        <span class="btn-glow success _large">View Chart</span>
+                    </div>
+                </div>    
+            </div>
+            
+        </div>
+        <div class="block" ng-hide="!isHasBookmark">
+            <div class="block_header">
+                <span>
+                    <div class="dropdown left" >
+                      <a class="dropdown-toggle" id="dropdown7" role="button" data-toggle="dropdown" data-target="#" href="#">
+                        <div class="select-date btn-glow">
+                            Từ<div class="input-append"><input type="text" class="form-control datetime inline-block" data-ng-model="data[6].dateDisplay"/>
+                            </div>
+                            <i class="icon-sort-down"></i>
+                        </div>
+                      </a>
+                      <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                        <datetimepicker data-ng-model="data[6].dateDropDownInput" data-datetimepicker-config="{ dropdownSelector: '#dropdown7', minView: 'day' }" data-on-set-time="onTimeSetSeven"/>
+                      </ul>
+                    </div>
+
+                    <div class="dropdown left" style="margin-left:10px;">
+                      <a class="dropdown-toggle" id="dropdown8" role="button" data-toggle="dropdown" data-target="#" href="#">
+                        <div class="select-date btn-glow">
+                            To<div class="input-append"><input type="text" class="form-control datetime inline-block" data-ng-model="data[7].dateDisplay" />
+                            </div>
+                            <i class="icon-sort-down"></i>
+                        </div>
+                      </a>
+                      <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                        <datetimepicker data-ng-model="data[7].dateDropDownInput" data-datetimepicker-config="{ dropdownSelector: '#dropdown8', minView: 'day' }" data-on-set-time="onTimeSetEight"/>
+                      </ul>
+                    </div>
+                </span>
+
+                <select class="type_menu pull-right z-select" ng-model="time_unit_4" ng-options="time_unit_4 as time_unit_4.name_display for time_unit_4 in time_units" ng-change="updateTimeUnit(time_unit_4, 3)"></select>
+                <span class="right text-chart">Unit: </span>
+            </div>
+            <div>
+                <div title="Code: 0xe800" class="the-icons span3 loading-container" ng-hide="hideLoading[3]"><i class="icon-fontello-spin6 animate-spin loading-chart loading-icon" style="margin-bottom: 150px"></i></div>
+
+                <chart value='dataChart[3]' height="400" ng-hide="!hideLoading[3]"></chart>
+                <div class="block_footer">
+                    <p class="notify left" style="margin-left: 20px;margin-top: 15px;"> Compare by</p>
+                    <div class="z-ui-select">
+                        <select ng-model="compareUnit" ng-options="compareUnit as compareUnit.name_display for compareUnit in event.compare_properties" ng-change="updateEventBookmark()"></select>
+                        <i class="icon-sort-down"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end main container -->
+<!-- scripts -->
+<script src="vendor/theme/scripts/jquery-ui-1.10.2.custom.min.js"></script>
+<!-- knob -->
+<script src="vendor/theme/scripts/jquery.knob.js"></script>
+<!-- flot charts -->
+<script src="vendor/theme/scripts/jquery.flot.js"></script>
+<script src="vendor/theme/scripts/jquery.flot.stack.js"></script>
+<script src="vendor/theme/scripts/jquery.flot.resize.js"></script>
+<!-- morrisjs -->
+<script src="vendor/theme/scripts/morris.min.js"></script>
+<script src="vendor/theme/scripts/fuelux.wizard.js"></script>
+<style scoped>@import url('vendor/theme/styles/compiled/index.css')</style>    

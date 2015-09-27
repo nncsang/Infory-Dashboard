@@ -1,0 +1,131 @@
+<ul>
+    <li>
+        <div class="property col-md-4">Cover</div>
+        <div ng-hide="hideLoadingInfor" class="loading-container-infor">
+            <div title="Code: 0xe800" class="the-icons span3"><i class="icon-fontello-spin6 animate-spin loading-infor loading-icon"></i></div>
+        </div>
+        <div class="value col-md-8" ng-hide="!hideLoadingInfor">
+            <img ng-src="{{shop.cover}}" width="45" height="45" />
+            <input id="logoInput" type="file" ng-file-select="changeCover($files)" name="cover"/>
+        </div>
+    </li>
+
+    <li>
+        <div class="property col-md-4">Shop name</div>
+        <div ng-hide="hideLoadingInfor" class="loading-container-infor">
+            <div title="Code: 0xe800" class="the-icons span3"><i class="icon-fontello-spin6 animate-spin loading-infor loading-icon"></i></div>
+        </div>
+        <div class="value col-md-8" ng-hide="!hideLoadingInfor">
+            <div class="overview" ng-hide="bundle.editName">
+                <span>{{bundle.shopName}}</span>
+                <a ng-click="bundle.editName = true" style="cursor:pointer" >sửa</a>
+            </div>
+            <div class="edit" ng-hide="!bundle.editName">
+                <input ng-model="bundle.shopName" class="form-control inline-block"/>
+                <i ng-click="changeName()" class="icon-ok-sign success" style="cursor:pointer" ></i>
+            </div>
+        </div>
+    </li>
+
+    <li>
+        <div class="property col-md-4">Street</div>
+        <div ng-hide="hideLoadingInfor" class="loading-container-infor">
+            <div title="Code: 0xe800" class="the-icons span3"><i class="icon-fontello-spin6 animate-spin loading-infor loading-icon"></i></div>
+        </div>
+        <div class="value col-md-8" ng-hide="!hideLoadingInfor">
+            <div class="overview" ng-hide="bundle.editStreetAddress">
+                <span>{{bundle.shopStreetAddress}}</span>
+                <a ng-click="bundle.editStreetAddress = true" style="cursor:pointer" >sửa</a>
+            </div>
+            <div class="edit" ng-hide="!bundle.editStreetAddress">
+                <input ng-model="bundle.shopStreetAddress" class="form-control inline-block"/>
+                <i ng-click="changeStreetAddress()" class="icon-ok-sign success" style="cursor:pointer" ></i>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="property col-md-4">Ward</div>
+        <div ng-hide="hideLoadingInfor" class="loading-container-infor">
+            <div title="Code: 0xe800" class="the-icons span3"><i class="icon-fontello-spin6 animate-spin loading-infor loading-icon"></i></div>
+        </div>
+        <div class="value col-md-8" ng-hide="!hideLoadingInfor">
+            <div class="overview" ng-hide="bundle.editDistrictAddress">
+                <span>{{bundle.shopDistrictAddress}}</span>
+                <a ng-click="editDistrictAddressChanged()" style="cursor:pointer" >sửa</a>
+            </div>
+            <div class="edit" ng-hide="!bundle.editDistrictAddress">
+                <div class="controller">
+                    
+                    <div class="z-dropdown-wapper">
+                        <div id="districtDropdown" class="z-dropdown">
+                            <a class="trigger" style="cursor:pointer"><input type="text" class="invisibleInput" ng-change="districtInputChanged()" ng-model="districtFilter" value=""/><i class="icon-sort-down"></i></a>
+                            <ul style="max-height:250px">
+                                <li ng-repeat="district in cities[cityAddress].districts | filter:districtFilter"><a ng-click="changeDistrictAddress(district)" style="cursor:pointer">{{district}}</a></li>
+                            </ul>
+                        </div>
+                        
+                    </div>
+                </div>
+ 
+            </div>
+        </div>
+    </li>
+
+    <li>
+        <div class="property col-md-4">City</div>
+        <div ng-hide="hideLoadingInfor" class="loading-container-infor">
+            <div title="Code: 0xe800" class="the-icons span3"><i class="icon-fontello-spin6 animate-spin loading-infor loading-icon"></i></div>
+        </div>
+        <div class="value col-md-8" ng-hide="!hideLoadingInfor">
+            <div class="overview" ng-hide="bundle.editCityAddress">
+                <span>{{bundle.shopCityAddress}}</span>
+                <a ng-click="editCityAddressChanged()" style="cursor:pointer" >sửa</a>
+            </div>
+            <div class="edit" ng-hide="!bundle.editCityAddress">
+                <div class="controller">
+                    <div class="z-dropdown-wapper">
+                        <div id="cityDropdown" class="z-dropdown">
+                            <a class="trigger" style="cursor:pointer"><input type="text" class="invisibleInput" ng-change="cityInputChanged()" ng-model="cityFilter" value=""/><i class="icon-sort-down"></i></a>
+                            <ul style="max-height:250px">
+                                <li ng-repeat="city in cities | filter: cityFilter "><a ng-click="changeCityAddress(city.name, $index)" style="cursor:pointer">{{city.name}}</a></li>
+                            </ul>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="property col-md-4">Contact</div>
+        <div ng-hide="hideLoadingInfor" class="loading-container-infor">
+            <div title="Code: 0xe800" class="the-icons span3"><i class="icon-fontello-spin6 animate-spin loading-infor loading-icon"></i></div>
+        </div>
+        <div class="value col-md-8" ng-hide="!hideLoadingInfor">
+            <div class="overview" ng-hide="bundle.editPhone">
+                <span>{{bundle.shopPhone}}</span>
+                <a ng-click="bundle.editPhone = true" style="cursor:pointer" >sửa</a>
+            </div>
+            <div class="edit" ng-hide="!bundle.editPhone">
+                <input ng-model="bundle.shopPhone" class="form-control inline-block"/>
+                <i ng-click="changePhone()" class="icon-ok-sign success" style="cursor:pointer" ></i>
+            </div>
+        </div>
+    </li>
+    <div class="clearfix"></div>
+    <fieldset class="google-view">
+        <google-places location="location" changed-location="locationChanged(lat, lng)"></google-places>
+    </fieldset>
+    <google-map class="google-view" center="map.center" zoom="map.zoom" draggable="true">
+    <marker class="google-view" coords="marker.coords" events="marker.events" options="marker.options"></marker>
+    </google-map>
+    
+</ul>
+<script src="vendor/jquery-gmaps/js/jquery-gmaps-latlon-picker.js"></script>
+<script src="/vendor/theme/scripts/select2.min.js"></script>
+<script>
+// select2 plugin for select elements
+$(".select2").select2({
+    placeholder: "xxxx"
+});
+</script>
