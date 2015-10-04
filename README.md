@@ -1,3 +1,15 @@
+# Infory Dashboard WebUI App v1.0
+This is my project for **Infory Dashboard WebUI App v1.0**.
+
+Project Description
+======
+Our application is a cooking webpage. It gives recommendations on cooking and nutrition. In the homepage, users can reach the list of foods that we suggest. For every food, we provide details of nutrition analysis and instructions to cook in different kinds of formats (video, images, text). Users also can search foods for their own needs by providing:
+
+	- the type of meal: breakfast, lunch or dinner
+	- number of people
+	- food restrictions: diet or vegetarian
+Users are able to add/remove their favourite foods to/from ’MY MEAL’ (see /mymeal.html for detail).
+
 IMAGES FROM INFORY-DASHBOARD
 ======
 <img src="http://res.cloudinary.com/dppqpdago/image/upload/v1443515206/HomePage_t1f9dw.jpg" width="97%"></img>
