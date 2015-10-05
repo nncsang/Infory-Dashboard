@@ -9,13 +9,16 @@ The aim of Infory application is to connect brands or shop owners with their cus
 
 This page will focus to explain about Infory Dashboard WebUI App. It is the part that I built by myself. But for the better understanding of Infory App and of couses Infory Dashboard WebUI App, I would like to posted some images from Infory mobile application v1.0.
 
-<img src="http://res.cloudinary.com/dppqpdago/image/upload/v1444037523/Map_update_we1eyh.png" width="30%"></img>
-<img src="http://res.cloudinary.com/dppqpdago/image/upload/v1444037499/Infor_epu67p.png" width="30%"></img>
-<img src="http://res.cloudinary.com/dppqpdago/image/upload/v1444037482/AccountSetting_irs8s4.png" width="30%"></img>
+<img src="http://res.cloudinary.com/dppqpdago/image/upload/v1444037523/Map_update_we1eyh.png" width="20%"></img>
+<img src="http://res.cloudinary.com/dppqpdago/image/upload/v1444037499/Infor_epu67p.png" width="20%"></img>
+<img src="http://res.cloudinary.com/dppqpdago/image/upload/v1444037482/AccountSetting_irs8s4.png" width="20%"></img>
+<img src="http://res.cloudinary.com/dppqpdago/image/upload/v1444037481/CategoryView_iutk4q.png" width="20%"></img>
 
-<img src="http://res.cloudinary.com/dppqpdago/image/upload/v1444037481/CategoryView_iutk4q.png" width="30%"></img>
-<img src="http://res.cloudinary.com/dppqpdago/image/upload/v1444037496/Comment_mfxsea.png" width="30%"></img>
-<img src="http://res.cloudinary.com/dppqpdago/image/upload/v1444037479/Filter_aufqa4.png" width="30%"></img>
+<img src="http://res.cloudinary.com/dppqpdago/image/upload/v1444037496/Comment_mfxsea.png" width="20%"></img>
+<img src="http://res.cloudinary.com/dppqpdago/image/upload/v1444037479/Filter_aufqa4.png" width="20%"></img>
+<img src="http://res.cloudinary.com/dppqpdago/image/upload/v1444037548/UserCollection_mmcijx.png" width="20%"></img>
+<img src="http://res.cloudinary.com/dppqpdago/image/upload/v1444037543/ShopList_zjakcd.png" width="20%"></img>
+
 
 IMAGES FROM INFORY-DASHBOARD
 ======
