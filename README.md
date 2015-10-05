@@ -4,7 +4,7 @@ Infory Dashboard WebUI App v1.0 was a part of Infory Application which is a prod
 Infory Application
 ======
 The aim of Infory application is to connect brands or shop owners with their customers. It includes two components which are **Infory mobile (Android & iOS) application** for users and **Infory Dashboard WebUI App** for customers (brands and shop owners). 
-- On the customer side, Infory Dashboard WebUI App is a **Business Intelligence tool** which provide an easy and efficient way to collect user's data, to analyze the data, to create report and present actionable information to help corporate executives, business managers and other end users make more informed business decisions. From that, Infory Dashboard WebUI App helps brand/shop owners not only identify market trends and spot business problems that need to be addressed but also accelerate and improve decision making; optimize internal business processes; increase operational efficiency; drive new revenues; and gain competitive advantages over business rivals.
+- On the customer side, Infory Dashboard WebUI App is a **Business Intelligence tool** which provide an easy and efficient way to collect user's data, to analyze the data, to create report and present actionable information to help corporate executives, business managers and other end users make more informed business decisions. From that, Infory Dashboard WebUI App helps brand/shop owners not only identify market trends and spot business problems that need to be addressed but also accelerate and improve decision making; optimize internal business processes; increase operational efficiency; drive new revenues; and gain competitive advantages over business rivals. One of the nicest functions ofInfory Dashboard WebUI App is notification center when brands/shop owners can send  messages to their subscribed users.
 - On the user side, Infory mobile application is **a location-based service application** in which a user can register with a social network account (Facebook, Google++, Twitter) or a phone number. User can setup for him a profile with personal information. After that, user can explore nearby locations in order to find best services (restaurant, shopping mall, food store, supermarket, cloth store...) with smart searching and filtering tool. Services are divided into categories for user's convenience. Infory mobile application provides interactive actions to the services (view details, like, comment, follow, post photo, share). User will gain some reward points for each intraction, and then user can redeem points for a gift, a voucher... 
 
 This page will focus to explain about Infory Dashboard WebUI App. It is the part that I built by myself. But for the better understanding of Infory App and of couses Infory Dashboard WebUI App, I would like to post some images from Infory mobile application v1.0.
@@ -21,6 +21,11 @@ This page will focus to explain about Infory Dashboard WebUI App. It is the part
 
 Infory Dashboard WebUI App
 ======
+Now, this is the time for our main actor - Infory Dashboard WebUI App. I built this Web App when I worked for Infory company since its very first time of a startup. As you know, everything in a startup must be **fast** but Infory Dashboard WebUI App is a huge WebUI app with a lot of charts, user interaction, and filters... How can I do it? I did a little research about web front-end, and I "met" AngularJS.
+
+Why AngularJS
+======
+AngularJS is a relatively new JavaScript framework by Google, designed to make your front-end development **as easy as possible**. There are plenty of frameworks and plugins available. You can use Angular to build any kind of app in a **short time**, taking advantage of features like: Two-way binding, templating, RESTful api handling, modularization, AJAX handling, dependency injection, etc.
 
 Objectives
 ======
@@ -34,7 +39,7 @@ Challenges
 Achievements
 ======
 
-IMAGES FROM INFORY-DASHBOARD
+Images from Infory Dashboard WebUI App v1.0
 ======
 <img src="http://res.cloudinary.com/dppqpdago/image/upload/v1443515206/HomePage_t1f9dw.jpg" width="97%"></img>
 <img src="http://res.cloudinary.com/dppqpdago/image/upload/v1443515026/EventStep1_tn6f58.jpg" width="97%"></img>
