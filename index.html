@@ -41,9 +41,11 @@
 
 <p>The aim of Infory application is to connect brands or shop owners with their customers. It includes two components which are <strong>Infory mobile (Android &amp; iOS) application</strong> for users and <strong>Infory Dashboard WebUI App</strong> for customers (brands and shop owners). </p>
 
+<h2>
+<a id="--on-the-user-side-infory-mobile-application-is-a-location-based-service-application-in-which-a-user-can-register-by-a-social-network-account-facebook-google-twitter-or-a-phone-number-user-can-setup-for-himself-a-profile-with-personal-information-after-that-user-can-explore-nearby-locations-in-order-to-find-best-services-restaurant-shopping-mall-food-store-supermarket-cloth-store-based-on-his-needs-with-built-in-smart-searching-and-filtering-tool-services-are-divided-into-categories-for-users-convenience-infory-mobile-application-provides-interactive-actions-with-the-services-view-details-like-comment-follow-post-photo-share-user-will-gain-some-reward-points-for-each-intraction-and-then-user-can-redeem-points-for-a-gift-a-voucher-user-interactive-activity-data-is-very-helpful-for-later-statistical-analysis" class="anchor" href="#--on-the-user-side-infory-mobile-application-is-a-location-based-service-application-in-which-a-user-can-register-by-a-social-network-account-facebook-google-twitter-or-a-phone-number-user-can-setup-for-himself-a-profile-with-personal-information-after-that-user-can-explore-nearby-locations-in-order-to-find-best-services-restaurant-shopping-mall-food-store-supermarket-cloth-store-based-on-his-needs-with-built-in-smart-searching-and-filtering-tool-services-are-divided-into-categories-for-users-convenience-infory-mobile-application-provides-interactive-actions-with-the-services-view-details-like-comment-follow-post-photo-share-user-will-gain-some-reward-points-for-each-intraction-and-then-user-can-redeem-points-for-a-gift-a-voucher-user-interactive-activity-data-is-very-helpful-for-later-statistical-analysis" aria-hidden="true"><span class="octicon octicon-link"></span></a>- On the user side, Infory mobile application is <strong>a location-based service application</strong> in which a user can register by a social network account (Facebook, Google++, Twitter) or a phone number. User can setup for himself a profile with personal information. After that, user can explore nearby locations in order to find best services (restaurant, shopping mall, food store, supermarket, cloth store...) based on his needs with built-in smart searching and filtering tool. Services are divided into categories for user's convenience. Infory mobile application provides interactive actions with the services (view details, like, comment, follow, post photo, share). User will gain some reward points for each intraction, and then user can redeem points for a gift, a voucher... User' interactive activity data is very helpful for later statistical analysis.</h2>
+
 <ul>
 <li>On the customer side, Infory Dashboard WebUI App is a <strong>Business Intelligence tool</strong> which provide an easy and efficient way to collect user's data, to analyze the data, to create report and present actionable information to help corporate executives, business managers and other end users make more informed business decisions. From that, Infory Dashboard WebUI App helps brand/shop owners not only identify market trends and spot business problems that need to be addressed but also accelerate and improve decision making; optimize internal business processes; increase operational efficiency; drive new revenues; and gain competitive advantages over business rivals. One of the nicest functions ofInfory Dashboard WebUI App is notification center when brands/shop owners can send  messages to their subscribed users.</li>
-<li>On the user side, Infory mobile application is <strong>a location-based service application</strong> in which a user can register with a social network account (Facebook, Google++, Twitter) or a phone number. User can setup for him a profile with personal information. After that, user can explore nearby locations in order to find best services (restaurant, shopping mall, food store, supermarket, cloth store...) with smart searching and filtering tool. Services are divided into categories for user's convenience. Infory mobile application provides interactive actions to the services (view details, like, comment, follow, post photo, share). User will gain some reward points for each intraction, and then user can redeem points for a gift, a voucher... </li>
 </ul>
 
 <p>This page will focus to explain about Infory Dashboard WebUI App. It is the part that I built by myself. But for the better understanding of Infory App and of couses Infory Dashboard WebUI App, I would like to post some images from Infory mobile application v1.0.</p>
@@ -68,17 +70,23 @@
 
 <p>AngularJS is a relatively new JavaScript framework by Google, designed to make your front-end development <strong>as easy as possible</strong>. There are plenty of frameworks and plugins available. You can use Angular to build any kind of app in a <strong>short time</strong>, taking advantage of features like: Two-way binding, templating, RESTful api handling, modularization, AJAX handling, dependency injection, etc.</p>
 
-<h1>
-<a id="objectives" class="anchor" href="#objectives" aria-hidden="true"><span class="octicon octicon-link"></span></a>Objectives</h1>
+<p>So it will be a nice choice for WebUI App in which the actions are mostly send request, receive result from server through APIs, display them, and filters them. Two-way binding is also helpful, it makes the MVC easier (You know what I mean if you've implemented MVC model on other platforms like ASP.NET, the binding process in these platforms wasn't transparent as AngularJS.</p>
 
 <h1>
-<a id="tasks" class="anchor" href="#tasks" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tasks</h1>
+<a id="challenges-and-experiences" class="anchor" href="#challenges-and-experiences" aria-hidden="true"><span class="octicon octicon-link"></span></a>Challenges and Experiences</h1>
 
-<h1>
-<a id="challenges" class="anchor" href="#challenges" aria-hidden="true"><span class="octicon octicon-link"></span></a>Challenges</h1>
+<p>Sound easy, huh? Yup, but everything has its darkside. </p>
 
-<h1>
-<a id="achievements" class="anchor" href="#achievements" aria-hidden="true"><span class="octicon octicon-link"></span></a>Achievements</h1>
+<ul>
+<li>The <strong>binding</strong> process is transparent so it's cumbersome. Sometimes the binding doesn't work, and ask why!!! Most of the time, the reason is binding doesn't work for non-primitive data. For your best sake, please read <a href="https://github.com/angular/angular.js/wiki/Understanding-Scopes#ngController">this link</a> </li>
+<li>
+<strong>Debugging</strong> is complicated in itself, but it’s not enough, it needs to be more complicated!</li>
+<li>It is without a doubt the most common error that absolutely every AngularJS developer faces is <strong>Scope inheritance</strong>
+</li>
+<li>
+<strong>Directives</strong>: we come to the most interesting part, directives is the Holy of holies of angular. Everybody is crazy about them, people just worship them for some reason! </li>
+<li>and so on.</li>
+</ul>
 
 <h1>
 <a id="images-from-infory-dashboard-webui-app-v10" class="anchor" href="#images-from-infory-dashboard-webui-app-v10" aria-hidden="true"><span class="octicon octicon-link"></span></a>Images from Infory Dashboard WebUI App v1.0</h1>
