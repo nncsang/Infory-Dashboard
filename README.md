@@ -1,14 +1,11 @@
 # Infory Dashboard WebUI App v1.0
-This is my project for **Infory Dashboard WebUI App v1.0**.
+Infory Dashboard WebUI App v1.0 was a part of Infory Application which is a product of Infory company. For more information, please visit [http://infory.vn/](http://infory.vn/)
 
-Project Description
+Infory Application
 ======
-Our application is a cooking webpage. It gives recommendations on cooking and nutrition. In the homepage, users can reach the list of foods that we suggest. For every food, we provide details of nutrition analysis and instructions to cook in different kinds of formats (video, images, text). Users also can search foods for their own needs by providing:
-
-	- the type of meal: breakfast, lunch or dinner
-	- number of people
-	- food restrictions: diet or vegetarian
-Users are able to add/remove their favourite foods to/from ’MY MEAL’ (see /mymeal.html for detail).
+The aim of Infory application is to connect brands or shop owners with their customers. It includes two components which are Infory mobile (Android & iOS) application for users and Infory Dashboard WebUI App for customers (brands and shop owners). 
+- On the customer side, Infory Dashboard WebUI App is a Business Intelligence tool which provide an easy and efficient way to collect user's data, to analyze the data, to create report and present actionable information to help corporate executives, business managers and other end users make more informed business decisions. From that, Infory Dashboard WebUI App helps brand/shop owners not only identify market trends and spot business problems that need to be addressed but also accelerate and improve decision making; optimize internal business processes; increase operational efficiency; drive new revenues; and gain competitive advantages over business rivals.
+- On the user side, Infory mobile application is a location-based service application in which a user can register with a social network account (Facebook, Google++, Twitter) or a phone number. User can setup for him a profile with personal information. After that, user can explore nearby locations in order to find best services (restaurant, shopping mall, food store, supermarket, cloth store...). Services are divided into categories for user's convenience. Infory mobile application provides interactive actions to the services (view details, like, comment, follow, post photo, share). 
 
 IMAGES FROM INFORY-DASHBOARD
 ======
