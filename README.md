@@ -21,7 +21,7 @@ This page will focus to explain about Infory Dashboard WebUI App. It is the part
 
 Infory Dashboard WebUI App
 ======
-Now, this is the time for our main actor - Infory Dashboard WebUI App. I built this Web App when I worked for Infory company since its very first time of a startup. As you know, everything in a startup must be **fast** but Infory Dashboard WebUI App is a huge WebUI app with a lot of charts, user interaction, and filters... How can I do it? I did a little research about web front-end, and I "met" AngularJS.
+Now, this is the time for our main actor - Infory Dashboard WebUI App. I built this Web App when I worked for Infory company since its very first time of a startup. As you know, everything in a startup must be **fast** but Infory Dashboard WebUI App is a huge WebUI app with a lot of charts, user interaction, and filters... How can I do it? I did a little research about web front-end, and I "met" and "fell in love with" AngularJS. 
 
 Why AngularJS
 ======
